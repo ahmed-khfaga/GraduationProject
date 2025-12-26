@@ -15,5 +15,10 @@ namespace FitZone.Core.Entitys
 
         public bool IsPremium { get; set; }
 
+        public virtual ICollection<TraineeMembership> TraineeMemberships { get; set; } = new HashSet<TraineeMembership>();
+
+        public virtual ICollection<MembershipPlan> MembershipPlans { get; set; } = new HashSet<MembershipPlan>();
+
+
     }
 }

@@ -18,6 +18,9 @@ namespace FitZone.Core.Entitys
         [ForeignKey("Membership")]
         public int MembershipID { get; set; }
 
+        [ForeignKey("MembershipPlan")]
+        public int MembershipPlanID { get; set; }
+
         public bool IsActive { get; set; } = true;
 
         public DateTime StartDate { get; set; } = DateTime.Now;
@@ -26,5 +29,7 @@ namespace FitZone.Core.Entitys
 
         public virtual Trainee Trainee { get; set; }
         public virtual Membership Membership { get; set; }
+        public virtual MembershipPlan MembershipPlan { get; set; }
+
     }
 }
