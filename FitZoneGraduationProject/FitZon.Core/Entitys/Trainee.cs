@@ -15,7 +15,7 @@ namespace FitZone.Core.Entitys
         
         [ForeignKey("User")]
         public int UserID { get; set; }
-
+        
         public DateTime? DateOfBirth { get; set; }
 
         public string Gender { get; set; } // "Male", "Female"
@@ -27,6 +27,8 @@ namespace FitZone.Core.Entitys
         public string? Address { get; set; } // cairo ,alex ..etc..
 
         public virtual User User { get; set; }
+
+        public virtual ICollection<TraineeMembership> TraineeMemberships { get; set; } = new HashSet<TraineeMembership>();
 
     }
 }
