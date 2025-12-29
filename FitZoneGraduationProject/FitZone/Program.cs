@@ -1,3 +1,6 @@
+using System;
+using FitZone.Repository.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace FitZone
 {
@@ -12,6 +15,20 @@ namespace FitZone
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
+
+
+
+
+            builder.Services.AddDbContext<FitContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("cs"));
+            }
+           );
+
+
+
+
+
 
             var app = builder.Build();
 
