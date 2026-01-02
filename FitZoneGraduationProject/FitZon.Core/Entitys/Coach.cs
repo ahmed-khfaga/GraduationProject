@@ -27,6 +27,7 @@ namespace FitZone.Core.Entitys
 
 
         public virtual User User { get; set; }
+        public virtual ICollection<ProgramTemplate> ProgramTemplates { get; set; } = new HashSet<ProgramTemplate>();
 
 
     }

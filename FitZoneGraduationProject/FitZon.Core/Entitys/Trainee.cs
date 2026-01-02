@@ -17,18 +17,17 @@ namespace FitZone.Core.Entitys
         public int UserID { get; set; }
         
         public DateTime? DateOfBirth { get; set; }
-
         public string Gender { get; set; } // "Male", "Female"
 
         public decimal? Weight { get; set; } // in kg
-
         public decimal? Height { get; set; } // in cm
-
         public string? Address { get; set; } // cairo ,alex ..etc..
+
 
         public virtual User User { get; set; }
 
         public virtual ICollection<TraineeMembership> TraineeMemberships { get; set; } = new HashSet<TraineeMembership>();
+        public virtual ICollection<TraineeProgramTemplate> TraineeProgramTemplates { get; set; } = new HashSet<TraineeProgramTemplate>();
 
     }
 }
