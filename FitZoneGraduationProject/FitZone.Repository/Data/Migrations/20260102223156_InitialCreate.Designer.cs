@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitZone.Repository.Data.Migrations
 {
     [DbContext(typeof(FitContext))]
-    [Migration("20260102134245_initialCreateDB")]
-    partial class initialCreateDB
+    [Migration("20260102223156_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,27 @@ namespace FitZone.Repository.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("FitZone.Core.Entitys.BaseProgram", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("BasePrograms");
+                });
 
             modelBuilder.Entity("FitZone.Core.Entitys.Coach", b =>
                 {
@@ -118,6 +139,65 @@ namespace FitZone.Repository.Data.Migrations
                     b.ToTable("MembershipPlans");
                 });
 
+            modelBuilder.Entity("FitZone.Core.Entitys.ProgramDays", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("Day")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Difficulty")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Focus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProgramTemplateID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ProgramTemplateID");
+
+                    b.ToTable("ProgramDays");
+                });
+
+            modelBuilder.Entity("FitZone.Core.Entitys.ProgramTemplate", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("BaseProgramID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CoachID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("BaseProgramID");
+
+                    b.HasIndex("CoachID");
+
+                    b.ToTable("ProgramTemplates");
+                });
+
             modelBuilder.Entity("FitZone.Core.Entitys.Trainee", b =>
                 {
                     b.Property<int>("ID")
@@ -192,6 +272,40 @@ namespace FitZone.Repository.Data.Migrations
                     b.ToTable("TraineeMemberships");
                 });
 
+            modelBuilder.Entity("FitZone.Core.Entitys.TraineeProgramTemplate", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime?>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ProgramTemplateID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("TraineeID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ProgramTemplateID");
+
+                    b.HasIndex("TraineeID", "IsActive")
+                        .IsUnique()
+                        .HasFilter("[IsActive] = 1");
+
+                    b.ToTable("TraineeProgramTemplates");
+                });
+
             modelBuilder.Entity("FitZone.Core.Entitys.User", b =>
                 {
                     b.Property<int>("ID")
@@ -252,6 +366,36 @@ namespace FitZone.Repository.Data.Migrations
                     b.Navigation("Membership");
                 });
 
+            modelBuilder.Entity("FitZone.Core.Entitys.ProgramDays", b =>
+                {
+                    b.HasOne("FitZone.Core.Entitys.ProgramTemplate", "ProgramTemplate")
+                        .WithMany("ProgramDays")
+                        .HasForeignKey("ProgramTemplateID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ProgramTemplate");
+                });
+
+            modelBuilder.Entity("FitZone.Core.Entitys.ProgramTemplate", b =>
+                {
+                    b.HasOne("FitZone.Core.Entitys.BaseProgram", "BaseProgram")
+                        .WithMany("ProgramTemplates")
+                        .HasForeignKey("BaseProgramID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FitZone.Core.Entitys.Coach", "Coach")
+                        .WithMany("ProgramTemplates")
+                        .HasForeignKey("CoachID")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("BaseProgram");
+
+                    b.Navigation("Coach");
+                });
+
             modelBuilder.Entity("FitZone.Core.Entitys.Trainee", b =>
                 {
                     b.HasOne("FitZone.Core.Entitys.User", "User")
@@ -286,6 +430,35 @@ namespace FitZone.Repository.Data.Migrations
                     b.Navigation("Trainee");
                 });
 
+            modelBuilder.Entity("FitZone.Core.Entitys.TraineeProgramTemplate", b =>
+                {
+                    b.HasOne("FitZone.Core.Entitys.ProgramTemplate", "ProgramTemplate")
+                        .WithMany("TraineeProgramTemplates")
+                        .HasForeignKey("ProgramTemplateID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FitZone.Core.Entitys.Trainee", "Trainee")
+                        .WithMany("TraineeProgramTemplates")
+                        .HasForeignKey("TraineeID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ProgramTemplate");
+
+                    b.Navigation("Trainee");
+                });
+
+            modelBuilder.Entity("FitZone.Core.Entitys.BaseProgram", b =>
+                {
+                    b.Navigation("ProgramTemplates");
+                });
+
+            modelBuilder.Entity("FitZone.Core.Entitys.Coach", b =>
+                {
+                    b.Navigation("ProgramTemplates");
+                });
+
             modelBuilder.Entity("FitZone.Core.Entitys.Membership", b =>
                 {
                     b.Navigation("MembershipPlans");
@@ -293,9 +466,18 @@ namespace FitZone.Repository.Data.Migrations
                     b.Navigation("TraineeMemberships");
                 });
 
+            modelBuilder.Entity("FitZone.Core.Entitys.ProgramTemplate", b =>
+                {
+                    b.Navigation("ProgramDays");
+
+                    b.Navigation("TraineeProgramTemplates");
+                });
+
             modelBuilder.Entity("FitZone.Core.Entitys.Trainee", b =>
                 {
                     b.Navigation("TraineeMemberships");
+
+                    b.Navigation("TraineeProgramTemplates");
                 });
 
             modelBuilder.Entity("FitZone.Core.Entitys.User", b =>

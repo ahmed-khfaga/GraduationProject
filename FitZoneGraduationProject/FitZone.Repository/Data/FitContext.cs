@@ -44,6 +44,22 @@ namespace FitZone.Repository.Data
                 .Property(t => t.Height)
                 .HasPrecision(3, 2);
 
+            modelBuilder.Entity<TraineeProgramTemplate>() // Only ONE active template at a time
+                .HasIndex(x => new { x.TraineeID, x.IsActive })
+                .IsUnique()
+                .HasFilter("[IsActive] = 1");
+
+
+
+            #region NoAction on Deleted Coach
+            modelBuilder.Entity<ProgramTemplate>()
+                    .HasOne(pt => pt.Coach)
+                    .WithMany(c => c.ProgramTemplates)
+                    .HasForeignKey(pt => pt.CoachID)
+                    .OnDelete(DeleteBehavior.NoAction);
+
+            #endregion
+
 
 
         }
@@ -59,6 +75,15 @@ namespace FitZone.Repository.Data
 
         public virtual DbSet<MembershipPlan> MembershipPlans { get; set; }
 
+        public virtual DbSet<BaseProgram> BasePrograms { get; set; }
+
+        public virtual DbSet<ProgramTemplate> ProgramTemplates { get; set; }
+
+        public virtual DbSet<ProgramDays> ProgramDays { get; set; }
+
+        public virtual DbSet<TraineeProgramTemplate> TraineeProgramTemplates { get; set; }
         public virtual DbSet<TraineeMembership> TraineeMemberships { get; set; }
+
+
     }
 }
