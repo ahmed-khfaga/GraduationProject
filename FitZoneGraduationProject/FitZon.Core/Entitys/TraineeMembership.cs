@@ -15,9 +15,6 @@ namespace FitZone.Core.Entitys
         [ForeignKey("Trainee")]
         public int TraineeID { get; set; }
 
-        [ForeignKey("Membership")]
-        public int MembershipID { get; set; }
-
         [ForeignKey("MembershipPlan")]
         public int MembershipPlanID { get; set; }
 
@@ -28,7 +25,6 @@ namespace FitZone.Core.Entitys
         public DateTime? EndDate { get; set; }
 
         public virtual Trainee Trainee { get; set; }
-        public virtual Membership Membership { get; set; }
         public virtual MembershipPlan MembershipPlan { get; set; }
 
     }
