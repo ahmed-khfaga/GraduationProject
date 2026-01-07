@@ -1,4 +1,6 @@
 using System;
+using FitZone.Core.Repository.Contract;
+using FitZone.Repository;
 using FitZone.Repository.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -26,6 +28,8 @@ namespace FitZone
 
 
            );
+
+            builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
 
 
