@@ -10,20 +10,27 @@ namespace FitZone
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
 
             builder.Services.AddControllers();
-            // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
 
 
+            #region connectionString and services 
 
             builder.Services.AddDbContext<FitContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("cs"));
             }
+
+
+
            );
+
+
+
+
+            #endregion
 
 
 
