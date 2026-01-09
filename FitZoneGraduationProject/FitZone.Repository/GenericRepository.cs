@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FitZone.Core.Command;
 using FitZone.Core.Repository.Contract;
 using FitZone.Repository.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace FitZone.Repository
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
         private readonly FitContext _context;
 
