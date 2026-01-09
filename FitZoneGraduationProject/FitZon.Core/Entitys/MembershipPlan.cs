@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FitZone.Core.Command;
 
 namespace FitZone.Core.Entitys
 {
-    public class MembershipPlan
+    public class MembershipPlan : BaseEntity
     {
-        public int ID { get; set; }
+
+        [ForeignKey("MembershipID")]
         public int MembershipID { get; set; }
 
         public int DurationInDays { get; set; }

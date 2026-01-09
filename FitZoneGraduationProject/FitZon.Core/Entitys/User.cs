@@ -5,13 +5,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FitZone.Core.Command;
 using FitZone.Core.Enums;
 
 namespace FitZone.Core.Entitys
 {
-    public class User
+    public class User : BaseEntity
     {
-        public int ID { get; set; }
         public string F_Name { get; set; }
         public string L_Name { get; set; }
 

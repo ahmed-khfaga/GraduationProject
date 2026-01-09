@@ -4,12 +4,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FitZone.Core.Command;
 
 namespace FitZone.Core.Entitys
 {
-    public class TraineeProgramTemplate
+    public class TraineeProgramTemplate : BaseEntity
     {
-        public int ID { get; set; }
 
         [ForeignKey("TraineeID")]
         public int TraineeID { get; set; }

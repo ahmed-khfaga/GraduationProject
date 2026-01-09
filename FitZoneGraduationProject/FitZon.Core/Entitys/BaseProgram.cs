@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FitZone.Core.Command;
 
 namespace FitZone.Core.Entitys
 {
-    public class BaseProgram
+    public class BaseProgram : BaseEntity
     {
-        public int ID { get; set; }
 
         public string Name { get; set; }
 

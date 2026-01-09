@@ -4,13 +4,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FitZone.Core.Command;
 using FitZone.Core.Enums;
 
 namespace FitZone.Core.Entitys
 {
-    public class ProgramDays
+    public class ProgramDays : BaseEntity
     {
-        public int ID { get; set; }
 
         [ForeignKey("ProgramTemplateID")]
         public int ProgramTemplateID { get; set; }
