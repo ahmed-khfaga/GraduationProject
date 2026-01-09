@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FitZone.Core.Command;
+using FitZone.Core.Specifications;
 
 namespace FitZone.Core.Repository.Contract
 {
@@ -13,5 +14,11 @@ namespace FitZone.Core.Repository.Contract
 
         Task<T?> GetAsync(int id);
         Task<IEnumerable<T>> GetAllAsync();
+
+        Task<IEnumerable<T>> GetAllWithSpecAsync(ISpecifications<T> spec);
+
+        Task<T?> GetWithSpecAsync(ISpecifications<T> spec);
+
+
     }
 }
