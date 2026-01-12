@@ -1,4 +1,5 @@
 using System;
+using FitZone.APIs.Helper;
 using FitZone.Core.Repository.Contract;
 using FitZone.Repository;
 using FitZone.Repository.Data;
@@ -31,7 +32,8 @@ namespace FitZone
 
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
-
+            //builder.Services.AddAutoMapper(M => M.AddProfile(new MappingMemberShip()));
+             builder.Services.AddAutoMapper(typeof(MappingMemberShip));
 
 
             #endregion
