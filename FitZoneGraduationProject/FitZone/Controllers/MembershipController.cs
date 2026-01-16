@@ -22,7 +22,7 @@ namespace FitZone.APIs.Controllers
         }
 
         [HttpGet]
-        public async Task <IActionResult> GetAllMembership()  // should get standard with month and premiumn with month with all descrptions
+        public async Task <ActionResult<MembershipWithPricePlanDTOs>> GetAllMembership()  // should get standard with month and premiumn with month with all descrptions
         {
             // need get membership from db where duration in days  = 30 
 
