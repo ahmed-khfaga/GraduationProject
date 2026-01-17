@@ -1,0 +1,22 @@
+[
+  {
+    "ContainingType": "FitZone.APIs.Controllers.MembershipController",
+    "Method": "GetAllMembership",
+    "RelativePath": "api/Membership",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "FitZone.APIs.DTOs.MembershipWithPricePlanDTOs",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

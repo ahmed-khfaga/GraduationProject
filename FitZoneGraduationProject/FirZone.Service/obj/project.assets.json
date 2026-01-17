@@ -14,9 +14,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\FirZone.Service.csproj",
-      "projectName": "FirZone.Service",
-      "projectPath": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\FirZone.Service.csproj",
+      "projectUniqueName": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\FitZone.Service.csproj",
+      "projectName": "FitZone.Service",
+      "projectPath": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\FitZone.Service.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
       "outputPath": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\obj\\",
       "projectStyle": "PackageReference",

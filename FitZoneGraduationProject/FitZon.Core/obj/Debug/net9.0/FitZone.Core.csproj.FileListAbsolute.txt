@@ -1,0 +1,11 @@
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZon.Core\bin\Debug\net9.0\FitZone.Core.deps.json
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZon.Core\bin\Debug\net9.0\FitZone.Core.dll
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZon.Core\bin\Debug\net9.0\FitZone.Core.pdb
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.AssemblyInfoInputs.cache
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.AssemblyInfo.cs
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.csproj.CoreCompileInputs.cache
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.dll
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\refint\FitZone.Core.dll
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.pdb
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\ref\FitZone.Core.dll

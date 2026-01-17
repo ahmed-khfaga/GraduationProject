@@ -1,0 +1,11 @@
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FirZone.Service\bin\Debug\net9.0\FitZone.Service.deps.json
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FirZone.Service\bin\Debug\net9.0\FitZone.Service.dll
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FirZone.Service\bin\Debug\net9.0\FitZone.Service.pdb
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.AssemblyInfoInputs.cache
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.AssemblyInfo.cs
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.csproj.CoreCompileInputs.cache
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.dll
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\refint\FitZone.Service.dll
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.pdb
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\ref\FitZone.Service.dll

@@ -85,11 +85,11 @@ namespace FitZone.Repository.Data.Migrations
 
             modelBuilder.Entity("FitZone.Core.Entitys.Membership", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -102,7 +102,7 @@ namespace FitZone.Repository.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
                     b.ToTable("Memberships");
                 });
@@ -246,7 +246,7 @@ namespace FitZone.Repository.Data.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("MembershipId")
+                    b.Property<int?>("MembershipID")
                         .HasColumnType("int");
 
                     b.Property<int>("MembershipPlanID")
@@ -260,7 +260,7 @@ namespace FitZone.Repository.Data.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("MembershipId");
+                    b.HasIndex("MembershipID");
 
                     b.HasIndex("MembershipPlanID");
 
@@ -408,7 +408,7 @@ namespace FitZone.Repository.Data.Migrations
                 {
                     b.HasOne("FitZone.Core.Entitys.Membership", null)
                         .WithMany("TraineeMemberships")
-                        .HasForeignKey("MembershipId");
+                        .HasForeignKey("MembershipID");
 
                     b.HasOne("FitZone.Core.Entitys.MembershipPlan", "MembershipPlan")
                         .WithMany()
