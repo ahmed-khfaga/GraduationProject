@@ -8,9 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FitZone.APIs.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class MembershipController : ControllerBase
+    public class MembershipController : BaseApiController
     {
         private readonly IGenericRepository<MembershipPlan> _membershipPlanRepo;
         private readonly IMapper _mapper;
