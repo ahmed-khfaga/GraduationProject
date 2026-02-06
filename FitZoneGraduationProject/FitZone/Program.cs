@@ -36,6 +36,18 @@ namespace FitZone
              builder.Services.AddAutoMapper(typeof(MappingMemberShip));
 
 
+
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("MyPolicy", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+                });
+            });
+
             #endregion
 
 
@@ -55,7 +67,7 @@ namespace FitZone
 
             app.UseAuthorization();
 
-
+            app.UseCors("MyPolicy");
             app.MapControllers();
 
             app.Run();
