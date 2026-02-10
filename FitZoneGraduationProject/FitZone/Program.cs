@@ -1,6 +1,7 @@
 using System;
 using FitZone.APIs.Errors;
 using FitZone.APIs.Helper;
+using FitZone.APIs.Middlewares;
 using FitZone.Core.Repository.Contract;
 using FitZone.Repository;
 using FitZone.Repository.Data;
@@ -15,11 +16,8 @@ namespace FitZone
         {
             var builder = WebApplication.CreateBuilder(args);
 
-
             builder.Services.AddControllers();
             builder.Services.AddOpenApi();
-
-
 
             #region connectionString and services 
 
@@ -63,21 +61,12 @@ namespace FitZone
                     };
 
                     return new BadRequestObjectResult(validationErrorResponse);
-                };
-            
-                
-            
+                };                                  
             });
-
             #endregion
-
-
-
-
-
-
+         
             var app = builder.Build();
-
+            app.UseMiddleware<ExceptionMiddleware>();
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
@@ -85,13 +74,12 @@ namespace FitZone
             }
 
             app.UseHttpsRedirection();
-           
-            
-            app.UseAuthentication();
+         
+            app.UseCors("MyPolicy");
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseCors("MyPolicy");
             app.MapControllers();
 
             app.Run();
