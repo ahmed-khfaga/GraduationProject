@@ -1,8 +1,10 @@
 using System;
+using FitZone.APIs.Errors;
 using FitZone.APIs.Helper;
 using FitZone.Core.Repository.Contract;
 using FitZone.Repository;
 using FitZone.Repository.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace FitZone
@@ -35,9 +37,6 @@ namespace FitZone
             //builder.Services.AddAutoMapper(M => M.AddProfile(new MappingMemberShip()));
              builder.Services.AddAutoMapper(typeof(MappingMemberShip));
 
-
-
-
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("MyPolicy", policy =>
@@ -46,6 +45,28 @@ namespace FitZone
                     .AllowAnyMethod()
                     .AllowAnyHeader();
                 });
+            });
+
+
+            builder.Services.Configure<ApiBehaviorOptions>(option => 
+            {
+                option.InvalidModelStateResponseFactory = (actionContext) =>
+                {
+                    var errors = actionContext.ModelState.Where(p => p.Value.Errors.Count() > 0)
+                                                            .SelectMany(p => p.Value.Errors)
+                                                            .Select(E => E.ErrorMessage)
+                                                            .ToArray();
+
+                    var validationErrorResponse = new ApiValidationErrorRes() 
+                    {
+                        Errors = errors
+                    };
+
+                    return new BadRequestObjectResult(validationErrorResponse);
+                };
+            
+                
+            
             });
 
             #endregion
@@ -64,6 +85,9 @@ namespace FitZone
             }
 
             app.UseHttpsRedirection();
+           
+            
+            app.UseAuthentication();
 
             app.UseAuthorization();
 
