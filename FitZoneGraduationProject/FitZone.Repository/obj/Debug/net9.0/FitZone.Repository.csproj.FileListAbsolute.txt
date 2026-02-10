@@ -15,3 +15,4 @@ D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\D
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone.Repository.pdb
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone.Repository.genruntimeconfig.cache
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\ref\FitZone.Repository.dll
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone.Repository.sourcelink.json

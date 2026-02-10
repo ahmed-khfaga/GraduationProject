@@ -158,3 +158,4 @@ D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\ref\FitZone.APIs.dll
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\bin\Debug\net9.0\AutoMapper.dll
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\bin\Debug\net9.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\FitZone.APIs.sourcelink.json
