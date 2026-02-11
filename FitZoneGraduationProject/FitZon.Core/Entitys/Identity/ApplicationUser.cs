@@ -16,10 +16,11 @@ namespace FitZone.Core.Entitys.Identity
         public string F_Name { get; set; }
         public string L_Name { get; set; }
 
-        [NotMapped]
-        public string FullName => $"{F_Name} {L_Name}"; // mohamed omer 
+            [NotMapped]
+            public string FullName => $"{F_Name} {L_Name}"; // mohamed omer 
       
         public UserRole Role { get; set; }
+        public string? PhotoUrl { get; set; } 
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime? UpdatedAt { get; set; }

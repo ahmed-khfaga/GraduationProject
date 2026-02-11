@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 using FitZone.APIs.Errors;
 using FitZone.APIs.Helper;
 using FitZone.APIs.Middlewares;
@@ -6,9 +7,11 @@ using FitZone.Core.Entitys.Identity;
 using FitZone.Core.Repository.Contract;
 using FitZone.Repository;
 using FitZone.Repository.Data;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace FitZone
 {
@@ -43,6 +46,29 @@ namespace FitZone
                     .AllowAnyMethod()
                     .AllowAnyHeader();
                 });
+            });
+
+
+
+            builder.Services.AddAuthentication(option =>
+            {
+                // check JWT token header 
+                option.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                // if go th action [authrize]
+                option.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme; // unauth
+
+                option.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(option => {  // verified key 
+                option.SaveToken = true;
+                option.RequireHttpsMetadata = false;
+                option.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidateIssuer = true,
+                    ValidIssuer = "http://localhost:5234/",
+                    ValidateAudience = true,
+                    ValidAudience = "http://localhost:3000/",
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("YYYUUUKKK@122381##4dsfbnlll120947"))
+                };
             });
 
 
