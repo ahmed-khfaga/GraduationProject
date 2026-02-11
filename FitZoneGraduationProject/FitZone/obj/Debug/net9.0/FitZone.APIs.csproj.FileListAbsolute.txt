@@ -159,3 +159,6 @@ D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\bin\Debug\net9.0\AutoMapper.dll
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\bin\Debug\net9.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\FitZone.APIs.sourcelink.json
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
