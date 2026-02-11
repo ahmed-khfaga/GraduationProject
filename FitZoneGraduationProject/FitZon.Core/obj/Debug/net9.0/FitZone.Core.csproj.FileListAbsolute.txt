@@ -10,3 +10,4 @@ D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\ne
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.pdb
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\ref\FitZone.Core.dll
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.sourcelink.json
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.csproj.AssemblyReference.cache

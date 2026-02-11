@@ -5,28 +5,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FitZone.Core.Command;
+using FitZone.Core.Entitys.Identity;
 
 namespace FitZone.Core.Entitys
 {
     public class Coach : BaseEntity
     {
 
-        [ForeignKey("User")]
-        public int UserID { get; set; }
+        public string ApplicationUserId { get; set; }
 
         public int YearsOfExperience { get; set; }
         public decimal? Rating { get; set; } // 0.0 to 5.0
         public string About { get; set; }
-        
-       
-        //public string PhotoUrl { get; set; }
-
+        public string? PhotoUrl { get; set; }
         public decimal? Price { get; set; } // Hourly rate
 
         public DateTime HireDate { get; set; } = DateTime.Now;
-
-
-        public virtual User User { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
         public virtual ICollection<ProgramTemplate> ProgramTemplates { get; set; } = new HashSet<ProgramTemplate>();
 
 
