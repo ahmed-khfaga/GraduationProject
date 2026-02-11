@@ -5,11 +5,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FitZone.Core.Entitys;
+using FitZone.Core.Entitys.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace FitZone.Repository.Data
 {
-    public class FitContext : DbContext
+    public class FitContext : IdentityDbContext<ApplicationUser>
     {
         public FitContext(DbContextOptions<FitContext> option):base(option)
         {
@@ -18,6 +20,8 @@ namespace FitZone.Repository.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder); // called base onModelCreating to not breake Identity configuration .
+
             modelBuilder.Entity<Coach>()
                 .Property(c => c.Price)
                 .HasPrecision(3,2);
@@ -49,6 +53,16 @@ namespace FitZone.Repository.Data
                 .IsUnique()
                 .HasFilter("[IsActive] = 1");
 
+            modelBuilder.Entity<Trainee>()
+                .HasOne(t => t.ApplicationUser)
+                .WithOne(u => u.Trainee)
+                .HasForeignKey<Trainee>(t => t.ApplicationUserId);
+
+            modelBuilder.Entity<Coach>()
+                .HasOne(c => c.ApplicationUser)
+                .WithOne(u => u.Coach)
+                .HasForeignKey<Coach>(c => c.ApplicationUserId);
+
 
 
             #region NoAction on Deleted Coach
@@ -63,9 +77,6 @@ namespace FitZone.Repository.Data
 
 
         }
-
-
-        public virtual DbSet<User> Users { get; set; }
 
         public virtual DbSet<Trainee> Trainees { get; set; }
 

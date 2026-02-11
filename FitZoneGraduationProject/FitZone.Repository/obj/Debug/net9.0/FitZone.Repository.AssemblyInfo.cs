@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FitZone.Repository")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3d51fb124b38df69a7c4eb5c19a63849d6f87667")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3dfa6afef6fa28fc021262042fa7e7132fe757bc")]
 [assembly: System.Reflection.AssemblyProductAttribute("FitZone.Repository")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FitZone.Repository")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
