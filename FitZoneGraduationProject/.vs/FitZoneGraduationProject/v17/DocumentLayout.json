@@ -90,8 +90,7 @@
               "RelativeToolTip": "FitZon.Core\\Enums\\BaseEnum.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-10T14:26:51.631Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-10T14:26:51.631Z"
             },
             {
               "$type": "Document",
@@ -103,8 +102,7 @@
               "RelativeToolTip": "FitZone\\Errors\\ApiExceptionServer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-10T13:17:58.847Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-10T13:17:58.847Z"
             },
             {
               "$type": "Document",
@@ -122,15 +120,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "FitZone.APIs",
+              "Title": "FitZone.APIs.csproj",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone\\FitZone.APIs.csproj",
               "RelativeDocumentMoniker": "FitZone\\FitZone.APIs.csproj",
               "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone\\FitZone.APIs.csproj",
               "RelativeToolTip": "FitZone\\FitZone.APIs.csproj",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-02-10T13:10:58.828Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-10T13:10:58.828Z"
             },
             {
               "$type": "Document",
@@ -142,8 +139,7 @@
               "RelativeToolTip": "FitZone\\Errors\\ApiValidationErrorRes.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-10T12:15:59.016Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-10T12:15:59.016Z"
             },
             {
               "$type": "Document",
@@ -155,8 +151,7 @@
               "RelativeToolTip": "FitZone\\Controllers\\BuggyController.cs",
               "ViewState": "AgIAAB8AAAAAAAAAAAAkwCsAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-10T11:23:35.87Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-10T11:23:35.87Z"
             },
             {
               "$type": "Document",
@@ -168,8 +163,7 @@
               "RelativeToolTip": "FitZone\\Program.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAAAAwAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T22:43:05.162Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-02T22:43:05.162Z"
             },
             {
               "$type": "Document",
@@ -217,8 +211,7 @@
               "RelativeToolTip": "FitZone\\Errors\\ApiException.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAABQAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T13:56:13.852Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T13:56:13.852Z"
             },
             {
               "$type": "Document",
@@ -266,8 +259,7 @@
               "RelativeToolTip": "FitZone\\Controllers\\MembershipController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-10T21:16:31.457Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-10T21:16:31.457Z"
             },
             {
               "$type": "Document",
