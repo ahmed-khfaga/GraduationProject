@@ -162,3 +162,5 @@ D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\bin\Debug\net9.0\FitZone.APIs.staticwebassets.runtime.json

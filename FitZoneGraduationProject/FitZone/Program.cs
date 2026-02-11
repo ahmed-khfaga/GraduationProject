@@ -2,9 +2,11 @@ using System;
 using FitZone.APIs.Errors;
 using FitZone.APIs.Helper;
 using FitZone.APIs.Middlewares;
+using FitZone.Core.Entitys.Identity;
 using FitZone.Core.Repository.Contract;
 using FitZone.Repository;
 using FitZone.Repository.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -25,10 +27,8 @@ namespace FitZone
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("cs"));
             }
-
-
-
            );
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<FitContext>();
 
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 

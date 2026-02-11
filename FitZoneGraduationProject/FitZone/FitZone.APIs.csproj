@@ -21,4 +21,9 @@
     <ProjectReference Include="..\FitZone.Repository\FitZone.Repository.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\Coaches\" />
+    <Folder Include="wwwroot\images\Trainees\" />
+  </ItemGroup>
+
 </Project>
