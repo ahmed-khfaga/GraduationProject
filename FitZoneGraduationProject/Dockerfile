@@ -4,9 +4,8 @@ WORKDIR /src
 
 COPY FitZoneGraduationProject/ ./FitZoneGraduationProject/
 
-WORKDIR /src/FitZoneGraduationProject/FitZone.APIs
-RUN dotnet restore
-RUN dotnet publish -c Release -o /app/publish
+RUN dotnet restore "FitZoneGraduationProject/FitZone.APIs/FitZone.APIs.csproj"
+RUN dotnet publish "FitZoneGraduationProject/FitZone.APIs/FitZone.APIs.csproj" -c Release -o /app/publish
 
 # Runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:9.0
