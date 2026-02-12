@@ -5,8 +5,10 @@ using FitZone.APIs.Helper;
 using FitZone.APIs.Middlewares;
 using FitZone.Core.Entitys.Identity;
 using FitZone.Core.Repository.Contract;
+using FitZone.Core.Services.Contract;
 using FitZone.Repository;
 using FitZone.Repository.Data;
+using FitZone.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -49,6 +51,7 @@ namespace FitZone
             });
 
 
+            builder.Services.AddScoped(typeof(IAuthService),typeof(AuthService));
 
             builder.Services.AddAuthentication(option =>
             {
@@ -64,10 +67,10 @@ namespace FitZone
                 option.TokenValidationParameters = new TokenValidationParameters()
                 {
                     ValidateIssuer = true,
-                    ValidIssuer = "http://localhost:5234/",
+                    ValidIssuer = builder.Configuration["JWT:ValidIssuer"],
                     ValidateAudience = true,
-                    ValidAudience = "http://localhost:3000/",
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("YYYUUUKKK@122381##4dsfbnlll120947"))
+                    ValidAudience = builder.Configuration["JWT:ValidAudience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:SecretKey"]))
                 };
             });
 

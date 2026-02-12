@@ -165,3 +165,5 @@ D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\bin\Debug\net9.0
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\bin\Debug\net9.0\FitZone.APIs.staticwebassets.runtime.json
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\bin\Debug\net9.0\FitZone.Service.dll
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone\bin\Debug\net9.0\FitZone.Service.pdb

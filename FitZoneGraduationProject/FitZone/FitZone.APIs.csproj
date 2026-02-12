@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FirZone.Service\FitZone.Service.csproj" />
     <ProjectReference Include="..\FitZone.Repository\FitZone.Repository.csproj" />
   </ItemGroup>
 

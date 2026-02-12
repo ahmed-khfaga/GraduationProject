@@ -16,8 +16,7 @@ namespace FitZone.Core.Entitys.Identity
         public string F_Name { get; set; }
         public string L_Name { get; set; }
 
-            [NotMapped]
-            public string FullName => $"{F_Name} {L_Name}"; // mohamed omer 
+        public string FullName => $"{F_Name} {L_Name}"; // mohamed omer 
       
         public UserRole Role { get; set; }
         public string? PhotoUrl { get; set; } 

@@ -4,6 +4,7 @@ using System.Text;
 using FitZone.APIs.DTOs;
 using FitZone.Core.Entitys.Identity;
 using FitZone.Core.Enums;
+using FitZone.Core.Services.Contract;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -14,11 +15,12 @@ namespace FitZone.APIs.Controllers
     public class AccountController : BaseApiController
     {
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly IAuthService _authService;
 
-
-        public AccountController(UserManager<ApplicationUser> _userManager)
+        public AccountController(UserManager<ApplicationUser> _userManager, IAuthService authService)
         {
             userManager = _userManager;
+            _authService = authService;
         }
 
         [HttpPost("Register")]
@@ -33,9 +35,7 @@ namespace FitZone.APIs.Controllers
             if (ModelState.IsValid)
             {
                 // first work on photo if user enter photo 
-
                 string photoPath = "images/default.jpg";
-
                 if (registerDto.Photo is not null)
                 {
                     var fileName = Guid.NewGuid().ToString() + Path.GetExtension(registerDto.Photo.FileName);
@@ -60,15 +60,11 @@ namespace FitZone.APIs.Controllers
                 ApplicationUser appUser = new ApplicationUser();
 
                 appUser.F_Name = registerDto.FirstName;
-                appUser.L_Name = registerDto.LastName;
-                
-                string fullName = registerDto.FirstName + registerDto.LastName;
-
-                appUser.UserName = fullName;
+                appUser.L_Name = registerDto.LastName;                             
+                appUser.UserName = $"{registerDto.FirstName}{registerDto.LastName}";
                 appUser.Email = registerDto.Email;
                 appUser.PhotoUrl = photoPath;
                 appUser.Role = UserRole.Trainee;
-
 
                 IdentityResult result = await userManager.CreateAsync(appUser, registerDto.Password);
                 if (result.Succeeded)
@@ -100,52 +96,11 @@ namespace FitZone.APIs.Controllers
                     bool found = await userManager.CheckPasswordAsync(user, log.Password);
                     if (found)
                     {
-
-                        var userClaim = new List<Claim>();
-
-                        userClaim.Add(new Claim(ClaimTypes.NameIdentifier, user.Id));
-                        userClaim.Add(new Claim(ClaimTypes.Name, user.UserName));
-
-                        userClaim.Add(new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()));
-
-
-                        var userRoles = await userManager.GetRolesAsync(user);
-
-                        foreach (var roleName in userRoles)
-                        {
-                            userClaim.Add(new Claim(ClaimTypes.Role, roleName));
-                        }
-
-
-                        var signInKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("YYYUUUKKK@122381##4dsfbnlll120947"));
-
-
-                        var _signingCredentials = new SigningCredentials(signInKey, SecurityAlgorithms.HmacSha256);
-
-                        //design token 
-                        var myToken = new JwtSecurityToken(
-                            issuer: "http://localhost:5234/",
-                            audience: "http://localhost:3000/",
-                            expires: DateTime.Now.AddHours(1),
-                            claims: userClaim,
-                            signingCredentials: _signingCredentials
-
-                            );
-
-                        //generate token response
-
-                        return Ok(new
-                        {
-                            token = new JwtSecurityTokenHandler().WriteToken(myToken),
-                            expiration = DateTime.Now.AddHours(1)  // myToken.ValidTo
-                        }
-
-                            );
-
+                        var token = await _authService.CreateTokenAsync(user, userManager);
+                        return Ok(token);                       
                     }
                 }
                 ModelState.AddModelError("Email", "Email or Password are wrong!");
-                //generate token
             }
             return BadRequest(ModelState);
         }

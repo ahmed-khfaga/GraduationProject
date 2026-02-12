@@ -1789,6 +1789,20 @@
         "runtime": {
           "bin/placeholder/FitZone.Repository.dll": {}
         }
+      },
+      "FitZone.Service/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "FitZone.Core": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "9.0.0"
+        },
+        "compile": {
+          "bin/placeholder/FitZone.Service.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FitZone.Service.dll": {}
+        }
       }
     }
   },
@@ -4934,12 +4948,18 @@
       "type": "project",
       "path": "../FitZone.Repository/FitZone.Repository.csproj",
       "msbuildProject": "../FitZone.Repository/FitZone.Repository.csproj"
+    },
+    "FitZone.Service/1.0.0": {
+      "type": "project",
+      "path": "../FirZone.Service/FitZone.Service.csproj",
+      "msbuildProject": "../FirZone.Service/FitZone.Service.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 12.0.0",
       "FitZone.Repository >= 1.0.0",
+      "FitZone.Service >= 1.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 9.0.0",
       "Microsoft.AspNetCore.OpenApi >= 9.0.11",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.0",
@@ -4979,6 +4999,9 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
+            "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\FitZone.Service.csproj": {
+              "projectPath": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\FitZone.Service.csproj"
+            },
             "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\FitZone.Repository.csproj": {
               "projectPath": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\FitZone.Repository.csproj"
             }
