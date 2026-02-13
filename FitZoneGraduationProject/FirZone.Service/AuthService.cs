@@ -26,8 +26,11 @@ namespace FitZone.Service
 
              var userClaim = new List<Claim>() 
              {
+                 new Claim(ClaimTypes.NameIdentifier, user.Id),
                 new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(ClaimTypes.Email,user.Email)
+                new Claim(ClaimTypes.Email,user.Email),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+
              };
 
             var userRoles = await userManager.GetRolesAsync(user);
