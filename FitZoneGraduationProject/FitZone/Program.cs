@@ -40,15 +40,7 @@ namespace FitZone
             //builder.Services.AddAutoMapper(M => M.AddProfile(new MappingMemberShip()));
              builder.Services.AddAutoMapper(typeof(MappingMemberShip));
 
-            builder.Services.AddCors(options =>
-            {
-                options.AddPolicy("MyPolicy", policy =>
-                {
-                    policy.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader();
-                });
-            });
+            
 
 
             builder.Services.AddScoped(typeof(IAuthService),typeof(AuthService));
@@ -74,6 +66,15 @@ namespace FitZone
                 };
             });
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("MyPolicy", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+                });
+            });
 
             builder.Services.Configure<ApiBehaviorOptions>(option => 
             {
