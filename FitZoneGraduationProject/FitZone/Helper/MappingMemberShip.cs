@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using FitZone.APIs.DTOs;
+using FitZone.Service.DTOs;
 using FitZone.Core.Entitys;
 
 namespace FitZone.APIs.Helper

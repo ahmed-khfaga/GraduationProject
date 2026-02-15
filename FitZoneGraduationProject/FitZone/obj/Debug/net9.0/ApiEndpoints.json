@@ -8,14 +8,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "log",
-        "Type": "FitZone.APIs.DTOs.LoginUserDTOs",
+        "Name": "loginDto",
+        "Type": "FitZone.Service.DTOs.LoginUserDTOs",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "FitZone.APIs.DTOs.LoginUserDTOs",
+        "Type": "FitZone.Service.DTOs.LoginUserDTOs",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -61,7 +61,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FitZone.APIs.DTOs.RegisterUserDTOs",
+        "Type": "FitZone.Service.DTOs.RegisterUserDTOs",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -147,7 +147,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "FitZone.APIs.DTOs.MembershipWithPricePlanDTOs",
+        "Type": "FitZone.Service.DTOs.MembershipWithPricePlanDTOs",
         "MediaTypes": [
           "text/plain",
           "application/json",

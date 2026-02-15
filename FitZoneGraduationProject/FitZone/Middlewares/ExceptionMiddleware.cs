@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Text.Json;
 using Azure;
-using FitZone.APIs.Errors;
+using FitZone.Service.Errors;
 
 namespace FitZone.APIs.Middlewares
 {

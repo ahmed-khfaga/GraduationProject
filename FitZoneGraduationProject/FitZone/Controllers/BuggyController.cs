@@ -1,4 +1,4 @@
-﻿using FitZone.APIs.Errors;
+﻿using FitZone.Service.Errors;
 using FitZone.Repository.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -19,7 +19,7 @@ namespace FitZone.APIs.Controllers
 
         [HttpGet("not-found")]
         public ActionResult GetNotFound() 
-            => NotFound(new ApiException(404)); // 404
+            => NotFound(/*new ApiException(404)*/); // 404
 
 
         [HttpGet("bad-request")]

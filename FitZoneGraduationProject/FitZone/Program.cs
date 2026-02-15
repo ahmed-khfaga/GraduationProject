@@ -1,14 +1,15 @@
 using System;
 using System.Text;
-using FitZone.APIs.Errors;
 using FitZone.APIs.Helper;
 using FitZone.APIs.Middlewares;
 using FitZone.Core.Entitys.Identity;
 using FitZone.Core.Repository.Contract;
-using FitZone.Core.Services.Contract;
 using FitZone.Repository;
 using FitZone.Repository.Data;
 using FitZone.Service;
+using FitZone.Service.Errors;
+using FitZone.Service.Services.Contract;
+using FitZone.Services.Contract;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -38,10 +39,9 @@ namespace FitZone
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             //builder.Services.AddAutoMapper(M => M.AddProfile(new MappingMemberShip()));
-             builder.Services.AddAutoMapper(typeof(MappingMemberShip));
+            builder.Services.AddAutoMapper(typeof(MappingMemberShip));
 
-            
-
+            builder.Services.AddScoped(typeof(IMembershipService),typeof (MembershipService));
 
             builder.Services.AddScoped(typeof(IAuthService),typeof(AuthService));
 
