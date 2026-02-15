@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|d:\\mvc learn\\graduationproject\\fitzonegraduationproject\\firzone.service\\membershipservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|solutionrelative:firzone.service\\membershipservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|d:\\mvc learn\\graduationproject\\fitzonegraduationproject\\firzone.service\\services.contract\\imembershipservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|solutionrelative:firzone.service\\services.contract\\imembershipservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E6D6BF4-D92A-4233-9ADC-4295D9A13E50}|FitZone\\FitZone.APIs.csproj|d:\\mvc learn\\graduationproject\\fitzonegraduationproject\\fitzone\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E6D6BF4-D92A-4233-9ADC-4295D9A13E50}|FitZone\\FitZone.APIs.csproj|solutionrelative:fitzone\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3F9EF13C-6B3E-4B94-8DED-19C5AF6ACA40}|FitZon.Core\\FitZone.Core.csproj|d:\\mvc learn\\graduationproject\\fitzonegraduationproject\\fitzon.core\\entitys\\traineeprogramtemplate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3F9EF13C-6B3E-4B94-8DED-19C5AF6ACA40}|FitZon.Core\\FitZone.Core.csproj|solutionrelative:fitzon.core\\entitys\\traineeprogramtemplate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -49,18 +61,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{9E6D6BF4-D92A-4233-9ADC-4295D9A13E50}|FitZone\\FitZone.APIs.csproj|d:\\mvc learn\\graduationproject\\fitzonegraduationproject\\fitzone\\controllers\\membershipcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E6D6BF4-D92A-4233-9ADC-4295D9A13E50}|FitZone\\FitZone.APIs.csproj|solutionrelative:fitzone\\controllers\\membershipcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|d:\\mvc learn\\graduationproject\\fitzonegraduationproject\\firzone.service\\membershipservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|solutionrelative:firzone.service\\membershipservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|d:\\mvc learn\\graduationproject\\fitzonegraduationproject\\firzone.service\\services.contract\\imembershipservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|solutionrelative:firzone.service\\services.contract\\imembershipservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9E6D6BF4-D92A-4233-9ADC-4295D9A13E50}|FitZone\\FitZone.APIs.csproj|d:\\mvc learn\\graduationproject\\fitzonegraduationproject\\fitzone\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E6D6BF4-D92A-4233-9ADC-4295D9A13E50}|FitZone\\FitZone.APIs.csproj|solutionrelative:fitzone\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9E6D6BF4-D92A-4233-9ADC-4295D9A13E50}|FitZone\\FitZone.APIs.csproj|d:\\mvc learn\\graduationproject\\fitzonegraduationproject\\fitzone\\middlewares\\exceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -178,63 +178,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "TraineeMembership.cs",
-              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\TraineeMembership.cs",
-              "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\TraineeMembership.cs",
-              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\TraineeMembership.cs",
-              "RelativeToolTip": "FitZon.Core\\Entitys\\TraineeMembership.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-15T17:22:56.372Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MembershipPlan.cs",
-              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\MembershipPlan.cs",
-              "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\MembershipPlan.cs",
-              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\MembershipPlan.cs",
-              "RelativeToolTip": "FitZon.Core\\Entitys\\MembershipPlan.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-15T17:22:40.668Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "Membership.cs",
-              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\Membership.cs",
-              "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\Membership.cs",
-              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\Membership.cs",
-              "RelativeToolTip": "FitZon.Core\\Entitys\\Membership.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-15T17:22:37.178Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ProgramDays.cs",
-              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\ProgramDays.cs",
-              "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\ProgramDays.cs",
-              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\ProgramDays.cs",
-              "RelativeToolTip": "FitZon.Core\\Entitys\\ProgramDays.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T01:20:13.67Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "ProgramTemplate.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\ProgramTemplate.cs",
               "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\ProgramTemplate.cs",
@@ -242,12 +190,24 @@
               "RelativeToolTip": "FitZon.Core\\Entitys\\ProgramTemplate.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T01:17:22.059Z",
+              "WhenOpened": "2026-02-09T01:17:22.059Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "FitZone\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "FitZone\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-11T15:17:22.882Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "TraineeProgramTemplate.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\TraineeProgramTemplate.cs",
               "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\TraineeProgramTemplate.cs",
@@ -255,12 +215,85 @@
               "RelativeToolTip": "FitZon.Core\\Entitys\\TraineeProgramTemplate.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-11T14:41:12.335Z",
+              "WhenOpened": "2026-02-11T14:41:12.335Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IMembershipService.cs",
+              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\Services.Contract\\IMembershipService.cs",
+              "RelativeDocumentMoniker": "FirZone.Service\\Services.Contract\\IMembershipService.cs",
+              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\Services.Contract\\IMembershipService.cs",
+              "RelativeToolTip": "FirZone.Service\\Services.Contract\\IMembershipService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T16:52:02.603Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MembershipService.cs",
+              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\MembershipService.cs",
+              "RelativeDocumentMoniker": "FirZone.Service\\MembershipService.cs",
+              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\MembershipService.cs",
+              "RelativeToolTip": "FirZone.Service\\MembershipService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T16:52:50.236Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ProgramDays.cs",
+              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\ProgramDays.cs",
+              "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\ProgramDays.cs",
+              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\ProgramDays.cs",
+              "RelativeToolTip": "FitZon.Core\\Entitys\\ProgramDays.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T01:20:13.67Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 9,
+              "Title": "Membership.cs",
+              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\Membership.cs",
+              "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\Membership.cs",
+              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\Membership.cs",
+              "RelativeToolTip": "FitZon.Core\\Entitys\\Membership.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T17:22:37.178Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MembershipPlan.cs",
+              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\MembershipPlan.cs",
+              "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\MembershipPlan.cs",
+              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\MembershipPlan.cs",
+              "RelativeToolTip": "FitZon.Core\\Entitys\\MembershipPlan.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T17:22:40.668Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TraineeMembership.cs",
+              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\TraineeMembership.cs",
+              "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\TraineeMembership.cs",
+              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\TraineeMembership.cs",
+              "RelativeToolTip": "FitZon.Core\\Entitys\\TraineeMembership.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T17:22:56.372Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "BaseEntity.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Comman\\BaseEntity.cs",
               "RelativeDocumentMoniker": "FitZon.Core\\Comman\\BaseEntity.cs",
@@ -268,12 +301,11 @@
               "RelativeToolTip": "FitZon.Core\\Comman\\BaseEntity.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-14T21:53:35.663Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-14T21:53:35.663Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone\\Program.cs",
               "RelativeDocumentMoniker": "FitZone\\Program.cs",
@@ -281,12 +313,11 @@
               "RelativeToolTip": "FitZone\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAGUAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-02T22:43:05.162Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-02T22:43:05.162Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "Trainee.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\Trainee.cs",
               "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\Trainee.cs",
@@ -294,24 +325,11 @@
               "RelativeToolTip": "FitZon.Core\\Entitys\\Trainee.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-11T14:59:40.747Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-11T14:59:40.747Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "MembershipService.cs",
-              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\MembershipService.cs",
-              "RelativeDocumentMoniker": "FirZone.Service\\MembershipService.cs",
-              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\MembershipService.cs",
-              "RelativeToolTip": "FirZone.Service\\MembershipService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACYAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-15T16:52:50.236Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "MembershipController.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone\\Controllers\\MembershipController.cs",
               "RelativeDocumentMoniker": "FitZone\\Controllers\\MembershipController.cs",
@@ -319,7 +337,8 @@
               "RelativeToolTip": "FitZone\\Controllers\\MembershipController.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAB0AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-10T21:16:31.457Z"
+              "WhenOpened": "2026-01-10T21:16:31.457Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -335,7 +354,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 11,
               "Title": "BaseProgram.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\BaseProgram.cs",
               "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\BaseProgram.cs",
@@ -343,12 +362,11 @@
               "RelativeToolTip": "FitZon.Core\\Entitys\\BaseProgram.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T01:17:11.744Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-09T01:17:11.744Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 10,
               "Title": "Coach.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\Coach.cs",
               "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\Coach.cs",
@@ -356,8 +374,7 @@
               "RelativeToolTip": "FitZon.Core\\Entitys\\Coach.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-11T15:02:47.031Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-11T15:02:47.031Z"
             },
             {
               "$type": "Document",
@@ -370,30 +387,6 @@
               "ViewState": "AgIAAEoAAAAAAAAAAAAQwGAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-12T18:44:20.211Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "FitZone\\Controllers\\AccountController.cs",
-              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "FitZone\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAQwC4AAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-11T15:17:22.882Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "IMembershipService.cs",
-              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\Services.Contract\\IMembershipService.cs",
-              "RelativeDocumentMoniker": "FirZone.Service\\Services.Contract\\IMembershipService.cs",
-              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\Services.Contract\\IMembershipService.cs",
-              "RelativeToolTip": "FirZone.Service\\Services.Contract\\IMembershipService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-15T16:52:02.603Z"
             },
             {
               "$type": "Document",

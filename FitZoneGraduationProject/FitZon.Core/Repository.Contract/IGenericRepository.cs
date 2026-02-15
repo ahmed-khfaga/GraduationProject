@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FitZone.Core.Command;
+using FitZone.Core.Comman;
 using FitZone.Core.Specifications;
 
 namespace FitZone.Core.Repository.Contract
