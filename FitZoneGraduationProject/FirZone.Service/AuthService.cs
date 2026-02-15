@@ -6,7 +6,12 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using FitZone.Core.Entitys.Identity;
-using FitZone.Core.Services.Contract;
+using FitZone.Core.Enums;
+using FitZone.Service.DTOs;
+using FitZone.Service.Errors;
+using FitZone.Service.HelperAuth;
+using FitZone.Services.Contract;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -16,12 +21,14 @@ namespace FitZone.Service
     public class AuthService : IAuthService
     {
         private readonly IConfiguration _configuration;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public AuthService(IConfiguration configuration)
+        public AuthService(IConfiguration configuration, UserManager<ApplicationUser> userManager)
         {
             _configuration = configuration;
+            _userManager = userManager;
         }
-        public async Task<string> CreateTokenAsync(ApplicationUser user, UserManager<ApplicationUser> userManager)
+        public async Task<string> CreateTokenAsync(ApplicationUser user)
         {
 
              var userClaim = new List<Claim>() 
@@ -33,7 +40,7 @@ namespace FitZone.Service
 
              };
 
-            var userRoles = await userManager.GetRolesAsync(user);
+            var userRoles = await _userManager.GetRolesAsync(user);
 
             foreach (var role in userRoles)
             {
@@ -53,6 +60,96 @@ namespace FitZone.Service
                             );
 
             return new JwtSecurityTokenHandler().WriteToken(myToken);
+        }
+
+        public async Task<AuthResultDto> LoginAsync(LoginUserDTOs model)
+        {
+            ApplicationUser user = await _userManager.FindByEmailAsync(model.Email);
+            if (user is null) 
+            {
+                return new AuthResultDto
+                {
+                    IsSuccess = false,
+                    Message = "Email or Password are wrong"
+                };
+            }
+            bool isValidPassword = await _userManager.CheckPasswordAsync(user, model.Password);
+
+            if (!isValidPassword)
+            {
+                return new AuthResultDto
+                {
+                    IsSuccess = false,
+                    Message = "Email or Password are wrong"
+                };
+            }
+
+            var token = await CreateTokenAsync(user);
+            
+
+            return new AuthResultDto
+            {
+                IsSuccess = true,
+                Message = "Login successful",
+                Token = token
+            };
+
+        }
+
+        public async Task<AuthResultDto> RegisterAsync(RegisterUserDTOs model)
+        {
+            var existingUser = await _userManager.FindByEmailAsync(model.Email);
+            if (existingUser != null)
+
+                return new AuthResultDto
+                {
+                    IsSuccess = false,
+                    Message = "Email already exists"
+                };
+
+
+            // first work on photo if user enter photo 
+            string photoPath = "images/default.jpg";
+            if (model.Photo is not null)
+            {
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(model.Photo.FileName);
+                var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/Trainees");
+
+                if (!Directory.Exists(folderPath))
+                    Directory.CreateDirectory(folderPath);
+
+                var filePath = Path.Combine(folderPath, fileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await model.Photo.CopyToAsync(stream);
+                }
+                photoPath = $"images/Trainees/{fileName}";
+            }
+                // Save DB
+             ApplicationUser appUser = new ApplicationUser();
+
+             appUser.F_Name = model.FirstName;
+             appUser.L_Name = model.LastName;
+             appUser.UserName = $"{model.FirstName}{model.LastName}";
+             appUser.Email = model.Email;
+             appUser.PhotoUrl = photoPath;
+             appUser.Role = UserRole.Trainee;
+
+             IdentityResult result = await _userManager.CreateAsync(appUser, model.Password);
+            if (!result.Succeeded)
+            {
+                return new AuthResultDto
+                {
+                    IsSuccess = false,
+                    Message = string.Join(", ", result.Errors.Select(e => e.Description))
+                };
+            }
+
+            return new AuthResultDto
+            {
+                IsSuccess = true,
+                Message = "Account created successfully"
+            };
         }
     }
 }
