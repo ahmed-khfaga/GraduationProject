@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FitZone.Core.Command;
+using FitZone.Core.Comman;
 
 namespace FitZone.Core.Entitys
 {

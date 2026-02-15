@@ -14,12 +14,10 @@ namespace FitZone.APIs.Controllers
 {
     public class AccountController : BaseApiController
     {
-        private readonly UserManager<ApplicationUser> userManager;
         private readonly IAuthService _authService;
 
-        public AccountController(UserManager<ApplicationUser> _userManager, IAuthService authService)
+        public AccountController(IAuthService authService)
         {
-            userManager = _userManager;
             _authService = authService;
         }
 

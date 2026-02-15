@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FitZone.Core.Command
+namespace FitZone.Core.Comman
 {
     public class BaseEntity
     {
