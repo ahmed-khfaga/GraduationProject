@@ -7,20 +7,32 @@
       "RelativeMoniker": "D:0:0:{9E6D6BF4-D92A-4233-9ADC-4295D9A13E50}|FitZone\\FitZone.APIs.csproj|solutionrelative:fitzone\\controllers\\membershipcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|d:\\mvc learn\\graduationproject\\fitzonegraduationproject\\firzone.service\\membershipservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|solutionrelative:firzone.service\\membershipservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+=======
+>>>>>>> Khfaga-test
       "AbsoluteMoniker": "D:0:0:{9E6D6BF4-D92A-4233-9ADC-4295D9A13E50}|FitZone\\FitZone.APIs.csproj|d:\\mvc learn\\graduationproject\\fitzonegraduationproject\\fitzone\\helper\\mappingmembership.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E6D6BF4-D92A-4233-9ADC-4295D9A13E50}|FitZone\\FitZone.APIs.csproj|solutionrelative:fitzone\\helper\\mappingmembership.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|d:\\mvc learn\\graduationproject\\fitzonegraduationproject\\firzone.service\\services.contract\\imembershipservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|solutionrelative:firzone.service\\services.contract\\imembershipservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|d:\\mvc learn\\graduationproject\\fitzonegraduationproject\\firzone.service\\dtos\\membershipplansdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|solutionrelative:firzone.service\\dtos\\membershipplansdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|d:\\mvc learn\\graduationproject\\fitzonegraduationproject\\firzone.service\\membershipservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|solutionrelative:firzone.service\\membershipservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|d:\\mvc learn\\graduationproject\\fitzonegraduationproject\\firzone.service\\services.contract\\imembershipservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|solutionrelative:firzone.service\\services.contract\\imembershipservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> Khfaga-test
     },
     {
       "AbsoluteMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|d:\\mvc learn\\graduationproject\\fitzonegraduationproject\\firzone.service\\dtos\\membershipwithpriceplandtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -186,6 +198,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
+<<<<<<< HEAD
           "SelectedChildIndex": 4,
           "Children": [
             {
@@ -203,12 +216,19 @@
             },
             {
               "$type": "Document",
+=======
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+>>>>>>> Khfaga-test
               "DocumentIndex": 3,
               "Title": "IMembershipService.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\Services.Contract\\IMembershipService.cs",
               "RelativeDocumentMoniker": "FirZone.Service\\Services.Contract\\IMembershipService.cs",
               "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\Services.Contract\\IMembershipService.cs",
               "RelativeToolTip": "FirZone.Service\\Services.Contract\\IMembershipService.cs",
+<<<<<<< HEAD
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-15T16:52:02.603Z",
@@ -340,11 +360,27 @@
               "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\SpecificationsEvaluator.cs",
               "RelativeToolTip": "FitZone.Repository\\SpecificationsEvaluator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+=======
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-14T12:57:01.419Z"
+              "WhenOpened": "2026-02-15T16:52:02.603Z"
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MembershipService.cs",
+              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\MembershipService.cs",
+              "RelativeDocumentMoniker": "FirZone.Service\\MembershipService.cs",
+              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\MembershipService.cs",
+              "RelativeToolTip": "FirZone.Service\\MembershipService.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+>>>>>>> Khfaga-test
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T16:52:50.236Z"
+            },
+            {
+              "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 12,
               "Title": "ApplicationUser.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\Identity\\ApplicationUser.cs",
@@ -364,12 +400,154 @@
               "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Comman\\BaseEntity.cs",
               "RelativeToolTip": "FitZon.Core\\Comman\\BaseEntity.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAdAAAAAAAAAA==",
+=======
+              "DocumentIndex": 1,
+              "Title": "MappingMemberShip.cs",
+              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone\\Helper\\MappingMemberShip.cs",
+              "RelativeDocumentMoniker": "FitZone\\Helper\\MappingMemberShip.cs",
+              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone\\Helper\\MappingMemberShip.cs",
+              "RelativeToolTip": "FitZone\\Helper\\MappingMemberShip.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-12T20:54:55.333Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MembershipController.cs",
+              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone\\Controllers\\MembershipController.cs",
+              "RelativeDocumentMoniker": "FitZone\\Controllers\\MembershipController.cs",
+              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone\\Controllers\\MembershipController.cs",
+              "RelativeToolTip": "FitZone\\Controllers\\MembershipController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAABaAAAAAAAAAA==",
+>>>>>>> Khfaga-test
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-14T21:53:35.663Z"
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 14,
+              "Title": "ISpecifications.cs",
+              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Specifications\\ISpecifications.cs",
+              "RelativeDocumentMoniker": "FitZon.Core\\Specifications\\ISpecifications.cs",
+              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Specifications\\ISpecifications.cs",
+              "RelativeToolTip": "FitZon.Core\\Specifications\\ISpecifications.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
+=======
+              "DocumentIndex": 4,
+              "Title": "MembershipWithPricePlanDTOs.cs",
+              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\DTOs\\MembershipWithPricePlanDTOs.cs",
+              "RelativeDocumentMoniker": "FirZone.Service\\DTOs\\MembershipWithPricePlanDTOs.cs",
+              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\DTOs\\MembershipWithPricePlanDTOs.cs",
+              "RelativeToolTip": "FirZone.Service\\DTOs\\MembershipWithPricePlanDTOs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T15:46:09.913Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MembershipWithPlan.cs",
+              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Specifications\\CommandSpec\\MembershipWithPlan.cs",
+              "RelativeDocumentMoniker": "FitZon.Core\\Specifications\\CommandSpec\\MembershipWithPlan.cs",
+              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Specifications\\CommandSpec\\MembershipWithPlan.cs",
+              "RelativeToolTip": "FitZon.Core\\Specifications\\CommandSpec\\MembershipWithPlan.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-10T22:06:32.557Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FitContext.cs",
+              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\Data\\FitContext.cs",
+              "RelativeDocumentMoniker": "FitZone.Repository\\Data\\FitContext.cs",
+              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\Data\\FitContext.cs",
+              "RelativeToolTip": "FitZone.Repository\\Data\\FitContext.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAEwE4AAAAIAAAAAAAAAA==",
+>>>>>>> Khfaga-test
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-11T14:41:18.54Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "FitZone.Repository\\GenericRepository.cs",
+              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\GenericRepository.cs",
+              "RelativeToolTip": "FitZone.Repository\\GenericRepository.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABgAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T22:08:23.032Z"
+            },
+            {
+              "$type": "Document",
+<<<<<<< HEAD
+              "DocumentIndex": 15,
+=======
+              "DocumentIndex": 8,
+              "Title": "MembershipPlan.cs",
+              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\MembershipPlan.cs",
+              "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\MembershipPlan.cs",
+              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\MembershipPlan.cs",
+              "RelativeToolTip": "FitZon.Core\\Entitys\\MembershipPlan.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-15T17:22:40.668Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IGenericRepository.cs",
+              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Repository.Contract\\IGenericRepository.cs",
+              "RelativeDocumentMoniker": "FitZon.Core\\Repository.Contract\\IGenericRepository.cs",
+              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Repository.Contract\\IGenericRepository.cs",
+              "RelativeToolTip": "FitZon.Core\\Repository.Contract\\IGenericRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-14T22:10:09.577Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "SpecificationsEvaluator.cs",
+              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\SpecificationsEvaluator.cs",
+              "RelativeDocumentMoniker": "FitZone.Repository\\SpecificationsEvaluator.cs",
+              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\SpecificationsEvaluator.cs",
+              "RelativeToolTip": "FitZone.Repository\\SpecificationsEvaluator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-14T12:57:01.419Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\Identity\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\Identity\\ApplicationUser.cs",
+              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\Identity\\ApplicationUser.cs",
+              "RelativeToolTip": "FitZon.Core\\Entitys\\Identity\\ApplicationUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-11T14:30:36.802Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "BaseEntity.cs",
+              "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Comman\\BaseEntity.cs",
+              "RelativeDocumentMoniker": "FitZon.Core\\Comman\\BaseEntity.cs",
+              "ToolTip": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Comman\\BaseEntity.cs",
+              "RelativeToolTip": "FitZon.Core\\Comman\\BaseEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-14T21:53:35.663Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "ISpecifications.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Specifications\\ISpecifications.cs",
               "RelativeDocumentMoniker": "FitZon.Core\\Specifications\\ISpecifications.cs",
@@ -381,7 +559,8 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 14,
+>>>>>>> Khfaga-test
               "Title": "BaseSpecatifications.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Specifications\\BaseSpecatifications.cs",
               "RelativeDocumentMoniker": "FitZon.Core\\Specifications\\BaseSpecatifications.cs",
@@ -393,7 +572,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 16,
+=======
+              "DocumentIndex": 15,
+>>>>>>> Khfaga-test
               "Title": "Membership.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\Membership.cs",
               "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\Membership.cs",
@@ -405,7 +588,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 17,
+=======
+              "DocumentIndex": 16,
+>>>>>>> Khfaga-test
               "Title": "ProgramDays.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\ProgramDays.cs",
               "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\ProgramDays.cs",
@@ -417,7 +604,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 18,
+=======
+              "DocumentIndex": 17,
+>>>>>>> Khfaga-test
               "Title": "Coach.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\Coach.cs",
               "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\Coach.cs",
@@ -429,7 +620,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 19,
+=======
+              "DocumentIndex": 18,
+>>>>>>> Khfaga-test
               "Title": "BaseProgram.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\BaseProgram.cs",
               "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\BaseProgram.cs",
@@ -441,7 +636,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 20,
+=======
+              "DocumentIndex": 19,
+>>>>>>> Khfaga-test
               "Title": "AccountController.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "FitZone\\Controllers\\AccountController.cs",
@@ -453,7 +652,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 21,
+=======
+              "DocumentIndex": 20,
+>>>>>>> Khfaga-test
               "Title": "TraineeProgramTemplate.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\TraineeProgramTemplate.cs",
               "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\TraineeProgramTemplate.cs",
@@ -465,7 +668,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 24,
+=======
+              "DocumentIndex": 23,
+>>>>>>> Khfaga-test
               "Title": "ProgramTemplate.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\ProgramTemplate.cs",
               "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\ProgramTemplate.cs",
@@ -477,7 +684,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 22,
+=======
+              "DocumentIndex": 21,
+>>>>>>> Khfaga-test
               "Title": "TraineeMembership.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\TraineeMembership.cs",
               "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\TraineeMembership.cs",
@@ -489,7 +700,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 25,
+=======
+              "DocumentIndex": 24,
+>>>>>>> Khfaga-test
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone\\Program.cs",
               "RelativeDocumentMoniker": "FitZone\\Program.cs",
@@ -501,7 +716,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 23,
+=======
+              "DocumentIndex": 22,
+>>>>>>> Khfaga-test
               "Title": "Trainee.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Entitys\\Trainee.cs",
               "RelativeDocumentMoniker": "FitZon.Core\\Entitys\\Trainee.cs",
@@ -513,7 +732,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 27,
+=======
+              "DocumentIndex": 26,
+>>>>>>> Khfaga-test
               "Title": "AuthResultDto.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\HelperAuth\\AuthResultDto.cs",
               "RelativeDocumentMoniker": "FirZone.Service\\HelperAuth\\AuthResultDto.cs",
@@ -525,7 +748,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 28,
+=======
+              "DocumentIndex": 27,
+>>>>>>> Khfaga-test
               "Title": "AuthService.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\AuthService.cs",
               "RelativeDocumentMoniker": "FirZone.Service\\AuthService.cs",
@@ -537,7 +764,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 30,
+=======
+              "DocumentIndex": 29,
+>>>>>>> Khfaga-test
               "Title": "ApiException.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\Errors\\ApiException.cs",
               "RelativeDocumentMoniker": "FirZone.Service\\Errors\\ApiException.cs",
@@ -549,7 +780,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 26,
+=======
+              "DocumentIndex": 25,
+>>>>>>> Khfaga-test
               "Title": "ExceptionMiddleware.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone\\Middlewares\\ExceptionMiddleware.cs",
               "RelativeDocumentMoniker": "FitZone\\Middlewares\\ExceptionMiddleware.cs",
@@ -561,7 +796,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 29,
+=======
+              "DocumentIndex": 28,
+>>>>>>> Khfaga-test
               "Title": "IAuthService.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\Services.Contract\\IAuthService.cs",
               "RelativeDocumentMoniker": "FirZone.Service\\Services.Contract\\IAuthService.cs",
@@ -573,7 +812,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 31,
+=======
+              "DocumentIndex": 30,
+>>>>>>> Khfaga-test
               "Title": "BuggyController.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone\\Controllers\\BuggyController.cs",
               "RelativeDocumentMoniker": "FitZone\\Controllers\\BuggyController.cs",
@@ -585,7 +828,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 32,
+=======
+              "DocumentIndex": 31,
+>>>>>>> Khfaga-test
               "Title": "ApiExceptionServer.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\Errors\\ApiExceptionServer.cs",
               "RelativeDocumentMoniker": "FirZone.Service\\Errors\\ApiExceptionServer.cs",
@@ -597,7 +844,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 33,
+=======
+              "DocumentIndex": 32,
+>>>>>>> Khfaga-test
               "Title": "BaseApiController.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone\\Controllers\\BaseApiController.cs",
               "RelativeDocumentMoniker": "FitZone\\Controllers\\BaseApiController.cs",
@@ -609,7 +860,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 34,
+=======
+              "DocumentIndex": 33,
+>>>>>>> Khfaga-test
               "Title": "ApiValidationErrorRes.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\Errors\\ApiValidationErrorRes.cs",
               "RelativeDocumentMoniker": "FirZone.Service\\Errors\\ApiValidationErrorRes.cs",
@@ -621,7 +876,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 35,
+=======
+              "DocumentIndex": 34,
+>>>>>>> Khfaga-test
               "Title": "LoginUserDTOs.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\DTOs\\LoginUserDTOs.cs",
               "RelativeDocumentMoniker": "FirZone.Service\\DTOs\\LoginUserDTOs.cs",
@@ -633,7 +892,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 36,
+=======
+              "DocumentIndex": 35,
+>>>>>>> Khfaga-test
               "Title": "RegisterUserDTOs.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\DTOs\\RegisterUserDTOs.cs",
               "RelativeDocumentMoniker": "FirZone.Service\\DTOs\\RegisterUserDTOs.cs",
@@ -645,7 +908,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 37,
+=======
+              "DocumentIndex": 36,
+>>>>>>> Khfaga-test
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone\\appsettings.json",
               "RelativeDocumentMoniker": "FitZone\\appsettings.json",
@@ -657,7 +924,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 39,
+=======
+              "DocumentIndex": 38,
+>>>>>>> Khfaga-test
               "Title": "FitZone.APIs.csproj",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone\\FitZone.APIs.csproj",
               "RelativeDocumentMoniker": "FitZone\\FitZone.APIs.csproj",
@@ -669,7 +940,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 38,
+=======
+              "DocumentIndex": 37,
+>>>>>>> Khfaga-test
               "Title": "FitZone.Service.csproj",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\FitZone.Service.csproj",
               "RelativeDocumentMoniker": "FirZone.Service\\FitZone.Service.csproj",
@@ -681,7 +956,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 40,
+=======
+              "DocumentIndex": 39,
+>>>>>>> Khfaga-test
               "Title": "20260211152547_addPhotoUrlUser.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\Data\\Migrations\\20260211152547_addPhotoUrlUser.cs",
               "RelativeDocumentMoniker": "FitZone.Repository\\Data\\Migrations\\20260211152547_addPhotoUrlUser.cs",
@@ -693,7 +972,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 41,
+=======
+              "DocumentIndex": 40,
+>>>>>>> Khfaga-test
               "Title": "FitContextModelSnapshot.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\Data\\Migrations\\FitContextModelSnapshot.cs",
               "RelativeDocumentMoniker": "FitZone.Repository\\Data\\Migrations\\FitContextModelSnapshot.cs",
@@ -705,7 +988,11 @@
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 42,
+=======
+              "DocumentIndex": 41,
+>>>>>>> Khfaga-test
               "Title": "BaseEnum.cs",
               "DocumentMoniker": "D:\\MVC learn\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Enums\\BaseEnum.cs",
               "RelativeDocumentMoniker": "FitZon.Core\\Enums\\BaseEnum.cs",
