@@ -9,10 +9,10 @@ D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\D
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone.Repository.AssemblyInfoInputs.cache
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone.Repository.AssemblyInfo.cs
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone.Repository.csproj.CoreCompileInputs.cache
+D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone.Repository.sourcelink.json
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone..E22D62B3.Up2Date
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone.Repository.dll
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\refint\FitZone.Repository.dll
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone.Repository.pdb
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone.Repository.genruntimeconfig.cache
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\ref\FitZone.Repository.dll
-D:\MVC learn\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone.Repository.sourcelink.json
