@@ -19,7 +19,7 @@ namespace FitZone.APIs.Controllers
             _membershipService = membershipService;
         }
         [HttpGet]
-        public async Task <ActionResult<MembershipWithPricePlanDTOs>> GetAllMembership()  // should get standard with month and premiumn with month with all descrptions
+        public async Task <ActionResult<MembershipWithPricePlanDTOs>> GetAllMembershipInMonth()  // should get standard with month and premiumn with month with all descrptions
         {
 
             int duration = 30; // month 
@@ -32,6 +32,14 @@ namespace FitZone.APIs.Controllers
             }
 
             return NotFound(new ApiException(404, "No Memberships found"));        
+        }
+
+        [HttpGet("Plans")]
+        public async Task<ActionResult<MembershipWithPricePlanDTOs>> GetMembershipPlan() 
+        {
+            var result = await _membershipService.GetAllMembershipsPlan();
+
+            return Ok(result);
         }
     }
 }

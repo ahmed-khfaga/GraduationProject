@@ -13,7 +13,7 @@ namespace FitZone.Core.Repository.Contract
         // get and getAll 
 
         Task<T?> GetAsync(int id);
-        Task<IEnumerable<T>> GetAllAsync();
+        Task<IReadOnlyList<T>> GetAllAsync();
 
         Task<IEnumerable<T>> GetAllWithSpecAsync(ISpecifications<T> spec);
 

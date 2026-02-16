@@ -23,6 +23,15 @@ namespace FitZone.Service
             _membershipPlanRepo = membershipPlanRepo;
             _mapper = mapper;
         }
+
+        public async Task<IEnumerable<MembershipPlansDTOs>> GetAllMembershipsPlan()
+        {
+            var spic = new MembershipWithPlan();
+            var result = await _membershipPlanRepo.GetAllWithSpecAsync(spic);
+
+            return _mapper.Map<IEnumerable<MembershipPlansDTOs>>(result);
+        }
+
         public async Task<IEnumerable<MembershipWithPricePlanDTOs>> GetMembershipsByDurationAsync(int duration)
         {
             

@@ -12,6 +12,9 @@ namespace FitZone.APIs.Helper
             CreateMap<MembershipPlan, MembershipWithPricePlanDTOs>()
                 .ForMember(D => D.Name, O => O.MapFrom(S => S.Membership.Name))
                 .ForMember(D => D.Description, O => O.MapFrom(S => S.Membership.Description));
+
+            CreateMap<MembershipPlan, MembershipPlansDTOs>()
+                .ForMember(D => D.Name, O => O.MapFrom(S => S.Membership.Name));               
         }
     }
 }

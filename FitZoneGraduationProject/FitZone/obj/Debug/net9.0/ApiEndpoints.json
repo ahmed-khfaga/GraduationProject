@@ -139,8 +139,28 @@
   },
   {
     "ContainingType": "FitZone.APIs.Controllers.MembershipController",
-    "Method": "GetAllMembership",
+    "Method": "GetAllMembershipInMonth",
     "RelativePath": "api/Membership",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "FitZone.Service.DTOs.MembershipWithPricePlanDTOs",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.MembershipController",
+    "Method": "GetMembershipPlan",
+    "RelativePath": "api/Membership/Plans",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

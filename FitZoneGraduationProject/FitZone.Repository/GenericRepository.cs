@@ -19,7 +19,7 @@ namespace FitZone.Repository
         {
             _context = context;
         }
-        public async Task<IEnumerable<T>> GetAllAsync()
+        public async Task<IReadOnlyList<T>> GetAllAsync()
         {
             return await _context.Set<T>().ToListAsync();
         }
