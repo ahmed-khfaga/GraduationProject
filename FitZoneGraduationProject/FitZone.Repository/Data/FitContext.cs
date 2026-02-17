@@ -48,7 +48,7 @@ namespace FitZone.Repository.Data
                 .Property(t => t.Height)
                 .HasPrecision(3, 2);
 
-            modelBuilder.Entity<TraineeProgramTemplate>() // Only ONE active template at a time
+            modelBuilder.Entity<TraineeProgramEnrollment>() // Only ONE active template at a time
                 .HasIndex(x => new { x.TraineeID, x.IsActive })
                 .IsUnique()
                 .HasFilter("[IsActive] = 1");
@@ -66,11 +66,31 @@ namespace FitZone.Repository.Data
 
 
             #region NoAction on Deleted Coach
-            modelBuilder.Entity<ProgramTemplate>()
+            modelBuilder.Entity<WorkoutProgram>()
                     .HasOne(pt => pt.Coach)
-                    .WithMany(c => c.ProgramTemplates)
+                    .WithMany(c => c.WorkoutPrograms)
                     .HasForeignKey(pt => pt.CoachID)
                     .OnDelete(DeleteBehavior.NoAction);
+
+
+            modelBuilder.Entity<TraineeProgramEnrollment>()
+                    .HasOne(e => e.Trainee)
+                    .WithMany(t => t.TraineeProgramEnrollments)
+                    .HasForeignKey(e => e.TraineeID)
+                    .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<TraineeProgramEnrollment>()
+                    .HasOne(e => e.WorkoutProgram)
+                    .WithMany(w => w.TraineeProgramEnrollments)
+                    .HasForeignKey(e => e.WorkoutProgramID)
+                    .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<TraineeProgramEnrollment>()
+                    .HasOne(e => e.Track)
+                    .WithMany()
+                    .HasForeignKey(e => e.TrackID)
+                    .OnDelete(DeleteBehavior.NoAction);
+
 
             #endregion
 
@@ -82,18 +102,28 @@ namespace FitZone.Repository.Data
 
         public virtual DbSet<Coach> Coachs { get; set; }
 
+        public virtual DbSet<Exercise> Exercises { get; set; }
+
+        public virtual DbSet<ProgramWeek> ProgramWeeks { get; set; }
+
+        public virtual DbSet<SessionExercise> SessionExercises { get; set; }
+
+
         public virtual DbSet<Membership> Memberships { get; set; }
 
         public virtual DbSet<MembershipPlan> MembershipPlans { get; set; }
 
-        public virtual DbSet<BaseProgram> BasePrograms { get; set; }
+        public virtual DbSet<Track> Tracks { get; set; }
 
-        public virtual DbSet<ProgramTemplate> ProgramTemplates { get; set; }
+        public virtual DbSet<WorkoutProgram> WorkoutPrograms { get; set; }
 
-        public virtual DbSet<ProgramDays> ProgramDays { get; set; }
+        public virtual DbSet<WorkoutSession> WorkoutSessions { get; set; }
 
-        public virtual DbSet<TraineeProgramTemplate> TraineeProgramTemplates { get; set; }
+        public virtual DbSet<TraineeProgramEnrollment> TraineeProgramEnrollments { get; set; }
+
         public virtual DbSet<TraineeMembership> TraineeMemberships { get; set; }
+
+
 
 
     }

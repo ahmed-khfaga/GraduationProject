@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,14 +8,15 @@ using FitZone.Core.Comman;
 
 namespace FitZone.Core.Entitys
 {
-    public class BaseProgram : BaseEntity
+    [Table("Tracks")]
+    public class Track : BaseEntity
     {
 
         public string Name { get; set; }
 
         public string Description { get; set; }
-
-        public virtual ICollection<ProgramTemplate> ProgramTemplates { get; set; } = new HashSet<ProgramTemplate>();
+        
+        public virtual ICollection<WorkoutProgram> WorkoutPrograms { get; set; } = new HashSet<WorkoutProgram>();
 
 
         #region special Role

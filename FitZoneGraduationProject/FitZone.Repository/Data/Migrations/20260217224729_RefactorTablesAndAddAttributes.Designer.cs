@@ -4,6 +4,7 @@ using FitZone.Repository.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitZone.Repository.Data.Migrations
 {
     [DbContext(typeof(FitContext))]
-    partial class FitContextModelSnapshot : ModelSnapshot
+    [Migration("20260217224729_RefactorTablesAndAddAttributes")]
+    partial class RefactorTablesAndAddAttributes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,47 +67,6 @@ namespace FitZone.Repository.Data.Migrations
                         {
                             t.HasCheckConstraint("CK_Coach_Rating", "[Rating] >= 0 AND [Rating] <= 5");
                         });
-                });
-
-            modelBuilder.Entity("FitZone.Core.Entitys.Exercise", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<string>("CommonMistakes")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EquipmentNeeded")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("FitnessLevel")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Instructions")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PrimaryMuscles")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SecondaryMuscles")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("VideoUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Exercises");
                 });
 
             modelBuilder.Entity("FitZone.Core.Entitys.Identity.ApplicationUser", b =>
@@ -269,51 +231,7 @@ namespace FitZone.Repository.Data.Migrations
 
                     b.HasIndex("WorkoutProgramID");
 
-                    b.ToTable("ProgramWeeks");
-                });
-
-            modelBuilder.Entity("FitZone.Core.Entitys.SessionExercise", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<int>("ExerciseID")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Notes")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("RPETarget")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Reps")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("RestSeconds")
-                        .HasColumnType("int");
-
-                    b.Property<int>("SectionType")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("Sets")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Tempo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("WorkoutSessionID")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("ExerciseID");
-
-                    b.HasIndex("WorkoutSessionID");
-
-                    b.ToTable("SessionExercises");
+                    b.ToTable("ProgramWeek");
                 });
 
             modelBuilder.Entity("FitZone.Core.Entitys.Track", b =>
@@ -415,7 +333,7 @@ namespace FitZone.Repository.Data.Migrations
                     b.ToTable("TraineeMemberships");
                 });
 
-            modelBuilder.Entity("FitZone.Core.Entitys.TraineeProgramEnrollment", b =>
+            modelBuilder.Entity("FitZone.Core.Entitys.TraineeProgramTemplate", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -423,23 +341,17 @@ namespace FitZone.Repository.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int>("CurrentWeekNumber")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
+                    b.Property<int>("ProgramTemplateID")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TrackID")
-                        .HasColumnType("int");
 
                     b.Property<int>("TraineeID")
                         .HasColumnType("int");
@@ -449,15 +361,13 @@ namespace FitZone.Repository.Data.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("TrackID");
-
                     b.HasIndex("WorkoutProgramID");
 
                     b.HasIndex("TraineeID", "IsActive")
                         .IsUnique()
                         .HasFilter("[IsActive] = 1");
 
-                    b.ToTable("TraineeProgramEnrollments");
+                    b.ToTable("TraineeProgramTemplates");
                 });
 
             modelBuilder.Entity("FitZone.Core.Entitys.WorkoutProgram", b =>
@@ -715,25 +625,6 @@ namespace FitZone.Repository.Data.Migrations
                     b.Navigation("WorkoutProgram");
                 });
 
-            modelBuilder.Entity("FitZone.Core.Entitys.SessionExercise", b =>
-                {
-                    b.HasOne("FitZone.Core.Entitys.Exercise", "Exercise")
-                        .WithMany("SessionExercises")
-                        .HasForeignKey("ExerciseID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("FitZone.Core.Entitys.WorkoutSession", "WorkoutSession")
-                        .WithMany()
-                        .HasForeignKey("WorkoutSessionID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Exercise");
-
-                    b.Navigation("WorkoutSession");
-                });
-
             modelBuilder.Entity("FitZone.Core.Entitys.Trainee", b =>
                 {
                     b.HasOne("FitZone.Core.Entitys.Identity.ApplicationUser", "ApplicationUser")
@@ -768,27 +659,19 @@ namespace FitZone.Repository.Data.Migrations
                     b.Navigation("Trainee");
                 });
 
-            modelBuilder.Entity("FitZone.Core.Entitys.TraineeProgramEnrollment", b =>
+            modelBuilder.Entity("FitZone.Core.Entitys.TraineeProgramTemplate", b =>
                 {
-                    b.HasOne("FitZone.Core.Entitys.Track", "Track")
-                        .WithMany()
-                        .HasForeignKey("TrackID")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
                     b.HasOne("FitZone.Core.Entitys.Trainee", "Trainee")
-                        .WithMany("TraineeProgramEnrollments")
+                        .WithMany("TraineeProgramTemplates")
                         .HasForeignKey("TraineeID")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("FitZone.Core.Entitys.WorkoutProgram", "WorkoutProgram")
-                        .WithMany("TraineeProgramEnrollments")
+                        .WithMany("TraineeProgramTemplates")
                         .HasForeignKey("WorkoutProgramID")
-                        .OnDelete(DeleteBehavior.NoAction)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Track");
 
                     b.Navigation("Trainee");
 
@@ -881,11 +764,6 @@ namespace FitZone.Repository.Data.Migrations
                     b.Navigation("WorkoutPrograms");
                 });
 
-            modelBuilder.Entity("FitZone.Core.Entitys.Exercise", b =>
-                {
-                    b.Navigation("SessionExercises");
-                });
-
             modelBuilder.Entity("FitZone.Core.Entitys.Identity.ApplicationUser", b =>
                 {
                     b.Navigation("Coach")
@@ -911,14 +789,14 @@ namespace FitZone.Repository.Data.Migrations
                 {
                     b.Navigation("TraineeMemberships");
 
-                    b.Navigation("TraineeProgramEnrollments");
+                    b.Navigation("TraineeProgramTemplates");
                 });
 
             modelBuilder.Entity("FitZone.Core.Entitys.WorkoutProgram", b =>
                 {
                     b.Navigation("ProgramWeeks");
 
-                    b.Navigation("TraineeProgramEnrollments");
+                    b.Navigation("TraineeProgramTemplates");
                 });
 #pragma warning restore 612, 618
         }

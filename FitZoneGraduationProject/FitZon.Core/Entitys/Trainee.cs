@@ -23,7 +23,7 @@ namespace FitZone.Core.Entitys
         public virtual ApplicationUser ApplicationUser { get; set; }
 
         public virtual ICollection<TraineeMembership> TraineeMemberships { get; set; } = new HashSet<TraineeMembership>();
-        public virtual ICollection<TraineeProgramTemplate> TraineeProgramTemplates { get; set; } = new HashSet<TraineeProgramTemplate>();
+        public virtual ICollection<TraineeProgramEnrollment> TraineeProgramEnrollments { get; set; } = new HashSet<TraineeProgramEnrollment>();
 
     }
 }

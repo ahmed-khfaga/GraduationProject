@@ -22,7 +22,7 @@ namespace FitZone.Core.Entitys
 
         public DateTime HireDate { get; set; } = DateTime.Now;
         public virtual ApplicationUser ApplicationUser { get; set; }
-        public virtual ICollection<ProgramTemplate> ProgramTemplates { get; set; } = new HashSet<ProgramTemplate>();
+        public virtual ICollection<WorkoutProgram> WorkoutPrograms { get; set; } = new HashSet<WorkoutProgram>();
 
 
     }

@@ -30,4 +30,45 @@ namespace FitZone.Core.Enums
         Medium,
         Hard
     }
+
+    public enum TrainingGoal
+    {
+        LoseFat ,
+        BuildMuscle ,
+        GetStronger ,
+        ImproveEndurance ,
+        MoveBetter ,
+        GeneralFitness ,
+        MaintainWeight
+    }
+    public enum FitnessLevel
+    {
+        Beginner ,
+        Intermediate ,
+        Advanced
+    }
+    public enum EquipmentType
+    {
+        FullGym ,
+        Dumbbells ,
+        Home ,
+        Bodyweight ,
+        Bands 
+    }
+
+    public enum SectionType
+    {
+        Warmup ,
+        Primer ,
+        MainWork ,
+        Cooldown 
+    }
+
+    public enum EnrollmentStatus
+    {
+        Active ,
+        Completed ,
+        Cancelled   
+    }
+
 }
