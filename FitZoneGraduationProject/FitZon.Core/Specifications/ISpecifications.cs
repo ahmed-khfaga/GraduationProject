@@ -13,5 +13,14 @@ namespace FitZone.Core.Specifications
         public Expression<Func<T,bool>> Criteria {  get; set; } // for where () filter 
         public List<Expression<Func<T,object>>> Includes { get; set; } // should get list 
 
+
+        // Sorting
+        Expression<Func<T, object>>? OrderBy { get; set; }
+        Expression<Func<T, object>>? OrderByDescending { get; set; }
+
+        // Pagination
+        int? Take { get; set; }
+        int? Skip { get; set; }
+        bool IsPaginationEnabled { get; set; }
     }
 }

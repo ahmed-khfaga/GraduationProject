@@ -20,6 +20,7 @@ namespace FitZone.Core.Entitys
 
 
         public virtual WorkoutProgram WorkoutProgram { get; set; }
+        public virtual ICollection<WorkoutSession> WorkoutSessions { get; set; } = new HashSet<WorkoutSession>();
 
     }
 }

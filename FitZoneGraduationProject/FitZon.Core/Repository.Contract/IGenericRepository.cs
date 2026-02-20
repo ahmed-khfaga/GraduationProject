@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using FitZone.Core.Comman;
 using FitZone.Core.Specifications;
 
@@ -18,7 +14,13 @@ namespace FitZone.Core.Repository.Contract
         Task<IEnumerable<T>> GetAllWithSpecAsync(ISpecifications<T> spec);
 
         Task<T?> GetWithSpecAsync(ISpecifications<T> spec);
+        
+        Task<int> CountAsync(ISpecifications<T> spec);
 
 
+        // Write operations
+        Task AddAsync(T entity);
+        void Update(T entity);
+        void Delete(T entity);
     }
 }

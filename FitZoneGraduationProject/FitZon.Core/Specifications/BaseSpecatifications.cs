@@ -13,6 +13,12 @@ namespace FitZone.Core.Specifications
         public Expression<Func<T, bool>> Criteria { get; set; } = null; 
         public List<Expression<Func<T, object>>> Includes { get; set; } = new List<Expression<Func<T, object>>>();
 
+        public Expression<Func<T, object>>? OrderBy { get; set; }
+        public Expression<Func<T, object>>? OrderByDescending { get; set; }
+
+        public int? Take { get; set; }
+        public int? Skip { get; set; }
+        public bool IsPaginationEnabled { get; set; }
 
         public BaseSpecatifications()
         {
@@ -22,6 +28,13 @@ namespace FitZone.Core.Specifications
         public BaseSpecatifications(Expression<Func<T, bool>> criteriaExpression)
         {
             Criteria = criteriaExpression;
+        }
+
+        protected void ApplyPagination(int pageIndex, int pageSize)
+        {
+            IsPaginationEnabled = true;
+            Skip = (pageIndex - 1) * pageSize;
+            Take = pageSize;
         }
     }
 }

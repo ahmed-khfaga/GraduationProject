@@ -19,6 +19,7 @@ namespace FitZone.Core.Entitys
 
         public EnrollmentStatus Status { get; set; } = EnrollmentStatus.Active;
 
+        // Auto-increments every Monday based on StartDate , Locked to prevent skipping ahead.
         public int CurrentWeekNumber { get; set; } = 1;
         public DateTime? EndDate { get; set; }
 
