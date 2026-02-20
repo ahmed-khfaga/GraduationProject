@@ -14,13 +14,7 @@ namespace FitZone.Core.Repository.Contract
         Task<IEnumerable<T>> GetAllWithSpecAsync(ISpecifications<T> spec);
 
         Task<T?> GetWithSpecAsync(ISpecifications<T> spec);
-        
-        Task<int> CountAsync(ISpecifications<T> spec);
 
 
-        // Write operations
-        Task AddAsync(T entity);
-        void Update(T entity);
-        void Delete(T entity);
     }
 }

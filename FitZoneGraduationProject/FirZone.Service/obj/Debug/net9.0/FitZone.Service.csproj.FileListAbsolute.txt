@@ -14,3 +14,19 @@ D:\MVC learn\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debu
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\refint\FitZone.Service.dll
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.pdb
 D:\MVC learn\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\ref\FitZone.Service.dll
+C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FirZone.Service\bin\Debug\net9.0\FitZone.Service.deps.json
+C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FirZone.Service\bin\Debug\net9.0\FitZone.Service.dll
+C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FirZone.Service\bin\Debug\net9.0\FitZone.Service.pdb
+C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FirZone.Service\bin\Debug\net9.0\FitZone.Core.dll
+C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FirZone.Service\bin\Debug\net9.0\FitZone.Core.pdb
+C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.csproj.AssemblyReference.cache
+C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.AssemblyInfoInputs.cache
+C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.AssemblyInfo.cs
+C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.csproj.CoreCompileInputs.cache
+C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.sourcelink.json
+C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone..2F341427.Up2Date
+C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.dll
+C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\refint\FitZone.Service.dll
+C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.pdb
+C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\ref\FitZone.Service.dll
