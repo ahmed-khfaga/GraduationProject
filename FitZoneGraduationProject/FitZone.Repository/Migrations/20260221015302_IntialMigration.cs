@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FitZone.Repository.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class IntialMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -387,7 +387,7 @@ namespace FitZone.Repository.Migrations
                     TrackID = table.Column<int>(type: "int", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
-                    CurrentWeekNumber = table.Column<int>(type: "int", nullable: false),
+                    MaxWeekUnlocked = table.Column<int>(type: "int", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },

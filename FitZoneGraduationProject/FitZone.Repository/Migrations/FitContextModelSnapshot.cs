@@ -423,14 +423,14 @@ namespace FitZone.Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int>("CurrentWeekNumber")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
+
+                    b.Property<int>("MaxWeekUnlocked")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");

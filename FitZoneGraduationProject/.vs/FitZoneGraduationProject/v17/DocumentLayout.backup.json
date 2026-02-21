@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3F9EF13C-6B3E-4B94-8DED-19C5AF6ACA40}|FitZon.Core\\FitZone.Core.csproj|c:\\users\\khale\\source\\repos\\graduationproject\\fitzonegraduationproject\\fitzon.core\\repository.contract\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3F9EF13C-6B3E-4B94-8DED-19C5AF6ACA40}|FitZon.Core\\FitZone.Core.csproj|solutionrelative:fitzon.core\\repository.contract\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\Migrations\\20260221015302_IntialMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:FitZone.Repository\\Migrations\\20260221015302_IntialMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|c:\\users\\khale\\source\\repos\\graduationproject\\fitzonegraduationproject\\firzone.service\\services.contract\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|solutionrelative:firzone.service\\services.contract\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9E6D6BF4-D92A-4233-9ADC-4295D9A13E50}|FitZone\\FitZone.APIs.csproj|c:\\users\\khale\\source\\repos\\graduationproject\\fitzonegraduationproject\\fitzone\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9E6D6BF4-D92A-4233-9ADC-4295D9A13E50}|FitZone\\FitZone.APIs.csproj|solutionrelative:fitzone\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|c:\\users\\khale\\source\\repos\\graduationproject\\fitzonegraduationproject\\firzone.service\\dtos\\enrollmentdtos\\startprogramdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|solutionrelative:firzone.service\\dtos\\enrollmentdtos\\startprogramdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,27 +27,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "IGenericRepository.cs",
-              "DocumentMoniker": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Repository.Contract\\IGenericRepository.cs",
-              "RelativeDocumentMoniker": "FitZon.Core\\Repository.Contract\\IGenericRepository.cs",
-              "ToolTip": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Repository.Contract\\IGenericRepository.cs",
-              "RelativeToolTip": "FitZon.Core\\Repository.Contract\\IGenericRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
+              "Title": "20260221015302_IntialMigration.cs",
+              "DocumentMoniker": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\Migrations\\20260221015302_IntialMigration.cs",
+              "RelativeDocumentMoniker": "FitZone.Repository\\Migrations\\20260221015302_IntialMigration.cs",
+              "ToolTip": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\Migrations\\20260221015302_IntialMigration.cs",
+              "RelativeToolTip": "FitZone.Repository\\Migrations\\20260221015302_IntialMigration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T14:45:54.424Z",
+              "WhenOpened": "2026-02-21T01:53:02.373Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "IAuthService.cs",
-              "DocumentMoniker": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\Services.Contract\\IAuthService.cs",
-              "RelativeDocumentMoniker": "FirZone.Service\\Services.Contract\\IAuthService.cs",
-              "ToolTip": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\Services.Contract\\IAuthService.cs",
-              "RelativeToolTip": "FirZone.Service\\Services.Contract\\IAuthService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FitZone\\appsettings.json",
+              "RelativeDocumentMoniker": "FitZone\\appsettings.json",
+              "ToolTip": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FitZone\\appsettings.json",
+              "RelativeToolTip": "FitZone\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-21T01:51:27.634Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StartProgramDTOs.cs",
+              "DocumentMoniker": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\DTOs\\EnrollmentDTOs\\StartProgramDTOs.cs",
+              "RelativeDocumentMoniker": "FirZone.Service\\DTOs\\EnrollmentDTOs\\StartProgramDTOs.cs",
+              "ToolTip": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\DTOs\\EnrollmentDTOs\\StartProgramDTOs.cs",
+              "RelativeToolTip": "FirZone.Service\\DTOs\\EnrollmentDTOs\\StartProgramDTOs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T13:42:49.558Z",
+              "WhenOpened": "2026-02-21T01:46:03.164Z",
               "EditorCaption": ""
             },
             {

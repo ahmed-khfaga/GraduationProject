@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitZone.Repository.Migrations
 {
     [DbContext(typeof(FitContext))]
-    [Migration("20260220145059_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20260221015302_IntialMigration")]
+    partial class IntialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -426,14 +426,14 @@ namespace FitZone.Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int>("CurrentWeekNumber")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
+
+                    b.Property<int>("MaxWeekUnlocked")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");

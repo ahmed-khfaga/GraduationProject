@@ -3,24 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|c:\\users\\khale\\source\\repos\\graduationproject\\fitzonegraduationproject\\firzone.service\\dtos\\sessionexercisedtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|solutionrelative:firzone.service\\dtos\\sessionexercisedtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|c:\\users\\khale\\source\\repos\\graduationproject\\fitzonegraduationproject\\firzone.service\\dtos\\programdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|solutionrelative:firzone.service\\dtos\\programdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|c:\\users\\khale\\source\\repos\\graduationproject\\fitzonegraduationproject\\firzone.service\\dtos\\trackdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|solutionrelative:firzone.service\\dtos\\trackdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3F9EF13C-6B3E-4B94-8DED-19C5AF6ACA40}|FitZon.Core\\FitZone.Core.csproj|c:\\users\\khale\\source\\repos\\graduationproject\\fitzonegraduationproject\\fitzon.core\\repository.contract\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3F9EF13C-6B3E-4B94-8DED-19C5AF6ACA40}|FitZon.Core\\FitZone.Core.csproj|solutionrelative:fitzon.core\\repository.contract\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|c:\\users\\khale\\source\\repos\\graduationproject\\fitzonegraduationproject\\firzone.service\\services.contract\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|solutionrelative:firzone.service\\services.contract\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|c:\\users\\khale\\source\\repos\\graduationproject\\fitzonegraduationproject\\firzone.service\\dtos\\profiledtos\\updatetraineeprofiledtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|solutionrelative:firzone.service\\dtos\\profiledtos\\updatetraineeprofiledtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,66 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "SessionExerciseDTOs.cs",
-              "DocumentMoniker": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\DTOs\\SessionExerciseDTOs.cs",
-              "RelativeDocumentMoniker": "FirZone.Service\\DTOs\\SessionExerciseDTOs.cs",
-              "ToolTip": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\DTOs\\SessionExerciseDTOs.cs",
-              "RelativeToolTip": "FirZone.Service\\DTOs\\SessionExerciseDTOs.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAtAAAAAAAAAA==",
+              "Title": "UpdateTraineeProfileDTOs.cs",
+              "DocumentMoniker": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\DTOs\\ProfileDTOs\\UpdateTraineeProfileDTOs.cs",
+              "RelativeDocumentMoniker": "FirZone.Service\\DTOs\\ProfileDTOs\\UpdateTraineeProfileDTOs.cs",
+              "ToolTip": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\DTOs\\ProfileDTOs\\UpdateTraineeProfileDTOs.cs",
+              "RelativeToolTip": "FirZone.Service\\DTOs\\ProfileDTOs\\UpdateTraineeProfileDTOs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T14:57:49.889Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProgramDTOs.cs",
-              "DocumentMoniker": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\DTOs\\ProgramDTOs.cs",
-              "RelativeDocumentMoniker": "FirZone.Service\\DTOs\\ProgramDTOs.cs",
-              "ToolTip": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\DTOs\\ProgramDTOs.cs",
-              "RelativeToolTip": "FirZone.Service\\DTOs\\ProgramDTOs.cs",
-              "ViewState": "AgIAADEAAAAAAAAAAAAAwAkAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T14:53:13.489Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TrackDTOs.cs",
-              "DocumentMoniker": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\DTOs\\TrackDTOs.cs",
-              "RelativeDocumentMoniker": "FirZone.Service\\DTOs\\TrackDTOs.cs",
-              "ToolTip": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\DTOs\\TrackDTOs.cs",
-              "RelativeToolTip": "FirZone.Service\\DTOs\\TrackDTOs.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T14:52:52.422Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IGenericRepository.cs",
-              "DocumentMoniker": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Repository.Contract\\IGenericRepository.cs",
-              "RelativeDocumentMoniker": "FitZon.Core\\Repository.Contract\\IGenericRepository.cs",
-              "ToolTip": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Repository.Contract\\IGenericRepository.cs",
-              "RelativeToolTip": "FitZon.Core\\Repository.Contract\\IGenericRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T14:45:54.424Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IAuthService.cs",
-              "DocumentMoniker": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\Services.Contract\\IAuthService.cs",
-              "RelativeDocumentMoniker": "FirZone.Service\\Services.Contract\\IAuthService.cs",
-              "ToolTip": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\Services.Contract\\IAuthService.cs",
-              "RelativeToolTip": "FirZone.Service\\Services.Contract\\IAuthService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T13:42:49.558Z",
+              "WhenOpened": "2026-02-21T02:01:48.091Z",
               "EditorCaption": ""
             },
             {
