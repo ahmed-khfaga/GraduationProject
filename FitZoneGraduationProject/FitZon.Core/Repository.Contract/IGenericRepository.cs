@@ -15,6 +15,12 @@ namespace FitZone.Core.Repository.Contract
 
         Task<T?> GetWithSpecAsync(ISpecifications<T> spec);
 
+        Task<int> CountAsync(ISpecifications<T> spec);
 
+        // Write operations
+        //   nothing goes to the DB until UnitOfWork.CompleteAsync()) ──
+        void Add(T entity);
+        void Update(T entity);
+        void Delete(T entity);
     }
 }

@@ -45,12 +45,10 @@ namespace FitZone.Repository.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal?>("Price")
-                        .HasPrecision(3, 2)
-                        .HasColumnType("decimal(3,2)");
+                        .HasColumnType("decimal(8,2)");
 
                     b.Property<decimal?>("Rating")
-                        .HasPrecision(2, 1)
-                        .HasColumnType("decimal(2,1)");
+                        .HasColumnType("decimal(3,2)");
 
                     b.Property<int>("YearsOfExperience")
                         .HasColumnType("int");
@@ -231,8 +229,7 @@ namespace FitZone.Repository.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
-                        .HasPrecision(5, 2)
-                        .HasColumnType("decimal(5,2)");
+                        .HasColumnType("decimal(8,2)");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -285,6 +282,9 @@ namespace FitZone.Repository.Migrations
 
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("OrderInSection")
+                        .HasColumnType("int");
 
                     b.Property<int?>("RPETarget")
                         .HasColumnType("int");
@@ -360,15 +360,13 @@ namespace FitZone.Repository.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal?>("Height")
-                        .HasPrecision(3, 2)
-                        .HasColumnType("decimal(3,2)");
+                        .HasColumnType("decimal(6,2)");
 
                     b.Property<string>("PhotoUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal?>("Weight")
-                        .HasPrecision(3, 2)
-                        .HasColumnType("decimal(3,2)");
+                        .HasColumnType("decimal(6,2)");
 
                     b.HasKey("ID");
 
@@ -491,10 +489,19 @@ namespace FitZone.Repository.Migrations
                     b.Property<string>("PhotoThumbnailUrl")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("PublishedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("RejectionNote")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("SessionsDuration")
                         .HasColumnType("int");
 
                     b.Property<int>("SessionsPerWeeks")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
                     b.Property<int>("TrackID")

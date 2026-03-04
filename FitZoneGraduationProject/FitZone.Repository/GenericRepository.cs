@@ -19,6 +19,8 @@ namespace FitZone.Repository
         {
             _context = context;
         }
+
+        // ── Read
         public async Task<IReadOnlyList<T>> GetAllAsync()
         {
             return await _context.Set<T>().ToListAsync();
@@ -41,7 +43,26 @@ namespace FitZone.Repository
             return await SpecificationHelp(spec).FirstOrDefaultAsync();
         }
 
+        public async Task<int> CountAsync(ISpecifications<T> spec)
+        {
+            return await SpecificationHelp(spec).CountAsync();
+        }
 
+        // ── Write
+        public void Add(T entity)
+        {
+            _context.Set<T>().Add(entity);
+        }
+
+        public void Update(T entity)
+        {
+            _context.Set<T>().Update(entity);
+        }
+
+        public void Delete(T entity)
+        {
+            _context.Set<T>().Remove(entity);
+        }
 
         // private helper method 
 

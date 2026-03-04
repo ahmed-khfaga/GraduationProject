@@ -24,15 +24,15 @@ namespace FitZone.Service
             _mapper = mapper;
         }
 
-        public async Task<IEnumerable<MembershipPlansDTOs>> GetAllMembershipsPlan()
+        public async Task<IEnumerable<MembershipPlansDto>> GetAllMembershipsPlan()
         {
             var spic = new MembershipWithPlan();
             var result = await _membershipPlanRepo.GetAllWithSpecAsync(spic);
 
-            return _mapper.Map<IEnumerable<MembershipPlansDTOs>>(result);
+            return _mapper.Map<IEnumerable<MembershipPlansDto>>(result);
         }
 
-        public async Task<IEnumerable<MembershipWithPricePlanDTOs>> GetMembershipsByDurationAsync(int duration)
+        public async Task<IEnumerable<MembershipWithPricePlanDto>> GetMembershipsByDurationAsync(int duration)
         {
             
 
@@ -42,10 +42,10 @@ namespace FitZone.Service
 
             if(membershipPlanDB is not null) 
             {
-                return _mapper.Map<IEnumerable<MembershipWithPricePlanDTOs>>(membershipPlanDB);
+                return _mapper.Map<IEnumerable<MembershipWithPricePlanDto>>(membershipPlanDB);
             }
 
-            return Enumerable.Empty<MembershipWithPricePlanDTOs>();
+            return Enumerable.Empty<MembershipWithPricePlanDto>();
         }
     }
 }

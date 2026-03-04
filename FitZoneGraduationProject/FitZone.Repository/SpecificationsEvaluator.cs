@@ -16,7 +16,7 @@ namespace FitZone.Repository
         {
             var query = inputQuery; // dataset => DbContext
 
-            if (spec.Criteria is not null) 
+            if (spec.Criteria is not null)
             {
                 query = query.Where(spec.Criteria);
             }
@@ -25,7 +25,18 @@ namespace FitZone.Repository
 
             query = spec.Includes.Aggregate(query, (currentQuery, includeExpression) => currentQuery.Include(includeExpression));
 
-
+            if (spec.OrderBy is not null)
+            {
+                query = query.OrderBy(spec.OrderBy);
+            }
+            if (spec.OrderByDescending is not null)
+            { 
+                query = query.OrderByDescending(spec.OrderByDescending);
+            }
+            if (spec.IsPaginationEnabled)
+            {
+                query = query.Skip(spec.Skip!.Value).Take(spec.Take!.Value);
+            }
             return query;
         }
     }

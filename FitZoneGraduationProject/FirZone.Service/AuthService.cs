@@ -96,7 +96,7 @@ namespace FitZone.Service
 
         }
 
-        public async Task<AuthResultDto> RegisterAsync(RegisterUserDTOs model)
+        public async Task<AuthResultDto> RegisterAsync(RegisterUserDto model)
         {
             var existingUser = await _userManager.FindByEmailAsync(model.Email);
             if (existingUser != null)

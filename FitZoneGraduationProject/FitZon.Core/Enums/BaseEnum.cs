@@ -70,5 +70,11 @@ namespace FitZone.Core.Enums
         Completed ,
         Cancelled   
     }
-
+    public enum ProgramStatus
+    {
+        Draft,
+        PendingReview,
+        Published,
+        Rejected
+    }
 }

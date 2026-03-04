@@ -20,14 +20,14 @@ namespace FitZone
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddControllers();
             builder.Services.AddOpenApi();
 
-            #region connectionString and services 
+            #region connectionString  
 
             builder.Services.AddDbContext<FitContext>(options =>
             {
@@ -35,16 +35,42 @@ namespace FitZone
             }
            );
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<FitContext>();
+            #endregion
+
+            #region Repository layer
 
             builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+            #endregion
+
+            #region Service - AutoMapper
 
             //builder.Services.AddAutoMapper(M => M.AddProfile(new MappingMemberShip()));
             builder.Services.AddAutoMapper(typeof(MappingMemberShip));
+            builder.Services.AddAutoMapper(typeof(MappingProfile));
+            builder.Services.AddAutoMapper(typeof(MappingCoach));
+            builder.Services.AddAutoMapper(typeof(MappingTrainee));
+            builder.Services.AddAutoMapper(typeof(MappingTrack));
+            builder.Services.AddAutoMapper(typeof(MappingWorkoutProgram));
+            builder.Services.AddAutoMapper(typeof(MappingWorkoutSession));
+            builder.Services.AddAutoMapper(typeof(MappingExercise));
+            builder.Services.AddAutoMapper(typeof(MappingSessionExercise));
+
+
 
             builder.Services.AddScoped(typeof(IMembershipService),typeof (MembershipService));
-
             builder.Services.AddScoped(typeof(IAuthService),typeof(AuthService));
+            builder.Services.AddScoped<ITrackService, TrackService>();
+            builder.Services.AddScoped<IProgramService, ProgramService>();
+            builder.Services.AddScoped<IExerciseService, ExerciseService>();
+            builder.Services.AddScoped<IEnrollmentService, EnrollmentService>();
+            builder.Services.AddScoped<ICoachService, CoachService>();
+            builder.Services.AddScoped<ITraineeService, TraineeService>();
 
+            #endregion
+
+
+            #region JWT Authentication
             builder.Services.AddAuthentication(option =>
             {
                 // check JWT token header 
@@ -66,6 +92,10 @@ namespace FitZone
                 };
             });
 
+            #endregion
+
+            #region CORS
+
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("MyPolicy", policy =>
@@ -75,6 +105,10 @@ namespace FitZone
                     .AllowAnyHeader();
                 });
             });
+            #endregion
+
+
+            #region Validation error formatting
 
             builder.Services.Configure<ApiBehaviorOptions>(option => 
             {
@@ -94,11 +128,52 @@ namespace FitZone
                 };                                  
             });
 
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen(options =>
+            {
+                options.SwaggerDoc("v1", new()
+                {
+                    Title = "FitZone APIs",
+                    Version = "v1"
+                });
+
+                options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+                    Scheme = "bearer",
+                    BearerFormat = "JWT",
+                    In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+                    Description = "Enter: Bearer {your JWT token}"
+                });
+
+                options.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+    {
+        {
+            new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            {
+                Reference = new Microsoft.OpenApi.Models.OpenApiReference
+                {
+                    Type = Microsoft.OpenApi.Models.ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            Array.Empty<string>()
+        }
+    });
+            });
 
             #endregion
 
+
+            // ?? Pipeline ????????????????????
+
             var app = builder.Build();
+
+            if (app.Environment.IsDevelopment())
+            {
+                await FitZone.Repository.Data.Seed.FitZoneSeeder.SeedAsync(app.Services);
+            }
+
             app.UseMiddleware<ExceptionMiddleware>();
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

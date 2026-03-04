@@ -22,13 +22,14 @@ namespace FitZone.Repository.Data
         {
             base.OnModelCreating(modelBuilder); // called base onModelCreating to not breake Identity configuration .
 
+            // ── Coach
             modelBuilder.Entity<Coach>()
                 .Property(c => c.Price)
-                .HasPrecision(3,2);
+                .HasColumnType("decimal(8,2)");
 
             modelBuilder.Entity<Coach>()
                 .Property(c => c.Rating)
-                .HasPrecision(2, 1);
+                .HasColumnType("decimal(3,2)");
 
             modelBuilder.Entity<Coach>() // to max rate is 0 to 5 no more no less 
                 .ToTable(t => t.HasCheckConstraint(
@@ -36,23 +37,27 @@ namespace FitZone.Repository.Data
                     "[Rating] >= 0 AND [Rating] <= 5"
                 ));
 
+            // ── MembershipPlan
             modelBuilder.Entity<MembershipPlan>()
                  .Property(m => m.Price)
-                 .HasPrecision(5, 2);
+                 .HasColumnType("decimal(8,2)");
 
+            // ── Trainee
             modelBuilder.Entity<Trainee>()
                 .Property(t => t.Weight)
-                .HasPrecision(3, 2);
+                .HasColumnType("decimal(6,2)");
 
             modelBuilder.Entity<Trainee>()
                 .Property(t => t.Height)
-                .HasPrecision(3, 2);
+                .HasColumnType("decimal(6,2)");
 
+            // ── Enrollment constraints
             modelBuilder.Entity<TraineeProgramEnrollment>() // Only ONE active template at a time
                 .HasIndex(x => new { x.TraineeID, x.IsActive })
                 .IsUnique()
                 .HasFilter("[IsActive] = 1");
 
+            // ── Identity relationships
             modelBuilder.Entity<Trainee>()
                 .HasOne(t => t.ApplicationUser)
                 .WithOne(u => u.Trainee)

@@ -16,6 +16,7 @@ namespace FitZone.Core.Entitys
         public DateTime? DateOfBirth { get; set; }
         public string Gender { get; set; } // "Male", "Female"
 
+
         public decimal? Weight { get; set; } // in kg
         public decimal? Height { get; set; } // in cm
         public string? Address { get; set; } // cairo ,alex ..etc..

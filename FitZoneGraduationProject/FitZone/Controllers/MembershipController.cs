@@ -19,7 +19,7 @@ namespace FitZone.APIs.Controllers
             _membershipService = membershipService;
         }
         [HttpGet]
-        public async Task <ActionResult<MembershipWithPricePlanDTOs>> GetAllMembershipInMonth()  // should get standard with month and premiumn with month with all descrptions
+        public async Task <ActionResult<MembershipWithPricePlanDto>> GetAllMembershipInMonth()  // should get standard with month and premiumn with month with all descrptions
         {
 
             int duration = 30; // month 
@@ -35,7 +35,7 @@ namespace FitZone.APIs.Controllers
         }
 
         [HttpGet("Plans")]
-        public async Task<ActionResult<MembershipWithPricePlanDTOs>> GetMembershipPlan() 
+        public async Task<ActionResult<MembershipWithPricePlanDto>> GetMembershipPlan() 
         {
             var result = await _membershipService.GetAllMembershipsPlan();
 
