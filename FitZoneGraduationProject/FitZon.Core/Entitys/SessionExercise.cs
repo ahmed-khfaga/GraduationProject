@@ -17,6 +17,8 @@ namespace FitZone.Core.Entitys
 
         public SectionType SectionType { get; set; }
 
+        // Controls display order within a section
+        public int OrderInSection { get; set; } = 1;
         public int? Sets { get; set; }
 
         public string? Reps { get; set; }  // "12", "8-10", "AMRAP"

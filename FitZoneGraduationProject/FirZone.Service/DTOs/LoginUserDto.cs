@@ -1,19 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Http;
 
 namespace FitZone.Service.DTOs
 {
-    public class RegisterUserDTOs
+    public class LoginUserDto
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-
+        [Required]
         [EmailAddress]
         public string Email { get; set; }
 
-
+        [Required] 
         public string Password { get; set; }
-
-        public IFormFile? Photo { get; set; }
     }
 }

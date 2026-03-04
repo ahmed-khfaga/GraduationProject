@@ -220,10 +220,10 @@ namespace FitZone.Repository.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     YearsOfExperience = table.Column<int>(type: "int", nullable: false),
-                    Rating = table.Column<decimal>(type: "decimal(2,1)", precision: 2, scale: 1, nullable: true),
+                    Rating = table.Column<decimal>(type: "decimal(3,2)", nullable: true),
                     About = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhotoUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Price = table.Column<decimal>(type: "decimal(3,2)", precision: 3, scale: 2, nullable: true),
+                    Price = table.Column<decimal>(type: "decimal(8,2)", nullable: true),
                     HireDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
@@ -247,8 +247,8 @@ namespace FitZone.Repository.Migrations
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Gender = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Weight = table.Column<decimal>(type: "decimal(3,2)", precision: 3, scale: 2, nullable: true),
-                    Height = table.Column<decimal>(type: "decimal(3,2)", precision: 3, scale: 2, nullable: true),
+                    Weight = table.Column<decimal>(type: "decimal(6,2)", nullable: true),
+                    Height = table.Column<decimal>(type: "decimal(6,2)", nullable: true),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhotoUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -271,7 +271,7 @@ namespace FitZone.Repository.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MembershipID = table.Column<int>(type: "int", nullable: false),
                     DurationInDays = table.Column<int>(type: "int", nullable: false),
-                    Price = table.Column<decimal>(type: "decimal(5,2)", precision: 5, scale: 2, nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
@@ -301,7 +301,10 @@ namespace FitZone.Repository.Migrations
                     PhotoThumbnailUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TrainingGoal = table.Column<int>(type: "int", nullable: false),
                     FitnessLevel = table.Column<int>(type: "int", nullable: false),
-                    EquipmentType = table.Column<int>(type: "int", nullable: false)
+                    EquipmentType = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    RejectionNote = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PublishedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -387,7 +390,7 @@ namespace FitZone.Repository.Migrations
                     TrackID = table.Column<int>(type: "int", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
-                    CurrentWeekNumber = table.Column<int>(type: "int", nullable: false),
+                    MaxWeekUnlocked = table.Column<int>(type: "int", nullable: false),
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -445,6 +448,7 @@ namespace FitZone.Repository.Migrations
                     WorkoutSessionID = table.Column<int>(type: "int", nullable: false),
                     ExerciseID = table.Column<int>(type: "int", nullable: false),
                     SectionType = table.Column<int>(type: "int", nullable: false),
+                    OrderInSection = table.Column<int>(type: "int", nullable: false),
                     Sets = table.Column<int>(type: "int", nullable: true),
                     Reps = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RestSeconds = table.Column<int>(type: "int", nullable: true),

@@ -22,7 +22,7 @@ namespace FitZone.APIs.Controllers
         }
 
         [HttpPost("Register")]
-        public async Task<ActionResult<RegisterUserDTOs>> Register([FromForm] RegisterUserDTOs registerDto)
+        public async Task<ActionResult<RegisterUserDto>> Register([FromForm] RegisterUserDto registerDto)
         {
 
             var result = await _authService.RegisterAsync(registerDto);
@@ -36,7 +36,7 @@ namespace FitZone.APIs.Controllers
 
 
         [HttpPost("Login")]
-        public async Task<ActionResult<LoginUserDTOs>> Login(LoginUserDTOs loginDto)
+        public async Task<ActionResult<LoginUserDto>> Login(LoginUserDto loginDto)
         {
 
             var result = await _authService.LoginAsync(loginDto);

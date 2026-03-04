@@ -13,7 +13,7 @@ namespace FitZone.Services.Contract
     public interface IAuthService
     {
         Task<string> CreateTokenAsync(ApplicationUser user);
-        Task<AuthResultDto> RegisterAsync(RegisterUserDTOs model);
-        Task<AuthResultDto> LoginAsync(LoginUserDTOs model);
+        Task<AuthResultDto> RegisterAsync(RegisterUserDto model);
+        Task<AuthResultDto> LoginAsync(LoginUserDto model);
     }
 }

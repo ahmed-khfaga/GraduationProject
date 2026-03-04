@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FitZone.Service.DTOs
 {
-    public class MembershipPlansDTOs
+    public class MembershipPlansDto
     {
         public int Id { get; set; }
         public string Name { get; set; }

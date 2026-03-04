@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "y/NMP7FAji4=",
+  "dgSpecHash": "CLKVfhG2HZE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\khale\\Source\\Repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\FitZone.Service.csproj",
+  "projectFilePath": "D:\\DotNet\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\FitZone.Service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\khale\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\khale\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

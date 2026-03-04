@@ -1041,11 +1041,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\khale\\Source\\Repos\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\FitZone.Core.csproj",
+      "projectUniqueName": "D:\\DotNet\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\FitZone.Core.csproj",
       "projectName": "FitZone.Core",
-      "projectPath": "C:\\Users\\khale\\Source\\Repos\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\FitZone.Core.csproj",
+      "projectPath": "D:\\DotNet\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\FitZone.Core.csproj",
       "packagesPath": "C:\\Users\\khale\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\khale\\Source\\Repos\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\obj\\",
+      "outputPath": "D:\\DotNet\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

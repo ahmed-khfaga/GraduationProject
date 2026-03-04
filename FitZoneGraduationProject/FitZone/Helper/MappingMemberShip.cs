@@ -9,11 +9,11 @@ namespace FitZone.APIs.Helper
 
         public MappingMemberShip()
         {
-            CreateMap<MembershipPlan, MembershipWithPricePlanDTOs>()
+            CreateMap<MembershipPlan, MembershipWithPricePlanDto>()
                 .ForMember(D => D.Name, O => O.MapFrom(S => S.Membership.Name))
                 .ForMember(D => D.Description, O => O.MapFrom(S => S.Membership.Description));
 
-            CreateMap<MembershipPlan, MembershipPlansDTOs>()
+            CreateMap<MembershipPlan, MembershipPlansDto>()
                 .ForMember(D => D.Name, O => O.MapFrom(S => S.Membership.Name));               
         }
     }

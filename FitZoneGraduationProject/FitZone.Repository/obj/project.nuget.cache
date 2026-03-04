@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "IqYrTyFYHM8=",
+  "dgSpecHash": "5Lxd03DsAHI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\khale\\Source\\Repos\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\FitZone.Repository.csproj",
+  "projectFilePath": "D:\\DotNet\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\FitZone.Repository.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\khale\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\khale\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

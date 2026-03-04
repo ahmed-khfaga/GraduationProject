@@ -19,8 +19,8 @@ namespace FitZone.Core.Entitys
 
         public EnrollmentStatus Status { get; set; } = EnrollmentStatus.Active;
 
-        // Auto-increments every Monday based on StartDate , Locked to prevent skipping ahead.
-        public int CurrentWeekNumber { get; set; } = 1;
+        /// The highest week number the trainee currently has access to. Computed from StartDate on read and persisted
+        public int MaxWeekUnlocked { get; set; } = 1;
         public DateTime? EndDate { get; set; }
 
         public bool IsActive { get; set; } = true;

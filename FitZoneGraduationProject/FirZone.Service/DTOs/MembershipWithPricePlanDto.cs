@@ -1,6 +1,6 @@
 ﻿namespace FitZone.Service.DTOs
 {
-    public class MembershipWithPricePlanDTOs
+    public class MembershipWithPricePlanDto
     {
         public int Id { get; set; }
 

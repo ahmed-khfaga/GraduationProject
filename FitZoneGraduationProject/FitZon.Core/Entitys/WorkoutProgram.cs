@@ -38,6 +38,12 @@ namespace FitZone.Core.Entitys
 
         public EquipmentType EquipmentType { get; set; }
 
+        // Admin approval workflow
+        public ProgramStatus Status { get; set; } = ProgramStatus.Draft;
+
+        public string? RejectionNote { get; set; }
+
+        public DateTime? PublishedAt { get; set; }
 
         public virtual Track Track { get; set; } // push pull leg 
 

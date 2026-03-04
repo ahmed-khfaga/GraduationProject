@@ -1,14 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\",
+  "WorkspaceRootPath": "D:\\DotNet\\GraduationProject\\FitZoneGraduationProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3F9EF13C-6B3E-4B94-8DED-19C5AF6ACA40}|FitZon.Core\\FitZone.Core.csproj|c:\\users\\khale\\source\\repos\\graduationproject\\fitzonegraduationproject\\fitzon.core\\repository.contract\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3F9EF13C-6B3E-4B94-8DED-19C5AF6ACA40}|FitZon.Core\\FitZone.Core.csproj|solutionrelative:fitzon.core\\repository.contract\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\DotNet\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\Migrations\\20260304100106_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:FitZone.Repository\\Migrations\\20260304100106_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|c:\\users\\khale\\source\\repos\\graduationproject\\fitzonegraduationproject\\firzone.service\\services.contract\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|solutionrelative:firzone.service\\services.contract\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|d:\\dotnet\\graduationproject\\fitzonegraduationproject\\firzone.service\\dtos\\loginuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|solutionrelative:firzone.service\\dtos\\loginuserdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E6D6BF4-D92A-4233-9ADC-4295D9A13E50}|FitZone\\FitZone.APIs.csproj|d:\\dotnet\\graduationproject\\fitzonegraduationproject\\fitzone\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E6D6BF4-D92A-4233-9ADC-4295D9A13E50}|FitZone\\FitZone.APIs.csproj|solutionrelative:fitzone\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,32 +27,45 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "IGenericRepository.cs",
-              "DocumentMoniker": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Repository.Contract\\IGenericRepository.cs",
-              "RelativeDocumentMoniker": "FitZon.Core\\Repository.Contract\\IGenericRepository.cs",
-              "ToolTip": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\Repository.Contract\\IGenericRepository.cs",
-              "RelativeToolTip": "FitZon.Core\\Repository.Contract\\IGenericRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
+              "Title": "20260304100106_InitialCreate.cs",
+              "DocumentMoniker": "D:\\DotNet\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\Migrations\\20260304100106_InitialCreate.cs",
+              "RelativeDocumentMoniker": "FitZone.Repository\\Migrations\\20260304100106_InitialCreate.cs",
+              "ToolTip": "D:\\DotNet\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\Migrations\\20260304100106_InitialCreate.cs",
+              "RelativeToolTip": "FitZone.Repository\\Migrations\\20260304100106_InitialCreate.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T14:45:54.424Z",
+              "WhenOpened": "2026-03-04T10:01:06.781Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "IAuthService.cs",
-              "DocumentMoniker": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\Services.Contract\\IAuthService.cs",
-              "RelativeDocumentMoniker": "FirZone.Service\\Services.Contract\\IAuthService.cs",
-              "ToolTip": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\Services.Contract\\IAuthService.cs",
-              "RelativeToolTip": "FirZone.Service\\Services.Contract\\IAuthService.cs",
+              "Title": "LoginUserDto.cs",
+              "DocumentMoniker": "D:\\DotNet\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\DTOs\\LoginUserDto.cs",
+              "RelativeDocumentMoniker": "FirZone.Service\\DTOs\\LoginUserDto.cs",
+              "ToolTip": "D:\\DotNet\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\DTOs\\LoginUserDto.cs",
+              "RelativeToolTip": "FirZone.Service\\DTOs\\LoginUserDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-20T13:42:49.558Z",
+              "WhenOpened": "2026-03-04T09:52:31.68Z",
               "EditorCaption": ""
             },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\DotNet\\GraduationProject\\FitZoneGraduationProject\\FitZone\\Program.cs",
+              "RelativeDocumentMoniker": "FitZone\\Program.cs",
+              "ToolTip": "D:\\DotNet\\GraduationProject\\FitZoneGraduationProject\\FitZone\\Program.cs",
+              "RelativeToolTip": "FitZone\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T07:17:30.659Z",
+              "EditorCaption": ""
             }
           ]
         }

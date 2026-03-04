@@ -9,13 +9,13 @@
     "Parameters": [
       {
         "Name": "loginDto",
-        "Type": "FitZone.Service.DTOs.LoginUserDTOs",
+        "Type": "FitZone.Service.DTOs.LoginUserDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "FitZone.Service.DTOs.LoginUserDTOs",
+        "Type": "FitZone.Service.DTOs.LoginUserDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -61,7 +61,7 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "FitZone.Service.DTOs.RegisterUserDTOs",
+        "Type": "FitZone.Service.DTOs.RegisterUserDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -138,6 +138,352 @@
     ]
   },
   {
+    "ContainingType": "FitZone.APIs.Controllers.CoachController",
+    "Method": "GetAll",
+    "RelativePath": "api/Coach",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[FitZone.Service.DTOs.ProfileDTOs.CoachProfileDto, FitZone.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.CoachController",
+    "Method": "GetById",
+    "RelativePath": "api/Coach/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "FitZone.Service.DTOs.ProfileDTOs.CoachProfileDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.CoachController",
+    "Method": "GetMyProfile",
+    "RelativePath": "api/Coach/me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "FitZone.Service.DTOs.ProfileDTOs.CoachProfileDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.CoachController",
+    "Method": "UpdateMyProfile",
+    "RelativePath": "api/Coach/me",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FitZone.Service.DTOs.ProfileDTOs.UpdateCoachProfileDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.EnrollmentController",
+    "Method": "GetMyEnrollments",
+    "RelativePath": "api/Enrollment",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[FitZone.Service.DTOs.EnrollmentDTOs.EnrollmentDto, FitZone.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.EnrollmentController",
+    "Method": "GetWeek",
+    "RelativePath": "api/Enrollment/{enrollmentId}/weeks/{weekNumber}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "enrollmentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "weekNumber",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "FitZone.Service.DTOs.EnrollmentDTOs.WeekDetailDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.EnrollmentController",
+    "Method": "Cancel",
+    "RelativePath": "api/Enrollment/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.EnrollmentController",
+    "Method": "GetHistory",
+    "RelativePath": "api/Enrollment/history",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[FitZone.Service.DTOs.EnrollmentDTOs.EnrollmentHistoryDto, FitZone.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.EnrollmentController",
+    "Method": "GetSession",
+    "RelativePath": "api/Enrollment/sessions/{sessionId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sessionId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "FitZone.Service.DTOs.SessionExerciseDTOs.WorkoutSessionDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.EnrollmentController",
+    "Method": "StartProgram",
+    "RelativePath": "api/Enrollment/start",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FitZone.Service.DTOs.EnrollmentDTOs.StartProgramDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "FitZone.Service.DTOs.EnrollmentDTOs.EnrollmentDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.ExerciseController",
+    "Method": "GetAll",
+    "RelativePath": "api/Exercise",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Level",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Muscle",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Equipment",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageIndex",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "FitZone.Service.DTOs.EnrollmentDTOs.PaginatedResult\u00601[[FitZone.Service.DTOs.SessionExerciseDTOs.ExerciseSummaryDto, FitZone.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.ExerciseController",
+    "Method": "Create",
+    "RelativePath": "api/Exercise",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FitZone.Service.DTOs.SessionExerciseDTOs.CreateExerciseDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.ExerciseController",
+    "Method": "GetById",
+    "RelativePath": "api/Exercise/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "FitZone.Service.DTOs.SessionExerciseDTOs.ExerciseDetailDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.ExerciseController",
+    "Method": "Update",
+    "RelativePath": "api/Exercise/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "FitZone.Service.DTOs.SessionExerciseDTOs.CreateExerciseDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.ExerciseController",
+    "Method": "Delete",
+    "RelativePath": "api/Exercise/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "FitZone.APIs.Controllers.MembershipController",
     "Method": "GetAllMembershipInMonth",
     "RelativePath": "api/Membership",
@@ -147,7 +493,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "FitZone.Service.DTOs.MembershipWithPricePlanDTOs",
+        "Type": "FitZone.Service.DTOs.MembershipWithPricePlanDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -167,7 +513,7 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "FitZone.Service.DTOs.MembershipWithPricePlanDTOs",
+        "Type": "FitZone.Service.DTOs.MembershipWithPricePlanDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -176,5 +522,268 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.ProgramController",
+    "Method": "GetAll",
+    "RelativePath": "api/Program",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "TrackID",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Goal",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Level",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Equipment",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "DurationWeeks",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "Sort",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageIndex",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "FitZone.Service.DTOs.EnrollmentDTOs.PaginatedResult\u00601[[FitZone.Service.DTOs.ProgramDTOs.ProgramCardDto, FitZone.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.ProgramController",
+    "Method": "Create",
+    "RelativePath": "api/Program",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FitZone.Service.DTOs.ProgramDTOs.CreateProgramDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.ProgramController",
+    "Method": "GetById",
+    "RelativePath": "api/Program/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "FitZone.Service.DTOs.ProgramDTOs.ProgramDetailDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.ProgramController",
+    "Method": "Review",
+    "RelativePath": "api/Program/{id}/review",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "FitZone.Service.DTOs.EnrollmentDTOs.AdminReviewDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.ProgramController",
+    "Method": "Submit",
+    "RelativePath": "api/Program/{id}/submit",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.ProgramController",
+    "Method": "AddWeek",
+    "RelativePath": "api/Program/{id}/weeks",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "FitZone.Service.DTOs.SessionExerciseDTOs.CreateProgramWeekDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.ProgramController",
+    "Method": "GetByCoach",
+    "RelativePath": "api/Program/coach/{coachId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "coachId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[FitZone.Service.DTOs.ProgramDTOs.ProgramCardDto, FitZone.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.ProgramController",
+    "Method": "GetPending",
+    "RelativePath": "api/Program/pending",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[FitZone.Service.DTOs.ProgramDTOs.ProgramCardDto, FitZone.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.TrackController",
+    "Method": "GetAll",
+    "RelativePath": "api/Track",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[FitZone.Service.DTOs.TrackDto, FitZone.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.TraineeController",
+    "Method": "GetMyProfile",
+    "RelativePath": "api/Trainee/me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "FitZone.Service.DTOs.ProfileDTOs.TraineeProfileDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.TraineeController",
+    "Method": "UpdateMyProfile",
+    "RelativePath": "api/Trainee/me",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FitZone.Service.DTOs.ProfileDTOs.UpdateTraineeProfileDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]
