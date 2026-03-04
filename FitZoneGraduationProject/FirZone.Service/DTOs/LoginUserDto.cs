@@ -2,7 +2,7 @@
 
 namespace FitZone.Service.DTOs
 {
-    public class LoginUserDTOs
+    public class LoginUserDto
     {
         [Required]
         [EmailAddress]

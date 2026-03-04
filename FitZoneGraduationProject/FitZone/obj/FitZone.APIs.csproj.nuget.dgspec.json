@@ -11,7 +11,7 @@
         "projectName": "FitZone.Service",
         "projectPath": "C:\\Users\\khale\\Source\\Repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\FitZone.Service.csproj",
         "packagesPath": "C:\\Users\\khale\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\khale\\Source\\Repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\obj\\",
+        "outputPath": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -90,7 +90,7 @@
         "projectName": "FitZone.Core",
         "projectPath": "C:\\Users\\khale\\Source\\Repos\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\FitZone.Core.csproj",
         "packagesPath": "C:\\Users\\khale\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\khale\\Source\\Repos\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\obj\\",
+        "outputPath": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FitZon.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -165,7 +165,7 @@
         "projectName": "FitZone.Repository",
         "projectPath": "C:\\Users\\khale\\Source\\Repos\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\FitZone.Repository.csproj",
         "packagesPath": "C:\\Users\\khale\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\khale\\Source\\Repos\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\obj\\",
+        "outputPath": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FitZone.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -252,7 +252,7 @@
         "projectName": "FitZone.APIs",
         "projectPath": "C:\\Users\\khale\\Source\\Repos\\GraduationProject\\FitZoneGraduationProject\\FitZone\\FitZone.APIs.csproj",
         "packagesPath": "C:\\Users\\khale\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\khale\\Source\\Repos\\GraduationProject\\FitZoneGraduationProject\\FitZone\\obj\\",
+        "outputPath": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FitZone\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

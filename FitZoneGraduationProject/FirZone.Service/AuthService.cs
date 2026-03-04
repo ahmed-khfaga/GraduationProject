@@ -62,7 +62,7 @@ namespace FitZone.Service
             return new JwtSecurityTokenHandler().WriteToken(myToken);
         }
 
-        public async Task<AuthResultDto> LoginAsync(LoginUserDTOs model)
+        public async Task<AuthResultDto> LoginAsync(LoginUserDto model)
         {
             ApplicationUser user = await _userManager.FindByEmailAsync(model.Email);
             if (user is null) 

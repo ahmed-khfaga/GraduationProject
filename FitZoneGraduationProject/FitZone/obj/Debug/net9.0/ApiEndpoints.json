@@ -9,13 +9,13 @@
     "Parameters": [
       {
         "Name": "loginDto",
-        "Type": "FitZone.Service.DTOs.LoginUserDTOs",
+        "Type": "FitZone.Service.DTOs.LoginUserDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "FitZone.Service.DTOs.LoginUserDTOs",
+        "Type": "FitZone.Service.DTOs.LoginUserDto",
         "MediaTypes": [
           "text/plain",
           "application/json",

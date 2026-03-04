@@ -6,6 +6,7 @@ using FitZone.Service.DTOs.ProfileDTOs;
 using FitZone.Service.DTOs.ProgramDTOs;
 using FitZone.Service.DTOs.SessionExerciseDTOs;
 
+
 namespace FitZone.APIs.Helper
 {
     public class MappingProfile : Profile

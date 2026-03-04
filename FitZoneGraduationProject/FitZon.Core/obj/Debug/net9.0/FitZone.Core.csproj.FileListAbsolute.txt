@@ -24,3 +24,16 @@ C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FitZon.Co
 C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\refint\FitZone.Core.dll
 C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.pdb
 C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\ref\FitZone.Core.dll
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZon.Core\bin\Debug\net9.0\FitZone.Core.deps.json
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZon.Core\bin\Debug\net9.0\FitZone.Core.dll
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZon.Core\bin\Debug\net9.0\FitZone.Core.pdb
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.csproj.AssemblyReference.cache
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.AssemblyInfoInputs.cache
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.AssemblyInfo.cs
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.csproj.CoreCompileInputs.cache
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.sourcelink.json
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.dll
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\refint\FitZone.Core.dll
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.pdb
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\ref\FitZone.Core.dll

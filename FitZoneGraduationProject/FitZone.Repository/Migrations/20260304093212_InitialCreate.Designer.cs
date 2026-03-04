@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitZone.Repository.Migrations
 {
     [DbContext(typeof(FitContext))]
-    [Migration("20260301065142_InitialCreate")]
+    [Migration("20260304093212_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

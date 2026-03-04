@@ -1507,7 +1507,7 @@
       "projectName": "FitZone.Service",
       "projectPath": "C:\\Users\\khale\\Source\\Repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\FitZone.Service.csproj",
       "packagesPath": "C:\\Users\\khale\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\khale\\Source\\Repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\obj\\",
+      "outputPath": "C:\\Users\\khale\\source\\repos\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

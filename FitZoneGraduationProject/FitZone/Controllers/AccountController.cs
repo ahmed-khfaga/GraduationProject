@@ -36,7 +36,7 @@ namespace FitZone.APIs.Controllers
 
 
         [HttpPost("Login")]
-        public async Task<ActionResult<LoginUserDTOs>> Login(LoginUserDTOs loginDto)
+        public async Task<ActionResult<LoginUserDto>> Login(LoginUserDto loginDto)
         {
 
             var result = await _authService.LoginAsync(loginDto);

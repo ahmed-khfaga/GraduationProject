@@ -14,6 +14,6 @@ namespace FitZone.Services.Contract
     {
         Task<string> CreateTokenAsync(ApplicationUser user);
         Task<AuthResultDto> RegisterAsync(RegisterUserDto model);
-        Task<AuthResultDto> LoginAsync(LoginUserDTOs model);
+        Task<AuthResultDto> LoginAsync(LoginUserDto model);
     }
 }

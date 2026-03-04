@@ -350,3 +350,15 @@ C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FitZone\o
 C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\FitZone.APIs.pdb
 C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\FitZone.APIs.genruntimeconfig.cache
 C:\Users\khale\Source\Repos\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\ref\FitZone.APIs.dll
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\FitZone.APIs.csproj.AssemblyReference.cache
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\rpswa.dswa.cache.json
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\FitZone.APIs.GeneratedMSBuildEditorConfig.editorconfig
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\FitZone.APIs.AssemblyInfoInputs.cache
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\FitZone.APIs.AssemblyInfo.cs
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\FitZone.APIs.csproj.CoreCompileInputs.cache
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\FitZone.APIs.MvcApplicationPartsAssemblyInfo.cs
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\FitZone.APIs.MvcApplicationPartsAssemblyInfo.cache
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\FitZone.APIs.sourcelink.json
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\FitZone.APIs.dll
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\refint\FitZone.APIs.dll
+D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\FitZone.APIs.pdb
