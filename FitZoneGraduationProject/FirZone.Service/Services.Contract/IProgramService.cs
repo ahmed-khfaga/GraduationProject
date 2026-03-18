@@ -12,21 +12,38 @@ namespace FitZone.Service.Services.Contract
 {
     public interface IProgramService
     {
+        // Public catalogue
         Task<PaginatedResult<ProgramCardDto>> GetPublishedProgramsAsync(ProgramFilterParams filters);
         Task<ProgramDetailDto?> GetProgramDetailAsync(int programId);
-        Task<IEnumerable<ProgramCardDto>> GetCoachProgramsAsync(int coachId);
-        Task<IEnumerable<ProgramCardDto>> GetPendingProgramsAsync();
 
-        // Coach creates a draft program shell
+        // Coach's own programs (all, published + unpublished)
+        Task<IEnumerable<ProgramCardDto>> GetCoachProgramsAsync(int coachId);
+
+        // ── Coach full control ─────
+
         Task<int> CreateProgramAsync(int coachId, CreateProgramDto dto);
 
-        // Coach adds a week with sessions/exercises
+        Task<bool> UpdateProgramAsync(int programId, int coachId, UpdateProgramDto dto);
+
         Task AddProgramWeekAsync(int programId, int coachId, CreateProgramWeekDto dto);
 
-        // Coach submits for review
-        Task SubmitForReviewAsync(int programId, int coachId);
+        Task<bool> UpdateProgramWeekAsync(int programWeekId, int coachId, UpdateProgramWeekDto dto);
 
-        // Admin approves or rejects
-        Task ReviewProgramAsync(int programId, AdminReviewDto dto);
+        Task<bool> DeleteProgramWeekAsync(int programWeekId, int coachId);
+  
+        Task<bool> UpdateSessionAsync(int sessionId, int coachId, UpdateWorkoutSessionDto dto);
+      
+        Task<bool> DeleteSessionAsync(int sessionId, int coachId);
+
+        // Coach publishes their own program — immediately visible in catalogue
+        Task<bool> PublishProgramAsync(int programId, int coachId);
+
+        // Coach unpublishes (hides from catalogue — enrolled trainees unaffected)
+        Task<bool> UnpublishProgramAsync(int programId, int coachId);
+
+        Task<bool> DeleteProgramAsync(int programId, int coachId);
+
+        // Admin hard-deletes any program
+        Task<bool> AdminDeleteProgramAsync(int programId);
     }
 }

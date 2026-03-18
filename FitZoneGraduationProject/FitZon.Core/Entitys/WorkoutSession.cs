@@ -20,14 +20,18 @@ namespace FitZone.Core.Entitys
        public WeekDay weekDay { get; set; }
 
        public int EstimatedDuration { get; set; }
-       public string? WarmupNotes { get; set; }
+
+
+        // For programs that have multiple sessions on the same day this, controls the display order (1 = morning, 2 = afternoon, ..)
+        public int DayOrder { get; set; } = 1;
+        public string? WarmupNotes { get; set; }
 
        public string? PrimerNotes { get; set; }
 
        public string? CooldownNotes { get; set; }
 
        public virtual ProgramWeek ProgramWeek { get; set; }
-
+       public virtual ICollection<SessionExercise> SessionExercises { get; set; } = new HashSet<SessionExercise>();
 
     }
 }

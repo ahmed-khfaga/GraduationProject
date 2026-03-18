@@ -15,6 +15,9 @@ namespace FitZone.Service.DTOs.EnrollmentDTOs
         public int Id { get; set; }
         public string SessionTitle { get; set; }
         public string WeekDay { get; set; }
+
+        // When there is more than one session on the same day,  DayOrder controls the display sequence (1 = first, 2 = second).
+        public int DayOrder { get; set; }
         public int EstimatedDuration { get; set; }
     }
 }

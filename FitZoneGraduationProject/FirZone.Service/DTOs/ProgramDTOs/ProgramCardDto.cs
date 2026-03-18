@@ -12,6 +12,7 @@ namespace FitZone.Service.DTOs.ProgramDTOs
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string? ExpectedOutcome { get; set; }
         public string TrackName { get; set; }
         public string CoachName { get; set; }
         public decimal? CoachRating { get; set; }
@@ -22,5 +23,7 @@ namespace FitZone.Service.DTOs.ProgramDTOs
         public string FitnessLevel { get; set; }
         public string EquipmentType { get; set; }
         public string? PhotoThumbnailUrl { get; set; }
+        public bool IsPublished { get; set; }
+
     }
 }

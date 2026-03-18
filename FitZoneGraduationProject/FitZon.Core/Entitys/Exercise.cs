@@ -10,6 +10,7 @@ namespace FitZone.Core.Entitys
 {
     public class Exercise :BaseEntity
     {
+        public int? CoachID { get; set; }
         public string Name {  get; set; }
 
         public string? Description { get; set; }
@@ -29,7 +30,7 @@ namespace FitZone.Core.Entitys
 
         public string? CommonMistakes { get; set; }
 
-
+        public virtual Coach? Coach { get; set; }
         public virtual ICollection<SessionExercise> SessionExercises { get; set; } = new HashSet<SessionExercise>();
 
 

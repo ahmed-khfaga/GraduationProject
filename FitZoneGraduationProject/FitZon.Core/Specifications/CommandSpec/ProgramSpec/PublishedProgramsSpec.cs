@@ -12,7 +12,7 @@ namespace FitZone.Core.Specifications.CommandSpec.ProgramSpec
     public class PublishedProgramsSpec : BaseSpecatifications<WorkoutProgram>
     {
         public PublishedProgramsSpec(ProgramFilterParams p) : base(w =>
-            w.Status == ProgramStatus.Published &&
+            w.IsPublished &&
             (!p.TrackID.HasValue || w.TrackID == p.TrackID) &&
             (!p.Goal.HasValue || w.TrainingGoal == p.Goal) &&
             (!p.Level.HasValue || w.FitnessLevel == p.Level) &&
@@ -30,9 +30,9 @@ namespace FitZone.Core.Specifications.CommandSpec.ProgramSpec
             ApplyPagination(p.PageIndex, p.PageSize);
         }
 
-        // Count query (no pagination, no includes)
+        // Count query — no pagination, no includes
         public PublishedProgramsSpec(ProgramFilterParams p, bool countOnly) : base(w =>
-            w.Status == ProgramStatus.Published &&
+            w.IsPublished &&
             (!p.TrackID.HasValue || w.TrackID == p.TrackID) &&
             (!p.Goal.HasValue || w.TrainingGoal == p.Goal) &&
             (!p.Level.HasValue || w.FitnessLevel == p.Level) &&

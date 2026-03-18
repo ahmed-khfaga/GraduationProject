@@ -11,9 +11,6 @@ namespace FitZone.Service.Services.Contract
     public interface IMembershipService
     {
         Task<IEnumerable<MembershipWithPricePlanDto>> GetMembershipsByDurationAsync(int duration);
-
-
         Task<IEnumerable<MembershipPlansDto>> GetAllMembershipsPlan();
-
     }
 }

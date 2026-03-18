@@ -24,6 +24,8 @@ namespace FitZone.Core.Entitys
         public virtual ApplicationUser ApplicationUser { get; set; }
         public virtual ICollection<WorkoutProgram> WorkoutPrograms { get; set; } = new HashSet<WorkoutProgram>();
 
+        // Each coach owns their own exercise library
+        public virtual ICollection<Exercise> Exercises { get; set; } = new HashSet<Exercise>();
 
     }
 }

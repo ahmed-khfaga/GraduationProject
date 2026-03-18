@@ -46,15 +46,15 @@ namespace FitZone
             #region Service - AutoMapper
 
             //builder.Services.AddAutoMapper(M => M.AddProfile(new MappingMemberShip()));
-            builder.Services.AddAutoMapper(typeof(MappingMemberShip));
+            //builder.Services.AddAutoMapper(typeof(MappingMemberShip));
             builder.Services.AddAutoMapper(typeof(MappingProfile));
-            builder.Services.AddAutoMapper(typeof(MappingCoach));
-            builder.Services.AddAutoMapper(typeof(MappingTrainee));
-            builder.Services.AddAutoMapper(typeof(MappingTrack));
-            builder.Services.AddAutoMapper(typeof(MappingWorkoutProgram));
-            builder.Services.AddAutoMapper(typeof(MappingWorkoutSession));
-            builder.Services.AddAutoMapper(typeof(MappingExercise));
-            builder.Services.AddAutoMapper(typeof(MappingSessionExercise));
+            //builder.Services.AddAutoMapper(typeof(MappingCoach));
+            //builder.Services.AddAutoMapper(typeof(MappingTrainee));
+            //builder.Services.AddAutoMapper(typeof(MappingTrack));
+            //builder.Services.AddAutoMapper(typeof(MappingWorkoutProgram));
+            //builder.Services.AddAutoMapper(typeof(MappingWorkoutSession));
+            //builder.Services.AddAutoMapper(typeof(MappingExercise));
+            //builder.Services.AddAutoMapper(typeof(MappingSessionExercise));
 
 
 

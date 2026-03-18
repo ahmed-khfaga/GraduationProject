@@ -37,6 +37,14 @@ namespace FitZone.Repository.Data
                     "[Rating] >= 0 AND [Rating] <= 5"
                 ));
 
+            //  Exercise — optional coach ownership 
+            modelBuilder.Entity<Exercise>()
+                .HasOne(e => e.Coach)
+                .WithMany(c => c.Exercises)
+                .HasForeignKey(e => e.CoachID)
+                .OnDelete(DeleteBehavior.SetNull); // deleting a coach nullifies ownership, keeps exercise data intact
+           
+            
             // ── MembershipPlan
             modelBuilder.Entity<MembershipPlan>()
                  .Property(m => m.Price)
@@ -51,9 +59,9 @@ namespace FitZone.Repository.Data
                 .Property(t => t.Height)
                 .HasColumnType("decimal(6,2)");
 
-            // ── Enrollment constraints
-            modelBuilder.Entity<TraineeProgramEnrollment>() // Only ONE active template at a time
-                .HasIndex(x => new { x.TraineeID, x.IsActive })
+            // ── Enrollment constraints, only active one program per track at a time.
+            modelBuilder.Entity<TraineeProgramEnrollment>()
+                .HasIndex(x => new { x.TraineeID, x.TrackID, x.IsActive })
                 .IsUnique()
                 .HasFilter("[IsActive] = 1");
 

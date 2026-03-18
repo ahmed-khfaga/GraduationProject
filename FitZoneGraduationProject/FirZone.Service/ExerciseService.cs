@@ -18,16 +18,16 @@ namespace FitZone.Service
         private readonly IUnitOfWork _uow;
         private readonly IMapper _mapper;
 
-        public ExerciseService(IUnitOfWork uow, IMapper mapper)
-        {
-            _uow = uow;
-            _mapper = mapper;
-        }
+        public ExerciseService(IUnitOfWork uow, IMapper mapper) { _uow = uow; _mapper = mapper; }
 
-        public async Task<PaginatedResult<ExerciseSummaryDto>> GetExercisesAsync(ExerciseFilterParams filters)
+        public async Task<PaginatedResult<ExerciseSummaryDto>> GetExercisesForCoachAsync(int coachId, ExerciseFilterParams filters)
         {
-            var spec = new ExercisesSpec(filters);
+            var spec = new ExercisesForCoachSpec(coachId, filters);
+            var countSpec = new ExercisesForCoachSpec(coachId, filters, countOnly: true);
+
             var all = await _uow.Repository<Exercise>().GetAllWithSpecAsync(spec);
+            var total = await _uow.Repository<Exercise>().CountAsync(countSpec);
+
             var filtered = all.AsEnumerable();
 
             if (!string.IsNullOrWhiteSpace(filters.Muscle))
@@ -46,29 +46,33 @@ namespace FitZone.Service
             {
                 PageIndex = filters.PageIndex,
                 PageSize = filters.PageSize,
-                TotalCount = list.Count,
+                TotalCount = total, // DB-level count — not list.Count which is a subset after pagination
                 Data = _mapper.Map<IEnumerable<ExerciseSummaryDto>>(list)
             };
         }
 
-        public async Task<ExerciseDetailDto?> GetExerciseByIdAsync(int id)
+        public async Task<ExerciseDetailDto?> GetExerciseByIdForCoachAsync(int id, int coachId)
         {
-            var exercise = await _uow.Repository<Exercise>().GetAsync(id);
+            var spec = new ExerciseByIdForCoachSpec(id, coachId);
+            var exercise = await _uow.Repository<Exercise>().GetWithSpecAsync(spec);
             return exercise is null ? null : _mapper.Map<ExerciseDetailDto>(exercise);
         }
 
-        public async Task<int> CreateExerciseAsync(CreateExerciseDto dto)
+        public async Task<int> CreateExerciseAsync(CreateExerciseDto dto, int coachId)
         {
             var exercise = _mapper.Map<Exercise>(dto);
+            exercise.CoachID = coachId;             // always private to the creating coach
             _uow.Repository<Exercise>().Add(exercise);
             await _uow.CompleteAsync();
             return exercise.ID;
         }
 
-        public async Task<bool> UpdateExerciseAsync(int id, CreateExerciseDto dto)
+        public async Task<bool> UpdateExerciseAsync(int id, CreateExerciseDto dto, int coachId)
         {
-            var exercise = await _uow.Repository<Exercise>().GetAsync(id);
-            if (exercise is null) return false;
+            // Coaches can only edit their own private exercises — global ones are protected
+            var spec = new ExerciseByIdForCoachSpec(id, coachId);
+            var exercise = await _uow.Repository<Exercise>().GetWithSpecAsync(spec);
+            if (exercise is null || exercise.CoachID is null) return false; // null = global — read-only
 
             _mapper.Map(dto, exercise);
             _uow.Repository<Exercise>().Update(exercise);
@@ -76,10 +80,11 @@ namespace FitZone.Service
             return true;
         }
 
-        public async Task<bool> DeleteExerciseAsync(int id)
+        public async Task<bool> DeleteExerciseAsync(int id, int coachId)
         {
-            var exercise = await _uow.Repository<Exercise>().GetAsync(id);
-            if (exercise is null) return false;
+            var spec = new ExerciseByIdForCoachSpec(id, coachId);
+            var exercise = await _uow.Repository<Exercise>().GetWithSpecAsync(spec);
+            if (exercise is null || exercise.CoachID is null) return false; // global — cannot delete
 
             _uow.Repository<Exercise>().Delete(exercise);
             await _uow.CompleteAsync();

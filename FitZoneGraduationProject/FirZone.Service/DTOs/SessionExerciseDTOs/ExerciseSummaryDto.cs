@@ -13,5 +13,6 @@ namespace FitZone.Service.DTOs.SessionExerciseDTOs
         public string? PrimaryMuscles { get; set; }
         public string? VideoUrl { get; set; }
         public string FitnessLevel { get; set; }
+        public bool IsGlobal { get; set; }
     }
 }

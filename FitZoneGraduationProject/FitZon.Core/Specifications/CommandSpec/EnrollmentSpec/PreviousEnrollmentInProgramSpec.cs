@@ -11,11 +11,11 @@ namespace FitZone.Core.Specifications.CommandSpec.EnrollmentSpec
     public class PreviousEnrollmentInProgramSpec : BaseSpecatifications<TraineeProgramEnrollment>
     {
         public PreviousEnrollmentInProgramSpec(int traineeId, int programId) : base(e =>
-            e.TraineeID == traineeId &&
-            e.WorkoutProgramID == programId &&
-            e.IsActive == false)
+            e.TraineeID == traineeId && e.WorkoutProgramID == programId && !e.IsActive)
         {
-            OrderByDescending = e => e.MaxWeekUnlocked; // pick the one with most progress
+            Includes.Add(e => e.WorkoutProgram); // required by MapToEnrollmentDto and SyncMaxWeekUnlockedAsync
+            Includes.Add(e => e.Track);          // required by MapToEnrollmentDto
+            OrderByDescending = e => e.MaxWeekUnlocked; // pick the row with the most saved progress
         }
     }
 }

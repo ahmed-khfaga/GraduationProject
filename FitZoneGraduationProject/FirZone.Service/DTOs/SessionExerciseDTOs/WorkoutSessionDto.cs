@@ -11,6 +11,7 @@ namespace FitZone.Service.DTOs.SessionExerciseDTOs
         public int Id { get; set; }
         public string SessionTitle { get; set; }
         public string WeekDay { get; set; }
+        public int DayOrder { get; set; }
         public int EstimatedDuration { get; set; }
         public string? WarmupNotes { get; set; }
         public string? PrimerNotes { get; set; }

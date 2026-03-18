@@ -104,7 +104,7 @@ namespace FitZone.APIs.Controllers
             return Ok(new { message = "Enrollment cancelled. Your progress has been saved — you can resume this program any time." });
         }
 
-        // ── Private helpers ──────────────────────────────────────────
+        // ── Private helpers ──────
 
         private async Task<int?> ResolveTraineeIdAsync()
         {

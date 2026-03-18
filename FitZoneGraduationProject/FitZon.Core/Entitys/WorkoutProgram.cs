@@ -24,6 +24,12 @@ namespace FitZone.Core.Entitys
 
         public string Description { get; set; }
 
+        
+        // What the trainee will achieve by finishing this program. 
+        public string? ExpectedOutcome { get; set; }
+
+        /// What the trainee should do or move on to after completing this program.
+        public string? NextSteps { get; set; }
         public int DurationOnWeeks {  get; set; }
 
         public int SessionsPerWeeks {  get; set; }
@@ -38,10 +44,8 @@ namespace FitZone.Core.Entitys
 
         public EquipmentType EquipmentType { get; set; }
 
-        // Admin approval workflow
-        public ProgramStatus Status { get; set; } = ProgramStatus.Draft;
-
-        public string? RejectionNote { get; set; }
+        // True = visible in the public catalogue and enrollable by trainees,  Coach flips this themselves — no admin approval needed.
+        public bool IsPublished { get; set; } = false;
 
         public DateTime? PublishedAt { get; set; }
 

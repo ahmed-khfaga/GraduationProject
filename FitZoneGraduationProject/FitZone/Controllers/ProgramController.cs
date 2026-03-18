@@ -22,95 +22,166 @@ namespace FitZone.APIs.Controllers
             _coachService = coachService;
         }
 
-        // GET api/programs  — public, all published programs with filtering
+        // ── Public catalogue ─────────
+
         [HttpGet]
         public async Task<ActionResult<PaginatedResult<ProgramCardDto>>> GetAll([FromQuery] ProgramFilterParams filters)
-        {
-            var result = await _programService.GetPublishedProgramsAsync(filters);
-            return Ok(result);
-        }
+            => Ok(await _programService.GetPublishedProgramsAsync(filters));
 
-        // GET api/programs/{id}  — program detail page
         [HttpGet("{id:int}")]
         public async Task<ActionResult<ProgramDetailDto>> GetById(int id)
         {
             var program = await _programService.GetProgramDetailAsync(id);
-            if (program is null)
-                return NotFound(new ApiException(404, "Program not found."));
-
-            return Ok(program);
+            return program is null ? NotFound(new ApiException(404, "Program not found.")) : Ok(program);
         }
 
-        // GET api/programs/coach/{coachId}  — public coach program list
         [HttpGet("coach/{coachId:int}")]
         public async Task<ActionResult<IEnumerable<ProgramCardDto>>> GetByCoach(int coachId)
+            => Ok(await _programService.GetCoachProgramsAsync(coachId));
+
+        // GET api/programs/mine  —  coach sees ALL their programs (published + draft)
+        [HttpGet("mine")]
+        [Authorize(Roles = "Coach")]
+        public async Task<ActionResult<IEnumerable<ProgramCardDto>>> GetMyPrograms()
         {
-            var programs = await _programService.GetCoachProgramsAsync(coachId);
+            var coachId = await ResolveCoachIdAsync();
+            if (coachId is null) return CoachNotFound();
+            var programs = await _programService.GetCoachProgramsAsync(coachId.Value);
             return Ok(programs);
         }
 
-        // GET api/programs/pending  — Admin only
-        [HttpGet("pending")]
-        [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<IEnumerable<ProgramCardDto>>> GetPending()
-        {
-            var programs = await _programService.GetPendingProgramsAsync();
-            return Ok(programs);
-        }
+        // ── Coach — create & manage ───────────────
 
-        // POST api/programs  — Coach creates a draft
+        // POST api/programs  — create shell
         [HttpPost]
         [Authorize(Roles = "Coach")]
         public async Task<ActionResult> Create([FromBody] CreateProgramDto dto)
         {
-            var appUserId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
-            var coach = await _coachService.GetMyProfileAsync(appUserId);
-
-            if (coach is null)
-                return Unauthorized(new ApiException(401, "Coach profile not found."));
-
-            var programId = await _programService.CreateProgramAsync(coach.Id, dto);
-            return CreatedAtAction(nameof(GetById), new { id = programId }, new { id = programId });
+            var coachId = await ResolveCoachIdAsync();
+            if (coachId is null) return CoachNotFound();
+            var id = await _programService.CreateProgramAsync(coachId.Value, dto);
+            return CreatedAtAction(nameof(GetById), new { id }, new { id });
         }
 
-        // POST api/programs/{id}/weeks  — Coach adds a week to their draft
+        // PUT api/programs/{id}  — edit 
+        [HttpPut("{id:int}")]
+        [Authorize(Roles = "Coach")]
+        public async Task<ActionResult> Update(int id, [FromBody] UpdateProgramDto dto)
+        {
+            var coachId = await ResolveCoachIdAsync();
+            if (coachId is null) return CoachNotFound();
+            await _programService.UpdateProgramAsync(id, coachId.Value, dto);
+            return Ok(new { message = "Program updated." });
+        }
+
+        // POST api/programs/{id}/weeks  — add a week with sessions
         [HttpPost("{id:int}/weeks")]
         [Authorize(Roles = "Coach")]
         public async Task<ActionResult> AddWeek(int id, [FromBody] CreateProgramWeekDto dto)
         {
-            var appUserId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
-            var coach = await _coachService.GetMyProfileAsync(appUserId);
-
-            if (coach is null)
-                return Unauthorized(new ApiException(401, "Coach profile not found."));
-
-            await _programService.AddProgramWeekAsync(id, coach.Id, dto);
-            return Ok(new { message = $"Week {dto.WeekNumber} added successfully." });
+            var coachId = await ResolveCoachIdAsync();
+            if (coachId is null) return CoachNotFound();
+            await _programService.AddProgramWeekAsync(id, coachId.Value, dto);
+            return Ok(new { message = $"Week {dto.WeekNumber} added." });
         }
 
-        // POST api/programs/{id}/submit  — Coach submits for admin review
-        [HttpPost("{id:int}/submit")]
+        // PUT api/programs/weeks/{weekId}  — edit week 
+        [HttpPut("weeks/{weekId:int}")]
         [Authorize(Roles = "Coach")]
-        public async Task<ActionResult> Submit(int id)
+        public async Task<ActionResult> UpdateWeek(int weekId, [FromBody] UpdateProgramWeekDto dto)
         {
-            var appUserId = User.FindFirstValue(ClaimTypes.NameIdentifier)!;
-            var coach = await _coachService.GetMyProfileAsync(appUserId);
-
-            if (coach is null)
-                return Unauthorized(new ApiException(401, "Coach profile not found."));
-
-            await _programService.SubmitForReviewAsync(id, coach.Id);
-            return Ok(new { message = "Program submitted for review." });
+            var coachId = await ResolveCoachIdAsync();
+            if (coachId is null) return CoachNotFound();
+            var updated = await _programService.UpdateProgramWeekAsync(weekId, coachId.Value, dto);
+            return updated ? Ok(new { message = "Week updated." }) : NotFound(new ApiException(404, "Week not found."));
         }
 
-        // POST api/programs/{id}/review  — Admin approves or rejects
-        [HttpPost("{id:int}/review")]
+        // DELETE api/programs/weeks/{weekId}  — delete a week
+        [HttpDelete("weeks/{weekId:int}")]
+        [Authorize(Roles = "Coach")]
+        public async Task<ActionResult> DeleteWeek(int weekId)
+        {
+            var coachId = await ResolveCoachIdAsync();
+            if (coachId is null) return CoachNotFound();
+            var deleted = await _programService.DeleteProgramWeekAsync(weekId, coachId.Value);
+            return deleted ? Ok(new { message = "Week deleted." }) : NotFound(new ApiException(404, "Week not found."));
+        }
+
+        // PUT api/programs/sessions/{sessionId}  — edit session 
+        [HttpPut("sessions/{sessionId:int}")]
+        [Authorize(Roles = "Coach")]
+        public async Task<ActionResult> UpdateSession(int sessionId, [FromBody] UpdateWorkoutSessionDto dto)
+        {
+            var coachId = await ResolveCoachIdAsync();
+            if (coachId is null) return CoachNotFound();
+            var updated = await _programService.UpdateSessionAsync(sessionId, coachId.Value, dto);
+            return updated ? Ok(new { message = "Session updated." }) : NotFound(new ApiException(404, "Session not found."));
+        }
+
+        // DELETE api/programs/sessions/{sessionId}  — delete a session
+        [HttpDelete("sessions/{sessionId:int}")]
+        [Authorize(Roles = "Coach")]
+        public async Task<ActionResult> DeleteSession(int sessionId)
+        {
+            var coachId = await ResolveCoachIdAsync();
+            if (coachId is null) return CoachNotFound();
+            var deleted = await _programService.DeleteSessionAsync(sessionId, coachId.Value);
+            return deleted ? Ok(new { message = "Session deleted." }) : NotFound(new ApiException(404, "Session not found."));
+        }
+
+        // POST api/programs/{id}/publish  — coach publishes immediately
+        [HttpPost("{id:int}/publish")]
+        [Authorize(Roles = "Coach")]
+        public async Task<ActionResult> Publish(int id)
+        {
+            var coachId = await ResolveCoachIdAsync();
+            if (coachId is null) return CoachNotFound();
+            await _programService.PublishProgramAsync(id, coachId.Value);
+            return Ok(new { message = "Program published and visible to trainees." });
+        }
+
+        // POST api/programs/{id}/unpublish  — coach hides from catalogue
+        [HttpPost("{id:int}/unpublish")]
+        [Authorize(Roles = "Coach")]
+        public async Task<ActionResult> Unpublish(int id)
+        {
+            var coachId = await ResolveCoachIdAsync();
+            if (coachId is null) return CoachNotFound();
+            await _programService.UnpublishProgramAsync(id, coachId.Value);
+            return Ok(new { message = "Program unpublished. Enrolled trainees are unaffected." });
+        }
+
+        // DELETE api/programs/{id}  — coach deletes their own program
+        [HttpDelete("{id:int}")]
+        [Authorize(Roles = "Coach")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var coachId = await ResolveCoachIdAsync();
+            if (coachId is null) return CoachNotFound();
+            await _programService.DeleteProgramAsync(id, coachId.Value);
+            return Ok(new { message = "Program deleted." });
+        }
+
+        // ── Admin ─────────
+
+        // DELETE api/programs/admin/{id}  — admin can delete any program
+        [HttpDelete("admin/{id:int}")]
         [Authorize(Roles = "Admin")]
-        public async Task<ActionResult> Review(int id, [FromBody] AdminReviewDto dto)
+        public async Task<ActionResult> AdminDelete(int id)
         {
-            await _programService.ReviewProgramAsync(id, dto);
-            var action = dto.Approve ? "published" : "rejected";
-            return Ok(new { message = $"Program {action}." });
+            var deleted = await _programService.AdminDeleteProgramAsync(id);
+            return deleted ? Ok(new { message = "Program deleted by admin." }) : NotFound(new ApiException(404, "Program not found."));
         }
+
+        // ── Helpers ───────
+
+        private async Task<int?> ResolveCoachIdAsync()
+        {
+            var profile = await _coachService.GetMyProfileAsync(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+            return profile?.Id;
+        }
+
+        private ActionResult CoachNotFound()
+            => Unauthorized(new ApiException(401, "Coach profile not found."));
     }
 }

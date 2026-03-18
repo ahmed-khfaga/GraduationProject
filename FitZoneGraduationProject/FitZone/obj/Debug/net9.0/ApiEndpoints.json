@@ -628,9 +628,9 @@
   },
   {
     "ContainingType": "FitZone.APIs.Controllers.ProgramController",
-    "Method": "Review",
-    "RelativePath": "api/Program/{id}/review",
-    "HttpMethod": "POST",
+    "Method": "Update",
+    "RelativePath": "api/Program/{id}",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -641,7 +641,7 @@
       },
       {
         "Name": "dto",
-        "Type": "FitZone.Service.DTOs.EnrollmentDTOs.AdminReviewDto",
+        "Type": "FitZone.Service.DTOs.ProgramDTOs.UpdateProgramDto",
         "IsRequired": true
       }
     ],
@@ -649,8 +649,40 @@
   },
   {
     "ContainingType": "FitZone.APIs.Controllers.ProgramController",
-    "Method": "Submit",
-    "RelativePath": "api/Program/{id}/submit",
+    "Method": "Delete",
+    "RelativePath": "api/Program/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.ProgramController",
+    "Method": "Publish",
+    "RelativePath": "api/Program/{id}/publish",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.ProgramController",
+    "Method": "Unpublish",
+    "RelativePath": "api/Program/{id}/unpublish",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -686,6 +718,22 @@
   },
   {
     "ContainingType": "FitZone.APIs.Controllers.ProgramController",
+    "Method": "AdminDelete",
+    "RelativePath": "api/Program/admin/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.ProgramController",
     "Method": "GetByCoach",
     "RelativePath": "api/Program/coach/{coachId}",
     "HttpMethod": "GET",
@@ -712,8 +760,8 @@
   },
   {
     "ContainingType": "FitZone.APIs.Controllers.ProgramController",
-    "Method": "GetPending",
-    "RelativePath": "api/Program/pending",
+    "Method": "GetMyPrograms",
+    "RelativePath": "api/Program/mine",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -729,6 +777,80 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.ProgramController",
+    "Method": "UpdateSession",
+    "RelativePath": "api/Program/sessions/{sessionId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sessionId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "FitZone.Service.DTOs.SessionExerciseDTOs.UpdateWorkoutSessionDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.ProgramController",
+    "Method": "DeleteSession",
+    "RelativePath": "api/Program/sessions/{sessionId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sessionId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.ProgramController",
+    "Method": "UpdateWeek",
+    "RelativePath": "api/Program/weeks/{weekId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "weekId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "FitZone.Service.DTOs.SessionExerciseDTOs.UpdateProgramWeekDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.ProgramController",
+    "Method": "DeleteWeek",
+    "RelativePath": "api/Program/weeks/{weekId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "weekId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "FitZone.APIs.Controllers.TrackController",

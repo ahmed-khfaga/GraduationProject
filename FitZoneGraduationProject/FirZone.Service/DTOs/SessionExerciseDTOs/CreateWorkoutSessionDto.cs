@@ -11,6 +11,9 @@ namespace FitZone.Service.DTOs.SessionExerciseDTOs
     {
         public string SessionTitle { get; set; }
         public WeekDay WeekDay { get; set; }
+        
+        // When a day has more than one session, DayOrder controls the display sequence
+        public int DayOrder { get; set; } = 1;
         public int EstimatedDuration { get; set; }
         public string? WarmupNotes { get; set; }
         public string? PrimerNotes { get; set; }

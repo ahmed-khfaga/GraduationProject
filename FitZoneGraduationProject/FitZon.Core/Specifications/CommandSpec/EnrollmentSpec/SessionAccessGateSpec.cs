@@ -12,10 +12,10 @@ namespace FitZone.Core.Specifications.CommandSpec.EnrollmentSpec
     public class SessionAccessGateSpec : BaseSpecatifications<TraineeProgramEnrollment>
     {
         public SessionAccessGateSpec(int traineeId, int programId) : base(e =>
-            e.TraineeID == traineeId &&
-            e.WorkoutProgramID == programId)
+            e.TraineeID == traineeId && e.WorkoutProgramID == programId)
         {
-            // No includes needed — we only need MaxWeekUnlocked and IsActive
+            Includes.Add(e => e.WorkoutProgram);
+            Includes.Add(e => e.Track);          
         }
     }
 }
