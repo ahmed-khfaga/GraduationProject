@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 using FitZone.Core.Entitys;
 using FitZone.Service.DTOs;
 
-namespace FitZone.Service.Services.Contract
+namespace FitZone.Service.Services.Contract;
+
+public interface IMembershipService
 {
-    public interface IMembershipService
-    {
-        Task<IEnumerable<MembershipWithPricePlanDto>> GetMembershipsByDurationAsync(int duration);
-        Task<IEnumerable<MembershipPlansDto>> GetAllMembershipsPlan();
-    }
+    Task<IEnumerable<MembershipWithPricePlanDto>> GetMembershipsByDurationAsync(int duration);
+    Task<IEnumerable<MembershipPlansDto>> GetAllMembershipsPlan();
+
+    Task<bool> HasPremiumMembership(string applicationUserId);
+
 }
