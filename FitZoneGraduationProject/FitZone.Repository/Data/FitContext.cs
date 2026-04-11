@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FitZone.Core.Entitys;
+using FitZone.Core.Entitys.Chat;
 using FitZone.Core.Entitys.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -107,6 +108,20 @@ namespace FitZone.Repository.Data
 
             #endregion
 
+            #region ChatUser
+            modelBuilder.Entity<ChatMessage>()
+               .HasOne(m => m.Sender)
+               .WithMany()
+               .HasForeignKey(m => m.SenderId)
+               .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<ChatMessage>()
+                .HasOne(m => m.Receiver)
+                .WithMany()
+                .HasForeignKey(m => m.ReceiverId)
+                .OnDelete(DeleteBehavior.Restrict); 
+            #endregion
+
 
 
         }
@@ -135,6 +150,8 @@ namespace FitZone.Repository.Data
         public virtual DbSet<TraineeProgramEnrollment> TraineeProgramEnrollments { get; set; }
 
         public virtual DbSet<TraineeMembership> TraineeMemberships { get; set; }
+
+        public virtual DbSet<ChatMessage> ChatMessages { get; set; }
 
 
 
