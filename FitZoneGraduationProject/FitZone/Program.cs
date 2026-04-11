@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using FitZone.APIs.Helper;
 using FitZone.APIs.Middlewares;
+using FitZone.APIs.SignalR;
 using FitZone.Core.Entitys.Identity;
 using FitZone.Core.Repository.Contract;
 using FitZone.Repository;
@@ -9,6 +10,7 @@ using FitZone.Repository.Data;
 using FitZone.Service;
 using FitZone.Service.Errors;
 using FitZone.Service.Services.Contract;
+using FitZone.Service.Services.Contract.Chat;
 using FitZone.Services.Contract;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -26,7 +28,7 @@ namespace FitZone
 
             builder.Services.AddControllers();
             builder.Services.AddOpenApi();
-
+            builder.Services.AddSignalR();
             #region connectionString  
 
             builder.Services.AddDbContext<FitContext>(options =>
@@ -89,6 +91,25 @@ namespace FitZone
                     ValidateAudience = true,
                     ValidAudience = builder.Configuration["JWT:ValidAudience"],
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["JWT:SecretKey"]))
+                };
+
+
+                option.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+                        var accessToken = context.Request.Query["access_token"];
+
+                        var path = context.HttpContext.Request.Path;
+
+                        if (!string.IsNullOrEmpty(accessToken) &&
+                            path.StartsWithSegments("/chatHub"))
+                        {
+                            context.Token = accessToken;
+                        }
+
+                        return Task.CompletedTask;
+                    }
                 };
             });
 
@@ -164,6 +185,11 @@ namespace FitZone
 
             #endregion
 
+            #region RegisterMessageService
+
+            builder.Services.AddSignalR();
+            builder.Services.AddScoped<IChatService, ChatService>(); 
+            #endregion
 
             // ?? Pipeline ????????????????????
 
@@ -191,6 +217,8 @@ namespace FitZone
             app.UseAuthorization();
 
             app.MapControllers();
+
+            app.MapHub<ChatHub>("/chatHub");
 
             app.Run();
         }

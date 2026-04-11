@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using FitZone.Core.Entitys;
+using FitZone.Core.Entitys.Chat;
 using FitZone.Service.DTOs;
+using FitZone.Service.DTOs.ChatDTOs;
 using FitZone.Service.DTOs.EnrollmentDTOs;
 using FitZone.Service.DTOs.ProfileDTOs;
 using FitZone.Service.DTOs.ProgramDTOs;
@@ -88,6 +90,9 @@ namespace FitZone.APIs.Helper
             CreateMap<Trainee, TraineeProfileDto>()
                 .ForMember(d => d.FullName, o => o.MapFrom(s => s.ApplicationUser.FullName))
                 .ForMember(d => d.Email, o => o.MapFrom(s => s.ApplicationUser.Email));
+
+            // -- Mapping Chat
+            CreateMap<ChatMessage, ChatMessageDto>();
         }
     }
 }
