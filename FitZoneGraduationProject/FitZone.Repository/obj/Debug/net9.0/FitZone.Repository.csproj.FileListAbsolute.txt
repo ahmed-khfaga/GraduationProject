@@ -52,3 +52,21 @@ D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZone.Repository\bin\Debu
 D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone..E22D62B3.Up2Date
 D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone.Repository.genruntimeconfig.cache
 D:\DotNet\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\ref\FitZone.Repository.dll
+D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone.Repository\bin\Debug\net9.0\FitZone.Repository.deps.json
+D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone.Repository\bin\Debug\net9.0\FitZone.Repository.runtimeconfig.json
+D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone.Repository\bin\Debug\net9.0\FitZone.Repository.dll
+D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone.Repository\bin\Debug\net9.0\FitZone.Repository.pdb
+D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone.Repository\bin\Debug\net9.0\FitZone.Core.dll
+D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone.Repository\bin\Debug\net9.0\FitZone.Core.pdb
+D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone.Repository.csproj.AssemblyReference.cache
+D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone.Repository.GeneratedMSBuildEditorConfig.editorconfig
+D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone.Repository.AssemblyInfoInputs.cache
+D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone.Repository.AssemblyInfo.cs
+D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone.Repository.csproj.CoreCompileInputs.cache
+D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone.Repository.sourcelink.json
+D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone..E22D62B3.Up2Date
+D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone.Repository.dll
+D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\refint\FitZone.Repository.dll
+D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone.Repository.pdb
+D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\FitZone.Repository.genruntimeconfig.cache
+D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone.Repository\obj\Debug\net9.0\ref\FitZone.Repository.dll
