@@ -35,15 +35,12 @@ namespace FitZone.APIs.SignalR
 
             if (!hasAccess)
                 throw new HubException("Upgrade to Premium to chat");
-
-            // ✅ Save message
+         
             await _chatService.SaveMessageAsync(senderId, receiverId, message);
 
-            // ✅ Send to receiver
             await Clients.User(receiverId)
                 .SendAsync("ReceiveMessage", senderId, message);
 
-            // ✅ (Optional) Send back to sender
             await Clients.Caller
                 .SendAsync("ReceiveMessage", senderId, message);
         }
