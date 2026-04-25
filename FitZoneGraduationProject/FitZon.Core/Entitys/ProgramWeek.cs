@@ -9,7 +9,7 @@ namespace FitZone.Core.Entitys
 {
     public class ProgramWeek :BaseEntity
     {
-        public int WorkoutProgramID { get; set; }
+        public int WorkoutProgramId { get; set; }
 
         public int WeekNumber { get; set; }
 

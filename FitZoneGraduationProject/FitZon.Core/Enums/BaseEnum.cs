@@ -77,4 +77,10 @@ namespace FitZone.Core.Enums
         Published,
         Rejected
     }
+    public enum PaymentStatus
+    {
+        Pending,
+        Paid,
+        Failed
+    }
 }

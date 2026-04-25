@@ -13,11 +13,9 @@ namespace FitZone.Core.Entitys
     {
 
 
-        [ForeignKey("TrackID")]
-        public int TrackID { get; set; }
+        public int TrackId { get; set; }
 
-        [ForeignKey("CoachID")]
-        public int CoachID { get; set; }
+        public int CoachId { get; set; }
 
 
         public string Name { get; set; }

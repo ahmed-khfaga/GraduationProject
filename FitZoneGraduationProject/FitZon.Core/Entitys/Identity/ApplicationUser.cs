@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FitZone.Core.Entitys.PaymentEntity;
 using FitZone.Core.Enums;
 using Microsoft.AspNetCore.Identity;
 
@@ -26,5 +27,7 @@ namespace FitZone.Core.Entitys.Identity
 
         public virtual Trainee Trainee { get; set; }
         public virtual Coach Coach { get; set; }
+
+        public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
     }
 }

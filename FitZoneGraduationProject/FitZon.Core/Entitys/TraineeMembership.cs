@@ -12,11 +12,9 @@ namespace FitZone.Core.Entitys
     {
 
 
-        [ForeignKey("Trainee")]
-        public int TraineeID { get; set; }
+        public int TraineeId { get; set; }
 
-        [ForeignKey("MembershipPlan")]
-        public int MembershipPlanID { get; set; }
+        public int MembershipPlanId { get; set; }
 
         public bool IsActive { get; set; } = true;
 

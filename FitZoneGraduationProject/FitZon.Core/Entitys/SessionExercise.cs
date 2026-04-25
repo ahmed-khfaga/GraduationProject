@@ -11,9 +11,9 @@ namespace FitZone.Core.Entitys
 {
     public class SessionExercise : BaseEntity
     {
-        public int WorkoutSessionID { get; set; }
+        public int WorkoutSessionId { get; set; }
 
-        public int ExerciseID { get; set; }
+        public int ExerciseId { get; set; }
 
         public SectionType SectionType { get; set; }
 

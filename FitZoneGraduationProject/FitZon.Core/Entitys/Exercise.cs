@@ -10,7 +10,7 @@ namespace FitZone.Core.Entitys
 {
     public class Exercise :BaseEntity
     {
-        public int? CoachID { get; set; }
+        public int? CoachId { get; set; }
         public string Name {  get; set; }
 
         public string? Description { get; set; }

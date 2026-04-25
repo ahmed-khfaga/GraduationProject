@@ -11,9 +11,9 @@ namespace FitZone.Core.Entitys
 {
     public class TraineeProgramEnrollment : BaseEntity
     {
-        public int TraineeID { get; set; }
-        public int WorkoutProgramID { get; set; }
-        public int TrackID { get; set; }
+        public int TraineeId { get; set; }
+        public int WorkoutProgramId { get; set; }
+        public int TrackId { get; set; }
 
         public DateTime StartDate { get; set; } = DateTime.UtcNow;
 
