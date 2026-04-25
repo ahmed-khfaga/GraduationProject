@@ -11,7 +11,7 @@ namespace FitZone.Core.Specifications.CommandSpec.ExerciseSpec
     public class ExercisesForCoachSpec : BaseSpecatifications<Exercise>
     {
         public ExercisesForCoachSpec(int coachId, ExerciseFilterParams p) : base(e =>
-            (e.CoachID == null || e.CoachID == coachId) &&
+            (e.CoachId == null || e.CoachId == coachId) &&
             (!p.Level.HasValue || e.FitnessLevel == p.Level))
         {
             OrderBy = e => e.Name;
@@ -20,7 +20,7 @@ namespace FitZone.Core.Specifications.CommandSpec.ExerciseSpec
 
         // Count overload (no pagination)
         public ExercisesForCoachSpec(int coachId, ExerciseFilterParams p, bool countOnly) : base(e =>
-            (e.CoachID == null || e.CoachID == coachId) &&
+            (e.CoachId == null || e.CoachId == coachId) &&
             (!p.Level.HasValue || e.FitnessLevel == p.Level))
         {
         }

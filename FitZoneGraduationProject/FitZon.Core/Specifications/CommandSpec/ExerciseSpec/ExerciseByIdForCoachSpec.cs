@@ -12,7 +12,7 @@ namespace FitZone.Core.Specifications.CommandSpec.ExerciseSpec
     public class ExerciseByIdForCoachSpec : BaseSpecatifications<Exercise>
     {
         public ExerciseByIdForCoachSpec(int exerciseId, int coachId) : base(e =>
-            e.ID == exerciseId && (e.CoachID == null || e.CoachID == coachId))
+            e.Id == exerciseId && (e.CoachId == null || e.CoachId == coachId))
         {
         }
     }

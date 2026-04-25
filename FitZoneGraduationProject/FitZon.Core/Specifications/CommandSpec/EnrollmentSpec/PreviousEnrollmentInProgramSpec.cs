@@ -11,7 +11,7 @@ namespace FitZone.Core.Specifications.CommandSpec.EnrollmentSpec
     public class PreviousEnrollmentInProgramSpec : BaseSpecatifications<TraineeProgramEnrollment>
     {
         public PreviousEnrollmentInProgramSpec(int traineeId, int programId) : base(e =>
-            e.TraineeID == traineeId && e.WorkoutProgramID == programId && !e.IsActive)
+            e.TraineeId == traineeId && e.WorkoutProgramId == programId && !e.IsActive)
         {
             Includes.Add(e => e.WorkoutProgram); // required by MapToEnrollmentDto and SyncMaxWeekUnlockedAsync
             Includes.Add(e => e.Track);          // required by MapToEnrollmentDto

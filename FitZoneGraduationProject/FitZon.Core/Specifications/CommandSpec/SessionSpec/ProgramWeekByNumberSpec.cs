@@ -11,7 +11,7 @@ namespace FitZone.Core.Specifications.CommandSpec.SessionSpec
     public class ProgramWeekByNumberSpec : BaseSpecatifications<ProgramWeek>
     {
         public ProgramWeekByNumberSpec(int programId, int weekNumber) : base(w =>
-            w.WorkoutProgramID == programId &&
+            w.WorkoutProgramId == programId &&
             w.WeekNumber == weekNumber)
         {
             Includes.Add(w => w.WorkoutSessions);

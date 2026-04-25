@@ -10,7 +10,7 @@ namespace FitZone.Core.Specifications.CommandSpec.SessionSpec
     // Get a single session with its full exercise list (for the session detail page)
     public class SessionWithExercisesSpec : BaseSpecatifications<WorkoutSession>
     {
-        public SessionWithExercisesSpec(int sessionId) : base(s => s.ID == sessionId)
+        public SessionWithExercisesSpec(int sessionId) : base(s => s.Id == sessionId)
         {
             Includes.Add(s => s.ProgramWeek); // needed to verify week number for access gate
         }

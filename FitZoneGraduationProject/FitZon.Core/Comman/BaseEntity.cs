@@ -8,6 +8,6 @@ namespace FitZone.Core.Comman
 {
     public class BaseEntity
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
     }
 }

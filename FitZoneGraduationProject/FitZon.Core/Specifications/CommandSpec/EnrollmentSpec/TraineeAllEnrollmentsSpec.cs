@@ -10,7 +10,7 @@ namespace FitZone.Core.Specifications.CommandSpec.EnrollmentSpec
     // ALL enrollments for a trainee — active AND historical (history page)
     public class TraineeAllEnrollmentsSpec : BaseSpecatifications<TraineeProgramEnrollment>
     {
-        public TraineeAllEnrollmentsSpec(int traineeId) : base(e => e.TraineeID == traineeId)
+        public TraineeAllEnrollmentsSpec(int traineeId) : base(e => e.TraineeId == traineeId)
         {
             Includes.Add(e => e.WorkoutProgram);
             Includes.Add(e => e.Track);

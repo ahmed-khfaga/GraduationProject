@@ -11,7 +11,7 @@ namespace FitZone.Core.Specifications
     {
         public ActiveMembershipSpec(int traineeId)
         : base(m =>
-            m.TraineeID == traineeId &&
+            m.TraineeId == traineeId &&
             m.IsActive &&
             m.EndDate > DateTime.UtcNow)
         {

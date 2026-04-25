@@ -10,7 +10,7 @@ namespace FitZone.Core.Specifications.CommandSpec.ProfileSpec
     // Coach public profile
     public class CoachByIdSpec : BaseSpecatifications<Coach>
     {
-        public CoachByIdSpec(int coachId) : base(c => c.ID == coachId)
+        public CoachByIdSpec(int coachId) : base(c => c.Id == coachId)
         {
             Includes.Add(c => c.ApplicationUser);
         }

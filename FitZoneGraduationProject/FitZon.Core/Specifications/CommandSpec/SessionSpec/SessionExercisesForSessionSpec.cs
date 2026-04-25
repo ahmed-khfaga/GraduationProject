@@ -10,7 +10,7 @@ namespace FitZone.Core.Specifications.CommandSpec.SessionSpec
     // Session exercises with exercise detail — used to build the full session view
     public class SessionExercisesForSessionSpec : BaseSpecatifications<SessionExercise>
     {
-        public SessionExercisesForSessionSpec(int sessionId) : base(se => se.WorkoutSessionID == sessionId)
+        public SessionExercisesForSessionSpec(int sessionId) : base(se => se.WorkoutSessionId == sessionId)
         {
             Includes.Add(se => se.Exercise);
         }

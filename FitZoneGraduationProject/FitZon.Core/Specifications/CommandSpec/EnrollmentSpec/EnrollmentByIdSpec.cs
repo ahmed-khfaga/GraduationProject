@@ -11,7 +11,7 @@ namespace FitZone.Core.Specifications.CommandSpec.EnrollmentSpec
     public class EnrollmentByIdSpec : BaseSpecatifications<TraineeProgramEnrollment>
     {
         public EnrollmentByIdSpec(int enrollmentId, int traineeId) : base(e =>
-            e.ID == enrollmentId && e.TraineeID == traineeId)
+            e.Id == enrollmentId && e.TraineeId == traineeId)
         {
             Includes.Add(e => e.WorkoutProgram);
             Includes.Add(e => e.Track);
