@@ -472,9 +472,6 @@ namespace FitZone.Repository.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("MembershipId")
-                        .HasColumnType("int");
-
                     b.Property<int>("MembershipPlanId")
                         .HasColumnType("int");
 
@@ -485,8 +482,6 @@ namespace FitZone.Repository.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MembershipId");
 
                     b.HasIndex("MembershipPlanId");
 
@@ -890,10 +885,6 @@ namespace FitZone.Repository.Migrations
 
             modelBuilder.Entity("FitZone.Core.Entitys.TraineeMembership", b =>
                 {
-                    b.HasOne("FitZone.Core.Entitys.Membership", null)
-                        .WithMany("TraineeMemberships")
-                        .HasForeignKey("MembershipId");
-
                     b.HasOne("FitZone.Core.Entitys.MembershipPlan", "MembershipPlan")
                         .WithMany()
                         .HasForeignKey("MembershipPlanId")
@@ -1045,8 +1036,6 @@ namespace FitZone.Repository.Migrations
             modelBuilder.Entity("FitZone.Core.Entitys.Membership", b =>
                 {
                     b.Navigation("MembershipPlans");
-
-                    b.Navigation("TraineeMemberships");
                 });
 
             modelBuilder.Entity("FitZone.Core.Entitys.MembershipPlan", b =>

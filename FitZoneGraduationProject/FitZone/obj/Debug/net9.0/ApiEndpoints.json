@@ -505,6 +505,52 @@
   },
   {
     "ContainingType": "FitZone.APIs.Controllers.MembershipController",
+    "Method": "ActivateMembership",
+    "RelativePath": "api/Membership/activate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FitZone.Service.DTOs.MembershipActivationDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "FitZone.Service.DTOs.MembershipStatusDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.MembershipController",
+    "Method": "GetMyMembershipStatus",
+    "RelativePath": "api/Membership/me",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "FitZone.Service.DTOs.MembershipStatusDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.MembershipController",
     "Method": "GetMembershipPlan",
     "RelativePath": "api/Membership/Plans",
     "HttpMethod": "GET",

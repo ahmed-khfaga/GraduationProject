@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FitZone.Repository.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitaialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -57,31 +57,10 @@ namespace FitZone.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Exercises",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PrimaryMuscles = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SecondaryMuscles = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    EquipmentNeeded = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FitnessLevel = table.Column<int>(type: "int", nullable: false),
-                    VideoUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Instructions = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CommonMistakes = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Exercises", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Memberships",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -89,21 +68,21 @@ namespace FitZone.Repository.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Memberships", x => x.ID);
+                    table.PrimaryKey("PK_Memberships", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Tracks",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tracks", x => x.ID);
+                    table.PrimaryKey("PK_Tracks", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -213,10 +192,39 @@ namespace FitZone.Repository.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ChatMessages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SenderId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ReceiverId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Message = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsRead = table.Column<bool>(type: "bit", nullable: false),
+                    SentAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ChatMessages", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ChatMessages_AspNetUsers_ReceiverId",
+                        column: x => x.ReceiverId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ChatMessages_AspNetUsers_SenderId",
+                        column: x => x.SenderId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Coachs",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     YearsOfExperience = table.Column<int>(type: "int", nullable: false),
@@ -228,7 +236,7 @@ namespace FitZone.Repository.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Coachs", x => x.ID);
+                    table.PrimaryKey("PK_Coachs", x => x.Id);
                     table.CheckConstraint("CK_Coach_Rating", "[Rating] >= 0 AND [Rating] <= 5");
                     table.ForeignKey(
                         name: "FK_Coachs_AspNetUsers_ApplicationUserId",
@@ -242,7 +250,7 @@ namespace FitZone.Repository.Migrations
                 name: "Trainees",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ApplicationUserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -254,7 +262,7 @@ namespace FitZone.Repository.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Trainees", x => x.ID);
+                    table.PrimaryKey("PK_Trainees", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Trainees_AspNetUsers_ApplicationUserId",
                         column: x => x.ApplicationUserId,
@@ -267,34 +275,64 @@ namespace FitZone.Repository.Migrations
                 name: "MembershipPlans",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    MembershipID = table.Column<int>(type: "int", nullable: false),
+                    MembershipId = table.Column<int>(type: "int", nullable: false),
                     DurationInDays = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MembershipPlans", x => x.ID);
+                    table.PrimaryKey("PK_MembershipPlans", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_MembershipPlans_Memberships_MembershipID",
-                        column: x => x.MembershipID,
+                        name: "FK_MembershipPlans_Memberships_MembershipId",
+                        column: x => x.MembershipId,
                         principalTable: "Memberships",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Exercises",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CoachId = table.Column<int>(type: "int", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PrimaryMuscles = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    SecondaryMuscles = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EquipmentNeeded = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FitnessLevel = table.Column<int>(type: "int", nullable: false),
+                    VideoUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Instructions = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CommonMistakes = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Exercises", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Exercises_Coachs_CoachId",
+                        column: x => x.CoachId,
+                        principalTable: "Coachs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
                 });
 
             migrationBuilder.CreateTable(
                 name: "WorkoutPrograms",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TrackID = table.Column<int>(type: "int", nullable: false),
-                    CoachID = table.Column<int>(type: "int", nullable: false),
+                    TrackId = table.Column<int>(type: "int", nullable: false),
+                    CoachId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ExpectedOutcome = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NextSteps = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DurationOnWeeks = table.Column<int>(type: "int", nullable: false),
                     SessionsPerWeeks = table.Column<int>(type: "int", nullable: false),
                     SessionsDuration = table.Column<int>(type: "int", nullable: false),
@@ -302,58 +340,81 @@ namespace FitZone.Repository.Migrations
                     TrainingGoal = table.Column<int>(type: "int", nullable: false),
                     FitnessLevel = table.Column<int>(type: "int", nullable: false),
                     EquipmentType = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<int>(type: "int", nullable: false),
-                    RejectionNote = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsPublished = table.Column<bool>(type: "bit", nullable: false),
                     PublishedAt = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_WorkoutPrograms", x => x.ID);
+                    table.PrimaryKey("PK_WorkoutPrograms", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_WorkoutPrograms_Coachs_CoachID",
-                        column: x => x.CoachID,
+                        name: "FK_WorkoutPrograms_Coachs_CoachId",
+                        column: x => x.CoachId,
                         principalTable: "Coachs",
-                        principalColumn: "ID");
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_WorkoutPrograms_Tracks_TrackID",
-                        column: x => x.TrackID,
+                        name: "FK_WorkoutPrograms_Tracks_TrackId",
+                        column: x => x.TrackId,
                         principalTable: "Tracks",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Payments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    MembershipPlanId = table.Column<int>(type: "int", nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    PaymentIntentId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Payments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Payments_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Payments_MembershipPlans_MembershipPlanId",
+                        column: x => x.MembershipPlanId,
+                        principalTable: "MembershipPlans",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
                 name: "TraineeMemberships",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TraineeID = table.Column<int>(type: "int", nullable: false),
-                    MembershipPlanID = table.Column<int>(type: "int", nullable: false),
+                    TraineeId = table.Column<int>(type: "int", nullable: false),
+                    MembershipPlanId = table.Column<int>(type: "int", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    MembershipID = table.Column<int>(type: "int", nullable: true)
+                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TraineeMemberships", x => x.ID);
+                    table.PrimaryKey("PK_TraineeMemberships", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TraineeMemberships_MembershipPlans_MembershipPlanID",
-                        column: x => x.MembershipPlanID,
+                        name: "FK_TraineeMemberships_MembershipPlans_MembershipPlanId",
+                        column: x => x.MembershipPlanId,
                         principalTable: "MembershipPlans",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_TraineeMemberships_Memberships_MembershipID",
-                        column: x => x.MembershipID,
-                        principalTable: "Memberships",
-                        principalColumn: "ID");
-                    table.ForeignKey(
-                        name: "FK_TraineeMemberships_Trainees_TraineeID",
-                        column: x => x.TraineeID,
+                        name: "FK_TraineeMemberships_Trainees_TraineeId",
+                        column: x => x.TraineeId,
                         principalTable: "Trainees",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -361,21 +422,23 @@ namespace FitZone.Repository.Migrations
                 name: "ProgramWeeks",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    WorkoutProgramID = table.Column<int>(type: "int", nullable: false),
+                    WorkoutProgramId = table.Column<int>(type: "int", nullable: false),
                     WeekNumber = table.Column<int>(type: "int", nullable: false),
                     WeekDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FocusArea = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    FocusArea = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProgressionNote = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    NextWeekPreview = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProgramWeeks", x => x.ID);
+                    table.PrimaryKey("PK_ProgramWeeks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ProgramWeeks_WorkoutPrograms_WorkoutProgramID",
-                        column: x => x.WorkoutProgramID,
+                        name: "FK_ProgramWeeks_WorkoutPrograms_WorkoutProgramId",
+                        column: x => x.WorkoutProgramId,
                         principalTable: "WorkoutPrograms",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -383,11 +446,11 @@ namespace FitZone.Repository.Migrations
                 name: "TraineeProgramEnrollments",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TraineeID = table.Column<int>(type: "int", nullable: false),
-                    WorkoutProgramID = table.Column<int>(type: "int", nullable: false),
-                    TrackID = table.Column<int>(type: "int", nullable: false),
+                    TraineeId = table.Column<int>(type: "int", nullable: false),
+                    WorkoutProgramId = table.Column<int>(type: "int", nullable: false),
+                    TrackId = table.Column<int>(type: "int", nullable: false),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     MaxWeekUnlocked = table.Column<int>(type: "int", nullable: false),
@@ -396,46 +459,47 @@ namespace FitZone.Repository.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TraineeProgramEnrollments", x => x.ID);
+                    table.PrimaryKey("PK_TraineeProgramEnrollments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_TraineeProgramEnrollments_Tracks_TrackID",
-                        column: x => x.TrackID,
+                        name: "FK_TraineeProgramEnrollments_Tracks_TrackId",
+                        column: x => x.TrackId,
                         principalTable: "Tracks",
-                        principalColumn: "ID");
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_TraineeProgramEnrollments_Trainees_TraineeID",
-                        column: x => x.TraineeID,
+                        name: "FK_TraineeProgramEnrollments_Trainees_TraineeId",
+                        column: x => x.TraineeId,
                         principalTable: "Trainees",
-                        principalColumn: "ID");
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_TraineeProgramEnrollments_WorkoutPrograms_WorkoutProgramID",
-                        column: x => x.WorkoutProgramID,
+                        name: "FK_TraineeProgramEnrollments_WorkoutPrograms_WorkoutProgramId",
+                        column: x => x.WorkoutProgramId,
                         principalTable: "WorkoutPrograms",
-                        principalColumn: "ID");
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "WorkoutSessions",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    ProgramWeekID = table.Column<int>(type: "int", nullable: false),
+                    ProgramWeekId = table.Column<int>(type: "int", nullable: false),
                     SessionTitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     weekDay = table.Column<int>(type: "int", nullable: false),
                     EstimatedDuration = table.Column<int>(type: "int", nullable: false),
+                    DayOrder = table.Column<int>(type: "int", nullable: false),
                     WarmupNotes = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PrimerNotes = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CooldownNotes = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_WorkoutSessions", x => x.ID);
+                    table.PrimaryKey("PK_WorkoutSessions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_WorkoutSessions_ProgramWeeks_ProgramWeekID",
-                        column: x => x.ProgramWeekID,
+                        name: "FK_WorkoutSessions_ProgramWeeks_ProgramWeekId",
+                        column: x => x.ProgramWeekId,
                         principalTable: "ProgramWeeks",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -443,10 +507,10 @@ namespace FitZone.Repository.Migrations
                 name: "SessionExercises",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    WorkoutSessionID = table.Column<int>(type: "int", nullable: false),
-                    ExerciseID = table.Column<int>(type: "int", nullable: false),
+                    WorkoutSessionId = table.Column<int>(type: "int", nullable: false),
+                    ExerciseId = table.Column<int>(type: "int", nullable: false),
                     SectionType = table.Column<int>(type: "int", nullable: false),
                     OrderInSection = table.Column<int>(type: "int", nullable: false),
                     Sets = table.Column<int>(type: "int", nullable: true),
@@ -458,18 +522,18 @@ namespace FitZone.Repository.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SessionExercises", x => x.ID);
+                    table.PrimaryKey("PK_SessionExercises", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_SessionExercises_Exercises_ExerciseID",
-                        column: x => x.ExerciseID,
+                        name: "FK_SessionExercises_Exercises_ExerciseId",
+                        column: x => x.ExerciseId,
                         principalTable: "Exercises",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_SessionExercises_WorkoutSessions_WorkoutSessionID",
-                        column: x => x.WorkoutSessionID,
+                        name: "FK_SessionExercises_WorkoutSessions_WorkoutSessionId",
+                        column: x => x.WorkoutSessionId,
                         principalTable: "WorkoutSessions",
-                        principalColumn: "ID",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -513,62 +577,82 @@ namespace FitZone.Repository.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ChatMessages_ReceiverId",
+                table: "ChatMessages",
+                column: "ReceiverId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ChatMessages_SenderId",
+                table: "ChatMessages",
+                column: "SenderId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Coachs_ApplicationUserId",
                 table: "Coachs",
                 column: "ApplicationUserId",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_MembershipPlans_MembershipID",
+                name: "IX_Exercises_CoachId",
+                table: "Exercises",
+                column: "CoachId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MembershipPlans_MembershipId",
                 table: "MembershipPlans",
-                column: "MembershipID");
+                column: "MembershipId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProgramWeeks_WorkoutProgramID",
+                name: "IX_Payments_MembershipPlanId",
+                table: "Payments",
+                column: "MembershipPlanId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Payments_UserId",
+                table: "Payments",
+                column: "UserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ProgramWeeks_WorkoutProgramId",
                 table: "ProgramWeeks",
-                column: "WorkoutProgramID");
+                column: "WorkoutProgramId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SessionExercises_ExerciseID",
+                name: "IX_SessionExercises_ExerciseId",
                 table: "SessionExercises",
-                column: "ExerciseID");
+                column: "ExerciseId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_SessionExercises_WorkoutSessionID",
+                name: "IX_SessionExercises_WorkoutSessionId",
                 table: "SessionExercises",
-                column: "WorkoutSessionID");
+                column: "WorkoutSessionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TraineeMemberships_MembershipID",
+                name: "IX_TraineeMemberships_MembershipPlanId",
                 table: "TraineeMemberships",
-                column: "MembershipID");
+                column: "MembershipPlanId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TraineeMemberships_MembershipPlanID",
+                name: "IX_TraineeMemberships_TraineeId",
                 table: "TraineeMemberships",
-                column: "MembershipPlanID");
+                column: "TraineeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TraineeMemberships_TraineeID",
-                table: "TraineeMemberships",
-                column: "TraineeID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TraineeProgramEnrollments_TrackID",
+                name: "IX_TraineeProgramEnrollments_TrackId",
                 table: "TraineeProgramEnrollments",
-                column: "TrackID");
+                column: "TrackId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TraineeProgramEnrollments_TraineeID_IsActive",
+                name: "IX_TraineeProgramEnrollments_TraineeId_TrackId_IsActive",
                 table: "TraineeProgramEnrollments",
-                columns: new[] { "TraineeID", "IsActive" },
+                columns: new[] { "TraineeId", "TrackId", "IsActive" },
                 unique: true,
                 filter: "[IsActive] = 1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TraineeProgramEnrollments_WorkoutProgramID",
+                name: "IX_TraineeProgramEnrollments_WorkoutProgramId",
                 table: "TraineeProgramEnrollments",
-                column: "WorkoutProgramID");
+                column: "WorkoutProgramId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Trainees_ApplicationUserId",
@@ -577,19 +661,19 @@ namespace FitZone.Repository.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_WorkoutPrograms_CoachID",
+                name: "IX_WorkoutPrograms_CoachId",
                 table: "WorkoutPrograms",
-                column: "CoachID");
+                column: "CoachId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_WorkoutPrograms_TrackID",
+                name: "IX_WorkoutPrograms_TrackId",
                 table: "WorkoutPrograms",
-                column: "TrackID");
+                column: "TrackId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_WorkoutSessions_ProgramWeekID",
+                name: "IX_WorkoutSessions_ProgramWeekId",
                 table: "WorkoutSessions",
-                column: "ProgramWeekID");
+                column: "ProgramWeekId");
         }
 
         /// <inheritdoc />
@@ -609,6 +693,12 @@ namespace FitZone.Repository.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "ChatMessages");
+
+            migrationBuilder.DropTable(
+                name: "Payments");
 
             migrationBuilder.DropTable(
                 name: "SessionExercises");
