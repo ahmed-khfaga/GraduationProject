@@ -8,6 +8,7 @@ namespace FitZone.Service.DTOs.ProfileDTOs
 {
     public class UpdateTraineeProfileDto
     {
+        public string? Gender { get; set; }
         public decimal? Weight { get; set; }
         public decimal? Height { get; set; }
         public string? Address { get; set; }

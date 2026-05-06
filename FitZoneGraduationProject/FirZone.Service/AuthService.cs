@@ -6,7 +6,9 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using FitZone.Core.Entitys.Identity;
+using FitZone.Core.Entitys;
 using FitZone.Core.Enums;
+using FitZone.Core.Repository.Contract;
 using FitZone.Service.DTOs;
 using FitZone.Service.Errors;
 using FitZone.Service.HelperAuth;
@@ -22,11 +24,16 @@ namespace FitZone.Service
     {
         private readonly IConfiguration _configuration;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public AuthService(IConfiguration configuration, UserManager<ApplicationUser> userManager)
+        public AuthService(
+            IConfiguration configuration,
+            UserManager<ApplicationUser> userManager,
+            IUnitOfWork unitOfWork)
         {
             _configuration = configuration;
             _userManager = userManager;
+            _unitOfWork = unitOfWork;
         }
         public async Task<string> CreateTokenAsync(ApplicationUser user)
         {
@@ -144,6 +151,26 @@ namespace FitZone.Service
                     Message = string.Join(", ", result.Errors.Select(e => e.Description))
                 };
             }
+
+            var roleResult = await _userManager.AddToRoleAsync(appUser, "Trainee");
+            if (!roleResult.Succeeded)
+            {
+                await _userManager.DeleteAsync(appUser);
+                return new AuthResultDto
+                {
+                    IsSuccess = false,
+                    Message = string.Join(", ", roleResult.Errors.Select(e => e.Description))
+                };
+            }
+
+            _unitOfWork.Repository<Trainee>().Add(new Trainee
+            {
+                ApplicationUserId = appUser.Id,
+                Gender = "NotSpecified",
+                PhotoUrl = photoPath
+            });
+
+            await _unitOfWork.CompleteAsync();
 
             return new AuthResultDto
             {

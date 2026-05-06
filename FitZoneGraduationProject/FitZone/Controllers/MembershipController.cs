@@ -5,8 +5,10 @@ using FitZone.Core.Specifications.CommandSpec;
 using FitZone.Service.DTOs;
 using FitZone.Service.Errors;
 using FitZone.Service.Services.Contract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace FitZone.APIs.Controllers
 {
@@ -39,6 +41,30 @@ namespace FitZone.APIs.Controllers
         {
             var result = await _membershipService.GetAllMembershipsPlan();
 
+            return Ok(result);
+        }
+
+        [Authorize(Roles = "Trainee")]
+        [HttpPost("activate")]
+        public async Task<ActionResult<MembershipStatusDto>> ActivateMembership([FromBody] MembershipActivationDto dto)
+        {
+            var appUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrWhiteSpace(appUserId))
+                return Unauthorized(new ApiException(401, "Invalid user token."));
+
+            var result = await _membershipService.ActivateMembershipAsync(appUserId, dto.MembershipPlanId);
+            return Ok(result);
+        }
+
+        [Authorize(Roles = "Trainee")]
+        [HttpGet("me")]
+        public async Task<ActionResult<MembershipStatusDto>> GetMyMembershipStatus()
+        {
+            var appUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrWhiteSpace(appUserId))
+                return Unauthorized(new ApiException(401, "Invalid user token."));
+
+            var result = await _membershipService.GetMyMembershipStatusAsync(appUserId);
             return Ok(result);
         }
     }

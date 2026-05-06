@@ -5,9 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using FitZone.Core.Entitys;
+using FitZone.Core.Entitys.PaymentEntity;
+using FitZone.Core.Enums;
 using FitZone.Core.Repository.Contract;
 using FitZone.Core.Specifications;
 using FitZone.Core.Specifications.CommandSpec;
+using FitZone.Core.Specifications.CommandSpec.MembershipSpec;
 using FitZone.Core.Specifications.CommandSpec.ProfileSpec;
 using FitZone.Service.DTOs;
 using FitZone.Service.Services.Contract;
@@ -68,6 +71,90 @@ namespace FitZone.Service
                 return false;
             // 3. check premium
             return membership.MembershipPlan.Membership.IsPremium;
+        }
+
+        public async Task<MembershipStatusDto> ActivateMembershipAsync(string applicationUserId, int membershipPlanId)
+        {
+            var trainee = await _unitOfWork.Repository<Trainee>()
+                .GetWithSpecAsync(new TraineeByUserIdSpec(applicationUserId))
+                ?? throw new InvalidOperationException("Trainee profile not found.");
+
+            var selectedPlan = await _unitOfWork.Repository<MembershipPlan>()
+                .GetWithSpecAsync(new MembershipPlanByIdSpec(membershipPlanId))
+                ?? throw new InvalidOperationException("Membership plan not found.");
+
+            var currentActive = await _unitOfWork.Repository<TraineeMembership>()
+                .GetWithSpecAsync(new ActiveMembershipSpec(trainee.Id));
+
+            if (currentActive is not null)
+            {
+                currentActive.IsActive = false;
+                currentActive.EndDate = DateTime.UtcNow;
+                _unitOfWork.Repository<TraineeMembership>().Update(currentActive);
+            }
+
+            var now = DateTime.UtcNow;
+            var newMembership = new TraineeMembership
+            {
+                TraineeId = trainee.Id,
+                MembershipPlanId = selectedPlan.Id,
+                IsActive = true,
+                StartDate = now,
+                EndDate = now.AddDays(selectedPlan.DurationInDays)
+            };
+            _unitOfWork.Repository<TraineeMembership>().Add(newMembership);
+
+            _unitOfWork.Repository<Payment>().Add(new Payment
+            {
+                UserId = applicationUserId,
+                MembershipPlanId = selectedPlan.Id,
+                Amount = selectedPlan.Price,
+                Status = PaymentStatus.Paid,
+                CreatedAt = now
+            });
+
+            await _unitOfWork.CompleteAsync();
+
+            return new MembershipStatusDto
+            {
+                IsActive = true,
+                MembershipPlanId = selectedPlan.Id,
+                PlanTitle = selectedPlan.Title,
+                MembershipName = selectedPlan.Membership.Name,
+                IsPremium = selectedPlan.Membership.IsPremium,
+                StartDate = newMembership.StartDate,
+                EndDate = newMembership.EndDate
+            };
+        }
+
+        public async Task<MembershipStatusDto> GetMyMembershipStatusAsync(string applicationUserId)
+        {
+            var trainee = await _unitOfWork.Repository<Trainee>()
+                .GetWithSpecAsync(new TraineeByUserIdSpec(applicationUserId));
+
+            if (trainee is null)
+            {
+                return new MembershipStatusDto { IsActive = false };
+            }
+
+            var membership = await _unitOfWork.Repository<TraineeMembership>()
+                .GetWithSpecAsync(new ActiveMembershipSpec(trainee.Id));
+
+            if (membership is null)
+            {
+                return new MembershipStatusDto { IsActive = false };
+            }
+
+            return new MembershipStatusDto
+            {
+                IsActive = true,
+                MembershipPlanId = membership.MembershipPlanId,
+                PlanTitle = membership.MembershipPlan.Title,
+                MembershipName = membership.MembershipPlan.Membership.Name,
+                IsPremium = membership.MembershipPlan.Membership.IsPremium,
+                StartDate = membership.StartDate,
+                EndDate = membership.EndDate
+            };
         }
     }
 }

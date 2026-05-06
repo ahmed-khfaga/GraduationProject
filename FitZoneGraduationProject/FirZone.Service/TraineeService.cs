@@ -36,6 +36,7 @@ namespace FitZone.Service
             var trainee = await _uow.Repository<Trainee>().GetWithSpecAsync(spec);
             if (trainee is null) return false;
 
+            if (!string.IsNullOrWhiteSpace(dto.Gender)) trainee.Gender = dto.Gender;
             if (dto.Weight.HasValue) trainee.Weight = dto.Weight;
             if (dto.Height.HasValue) trainee.Height = dto.Height;
             if (dto.Address is not null) trainee.Address = dto.Address;
