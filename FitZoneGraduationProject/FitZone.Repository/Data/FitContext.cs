@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using FitZone.Core.Entitys;
 using FitZone.Core.Entitys.Chat;
 using FitZone.Core.Entitys.Identity;
+using FitZone.Core.Entitys.PaymentEntity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -42,7 +43,7 @@ namespace FitZone.Repository.Data
             modelBuilder.Entity<Exercise>()
                 .HasOne(e => e.Coach)
                 .WithMany(c => c.Exercises)
-                .HasForeignKey(e => e.CoachID)
+                .HasForeignKey(e => e.CoachId)
                 .OnDelete(DeleteBehavior.SetNull); // deleting a coach nullifies ownership, keeps exercise data intact
            
             
@@ -62,7 +63,7 @@ namespace FitZone.Repository.Data
 
             // ── Enrollment constraints, only active one program per track at a time.
             modelBuilder.Entity<TraineeProgramEnrollment>()
-                .HasIndex(x => new { x.TraineeID, x.TrackID, x.IsActive })
+                .HasIndex(x => new { x.TraineeId, x.TrackId, x.IsActive })
                 .IsUnique()
                 .HasFilter("[IsActive] = 1");
 
@@ -83,26 +84,26 @@ namespace FitZone.Repository.Data
             modelBuilder.Entity<WorkoutProgram>()
                     .HasOne(pt => pt.Coach)
                     .WithMany(c => c.WorkoutPrograms)
-                    .HasForeignKey(pt => pt.CoachID)
+                    .HasForeignKey(pt => pt.CoachId)
                     .OnDelete(DeleteBehavior.NoAction);
 
 
             modelBuilder.Entity<TraineeProgramEnrollment>()
                     .HasOne(e => e.Trainee)
                     .WithMany(t => t.TraineeProgramEnrollments)
-                    .HasForeignKey(e => e.TraineeID)
+                    .HasForeignKey(e => e.TraineeId)
                     .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<TraineeProgramEnrollment>()
                     .HasOne(e => e.WorkoutProgram)
                     .WithMany(w => w.TraineeProgramEnrollments)
-                    .HasForeignKey(e => e.WorkoutProgramID)
+                    .HasForeignKey(e => e.WorkoutProgramId)
                     .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<TraineeProgramEnrollment>()
                     .HasOne(e => e.Track)
                     .WithMany()
-                    .HasForeignKey(e => e.TrackID)
+                    .HasForeignKey(e => e.TrackId)
                     .OnDelete(DeleteBehavior.NoAction);
 
 
@@ -119,8 +120,21 @@ namespace FitZone.Repository.Data
                 .HasOne(m => m.Receiver)
                 .WithMany()
                 .HasForeignKey(m => m.ReceiverId)
-                .OnDelete(DeleteBehavior.Restrict); 
+                .OnDelete(DeleteBehavior.Restrict);
             #endregion
+
+            modelBuilder.Entity<Payment>(entity =>
+            {
+                entity.HasOne(p => p.User)
+                      .WithMany(u => u.Payments) 
+                      .HasForeignKey(p => p.UserId)
+                      .OnDelete(DeleteBehavior.Restrict);
+
+                entity.HasOne(p => p.MembershipPlan)
+                      .WithMany(m => m.Payments)
+                      .HasForeignKey(p => p.MembershipPlanId)
+                      .OnDelete(DeleteBehavior.Restrict);
+            });
 
 
 
@@ -152,6 +166,8 @@ namespace FitZone.Repository.Data
         public virtual DbSet<TraineeMembership> TraineeMemberships { get; set; }
 
         public virtual DbSet<ChatMessage> ChatMessages { get; set; }
+
+        public virtual DbSet<Payment> Payments { get; set; }
 
 
 

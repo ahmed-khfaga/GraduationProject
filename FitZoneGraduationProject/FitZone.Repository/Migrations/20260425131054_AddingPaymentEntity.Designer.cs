@@ -4,6 +4,7 @@ using FitZone.Repository.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FitZone.Repository.Migrations
 {
     [DbContext(typeof(FitContext))]
-    partial class FitContextModelSnapshot : ModelSnapshot
+    [Migration("20260425131054_AddingPaymentEntity")]
+    partial class AddingPaymentEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,11 +27,11 @@ namespace FitZone.Repository.Migrations
 
             modelBuilder.Entity("FitZone.Core.Entitys.Chat.ChatMessage", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<bool>("IsRead")
                         .HasColumnType("bit");
@@ -48,7 +51,7 @@ namespace FitZone.Repository.Migrations
                     b.Property<DateTime>("SentAt")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
                     b.HasIndex("ReceiverId");
 
@@ -59,11 +62,11 @@ namespace FitZone.Repository.Migrations
 
             modelBuilder.Entity("FitZone.Core.Entitys.Coach", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("About")
                         .IsRequired()
@@ -88,7 +91,7 @@ namespace FitZone.Repository.Migrations
                     b.Property<int>("YearsOfExperience")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
                     b.HasIndex("ApplicationUserId")
                         .IsUnique();
@@ -101,13 +104,13 @@ namespace FitZone.Repository.Migrations
 
             modelBuilder.Entity("FitZone.Core.Entitys.Exercise", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int?>("CoachId")
+                    b.Property<int?>("CoachID")
                         .HasColumnType("int");
 
                     b.Property<string>("CommonMistakes")
@@ -138,9 +141,9 @@ namespace FitZone.Repository.Migrations
                     b.Property<string>("VideoUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
-                    b.HasIndex("CoachId");
+                    b.HasIndex("CoachID");
 
                     b.ToTable("Exercises");
                 });
@@ -232,11 +235,11 @@ namespace FitZone.Repository.Migrations
 
             modelBuilder.Entity("FitZone.Core.Entitys.Membership", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -249,23 +252,23 @@ namespace FitZone.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
                     b.ToTable("Memberships");
                 });
 
             modelBuilder.Entity("FitZone.Core.Entitys.MembershipPlan", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<int>("DurationInDays")
                         .HasColumnType("int");
 
-                    b.Property<int>("MembershipId")
+                    b.Property<int>("MembershipID")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
@@ -275,20 +278,20 @@ namespace FitZone.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
-                    b.HasIndex("MembershipId");
+                    b.HasIndex("MembershipID");
 
                     b.ToTable("MembershipPlans");
                 });
 
             modelBuilder.Entity("FitZone.Core.Entitys.PaymentEntity.Payment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
@@ -296,7 +299,10 @@ namespace FitZone.Repository.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("MembershipPlanId")
+                    b.Property<int>("MembershipPlanID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MembershipPlanID1")
                         .HasColumnType("int");
 
                     b.Property<string>("PaymentIntentId")
@@ -309,9 +315,11 @@ namespace FitZone.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
-                    b.HasIndex("MembershipPlanId");
+                    b.HasIndex("MembershipPlanID");
+
+                    b.HasIndex("MembershipPlanID1");
 
                     b.HasIndex("UserId");
 
@@ -320,11 +328,11 @@ namespace FitZone.Repository.Migrations
 
             modelBuilder.Entity("FitZone.Core.Entitys.ProgramWeek", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("FocusArea")
                         .HasColumnType("nvarchar(max)");
@@ -341,25 +349,25 @@ namespace FitZone.Repository.Migrations
                     b.Property<int>("WeekNumber")
                         .HasColumnType("int");
 
-                    b.Property<int>("WorkoutProgramId")
+                    b.Property<int>("WorkoutProgramID")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
-                    b.HasIndex("WorkoutProgramId");
+                    b.HasIndex("WorkoutProgramID");
 
                     b.ToTable("ProgramWeeks");
                 });
 
             modelBuilder.Entity("FitZone.Core.Entitys.SessionExercise", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int>("ExerciseId")
+                    b.Property<int>("ExerciseID")
                         .HasColumnType("int");
 
                     b.Property<string>("Notes")
@@ -386,25 +394,25 @@ namespace FitZone.Repository.Migrations
                     b.Property<string>("Tempo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("WorkoutSessionId")
+                    b.Property<int>("WorkoutSessionID")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
-                    b.HasIndex("ExerciseId");
+                    b.HasIndex("ExerciseID");
 
-                    b.HasIndex("WorkoutSessionId");
+                    b.HasIndex("WorkoutSessionID");
 
                     b.ToTable("SessionExercises");
                 });
 
             modelBuilder.Entity("FitZone.Core.Entitys.Track", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -414,18 +422,18 @@ namespace FitZone.Repository.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
                     b.ToTable("Tracks");
                 });
 
             modelBuilder.Entity("FitZone.Core.Entitys.Trainee", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
@@ -450,7 +458,7 @@ namespace FitZone.Repository.Migrations
                     b.Property<decimal?>("Weight")
                         .HasColumnType("decimal(6,2)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
                     b.HasIndex("ApplicationUserId")
                         .IsUnique();
@@ -460,11 +468,11 @@ namespace FitZone.Repository.Migrations
 
             modelBuilder.Entity("FitZone.Core.Entitys.TraineeMembership", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
@@ -472,36 +480,36 @@ namespace FitZone.Repository.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("MembershipId")
+                    b.Property<int?>("MembershipID")
                         .HasColumnType("int");
 
-                    b.Property<int>("MembershipPlanId")
+                    b.Property<int>("MembershipPlanID")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TraineeId")
+                    b.Property<int>("TraineeID")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
-                    b.HasIndex("MembershipId");
+                    b.HasIndex("MembershipID");
 
-                    b.HasIndex("MembershipPlanId");
+                    b.HasIndex("MembershipPlanID");
 
-                    b.HasIndex("TraineeId");
+                    b.HasIndex("TraineeID");
 
                     b.ToTable("TraineeMemberships");
                 });
 
             modelBuilder.Entity("FitZone.Core.Entitys.TraineeProgramEnrollment", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime2");
@@ -518,22 +526,22 @@ namespace FitZone.Repository.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<int>("TrackId")
+                    b.Property<int>("TrackID")
                         .HasColumnType("int");
 
-                    b.Property<int>("TraineeId")
+                    b.Property<int>("TraineeID")
                         .HasColumnType("int");
 
-                    b.Property<int>("WorkoutProgramId")
+                    b.Property<int>("WorkoutProgramID")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
-                    b.HasIndex("TrackId");
+                    b.HasIndex("TrackID");
 
-                    b.HasIndex("WorkoutProgramId");
+                    b.HasIndex("WorkoutProgramID");
 
-                    b.HasIndex("TraineeId", "TrackId", "IsActive")
+                    b.HasIndex("TraineeID", "TrackID", "IsActive")
                         .IsUnique()
                         .HasFilter("[IsActive] = 1");
 
@@ -542,13 +550,13 @@ namespace FitZone.Repository.Migrations
 
             modelBuilder.Entity("FitZone.Core.Entitys.WorkoutProgram", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int>("CoachId")
+                    b.Property<int>("CoachID")
                         .HasColumnType("int");
 
                     b.Property<string>("Description")
@@ -589,28 +597,28 @@ namespace FitZone.Repository.Migrations
                     b.Property<int>("SessionsPerWeeks")
                         .HasColumnType("int");
 
-                    b.Property<int>("TrackId")
+                    b.Property<int>("TrackID")
                         .HasColumnType("int");
 
                     b.Property<int>("TrainingGoal")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
-                    b.HasIndex("CoachId");
+                    b.HasIndex("CoachID");
 
-                    b.HasIndex("TrackId");
+                    b.HasIndex("TrackID");
 
                     b.ToTable("WorkoutPrograms");
                 });
 
             modelBuilder.Entity("FitZone.Core.Entitys.WorkoutSession", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
                     b.Property<string>("CooldownNotes")
                         .HasColumnType("nvarchar(max)");
@@ -624,7 +632,7 @@ namespace FitZone.Repository.Migrations
                     b.Property<string>("PrimerNotes")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ProgramWeekId")
+                    b.Property<int>("ProgramWeekID")
                         .HasColumnType("int");
 
                     b.Property<string>("SessionTitle")
@@ -637,9 +645,9 @@ namespace FitZone.Repository.Migrations
                     b.Property<int>("weekDay")
                         .HasColumnType("int");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
-                    b.HasIndex("ProgramWeekId");
+                    b.HasIndex("ProgramWeekID");
 
                     b.ToTable("WorkoutSessions");
                 });
@@ -811,7 +819,7 @@ namespace FitZone.Repository.Migrations
                 {
                     b.HasOne("FitZone.Core.Entitys.Coach", "Coach")
                         .WithMany("Exercises")
-                        .HasForeignKey("CoachId")
+                        .HasForeignKey("CoachID")
                         .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Coach");
@@ -821,7 +829,7 @@ namespace FitZone.Repository.Migrations
                 {
                     b.HasOne("FitZone.Core.Entitys.Membership", "Membership")
                         .WithMany("MembershipPlans")
-                        .HasForeignKey("MembershipId")
+                        .HasForeignKey("MembershipID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -831,10 +839,14 @@ namespace FitZone.Repository.Migrations
             modelBuilder.Entity("FitZone.Core.Entitys.PaymentEntity.Payment", b =>
                 {
                     b.HasOne("FitZone.Core.Entitys.MembershipPlan", "MembershipPlan")
-                        .WithMany("Payments")
-                        .HasForeignKey("MembershipPlanId")
+                        .WithMany()
+                        .HasForeignKey("MembershipPlanID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("FitZone.Core.Entitys.MembershipPlan", null)
+                        .WithMany("Payments")
+                        .HasForeignKey("MembershipPlanID1");
 
                     b.HasOne("FitZone.Core.Entitys.Identity.ApplicationUser", "User")
                         .WithMany("Payments")
@@ -851,7 +863,7 @@ namespace FitZone.Repository.Migrations
                 {
                     b.HasOne("FitZone.Core.Entitys.WorkoutProgram", "WorkoutProgram")
                         .WithMany("ProgramWeeks")
-                        .HasForeignKey("WorkoutProgramId")
+                        .HasForeignKey("WorkoutProgramID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -862,13 +874,13 @@ namespace FitZone.Repository.Migrations
                 {
                     b.HasOne("FitZone.Core.Entitys.Exercise", "Exercise")
                         .WithMany("SessionExercises")
-                        .HasForeignKey("ExerciseId")
+                        .HasForeignKey("ExerciseID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("FitZone.Core.Entitys.WorkoutSession", "WorkoutSession")
                         .WithMany("SessionExercises")
-                        .HasForeignKey("WorkoutSessionId")
+                        .HasForeignKey("WorkoutSessionID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -892,17 +904,17 @@ namespace FitZone.Repository.Migrations
                 {
                     b.HasOne("FitZone.Core.Entitys.Membership", null)
                         .WithMany("TraineeMemberships")
-                        .HasForeignKey("MembershipId");
+                        .HasForeignKey("MembershipID");
 
                     b.HasOne("FitZone.Core.Entitys.MembershipPlan", "MembershipPlan")
                         .WithMany()
-                        .HasForeignKey("MembershipPlanId")
+                        .HasForeignKey("MembershipPlanID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("FitZone.Core.Entitys.Trainee", "Trainee")
                         .WithMany("TraineeMemberships")
-                        .HasForeignKey("TraineeId")
+                        .HasForeignKey("TraineeID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -915,19 +927,19 @@ namespace FitZone.Repository.Migrations
                 {
                     b.HasOne("FitZone.Core.Entitys.Track", "Track")
                         .WithMany()
-                        .HasForeignKey("TrackId")
+                        .HasForeignKey("TrackID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FitZone.Core.Entitys.Trainee", "Trainee")
                         .WithMany("TraineeProgramEnrollments")
-                        .HasForeignKey("TraineeId")
+                        .HasForeignKey("TraineeID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FitZone.Core.Entitys.WorkoutProgram", "WorkoutProgram")
                         .WithMany("TraineeProgramEnrollments")
-                        .HasForeignKey("WorkoutProgramId")
+                        .HasForeignKey("WorkoutProgramID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
@@ -942,13 +954,13 @@ namespace FitZone.Repository.Migrations
                 {
                     b.HasOne("FitZone.Core.Entitys.Coach", "Coach")
                         .WithMany("WorkoutPrograms")
-                        .HasForeignKey("CoachId")
+                        .HasForeignKey("CoachID")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("FitZone.Core.Entitys.Track", "Track")
                         .WithMany("WorkoutPrograms")
-                        .HasForeignKey("TrackId")
+                        .HasForeignKey("TrackID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -961,7 +973,7 @@ namespace FitZone.Repository.Migrations
                 {
                     b.HasOne("FitZone.Core.Entitys.ProgramWeek", "ProgramWeek")
                         .WithMany("WorkoutSessions")
-                        .HasForeignKey("ProgramWeekId")
+                        .HasForeignKey("ProgramWeekID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

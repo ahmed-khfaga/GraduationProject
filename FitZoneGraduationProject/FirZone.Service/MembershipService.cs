@@ -62,7 +62,7 @@ namespace FitZone.Service
                 return false;
             // 2. get membership
             var membership = await _unitOfWork.Repository<TraineeMembership>()
-                .GetWithSpecAsync(new ActiveMembershipSpec(trainee.ID));
+                .GetWithSpecAsync(new ActiveMembershipSpec(trainee.Id));
 
             if (membership == null)
                 return false;

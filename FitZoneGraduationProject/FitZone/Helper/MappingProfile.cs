@@ -25,7 +25,7 @@ namespace FitZone.APIs.Helper
             // ── Exercise
             CreateMap<Exercise, ExerciseSummaryDto>()
                 .ForMember(d => d.FitnessLevel, o => o.MapFrom(s => s.FitnessLevel.ToString()))
-                .ForMember(d => d.IsGlobal, o => o.MapFrom(s => s.CoachID == null));
+                .ForMember(d => d.IsGlobal, o => o.MapFrom(s => s.CoachId == null));
 
             CreateMap<Exercise, ExerciseDetailDto>()
                 .IncludeBase<Exercise, ExerciseSummaryDto>();

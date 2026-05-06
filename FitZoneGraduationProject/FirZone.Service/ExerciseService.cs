@@ -61,10 +61,10 @@ namespace FitZone.Service
         public async Task<int> CreateExerciseAsync(CreateExerciseDto dto, int coachId)
         {
             var exercise = _mapper.Map<Exercise>(dto);
-            exercise.CoachID = coachId;             // always private to the creating coach
+            exercise.CoachId = coachId;             // always private to the creating coach
             _uow.Repository<Exercise>().Add(exercise);
             await _uow.CompleteAsync();
-            return exercise.ID;
+            return exercise.Id;
         }
 
         public async Task<bool> UpdateExerciseAsync(int id, CreateExerciseDto dto, int coachId)
@@ -72,7 +72,7 @@ namespace FitZone.Service
             // Coaches can only edit their own private exercises — global ones are protected
             var spec = new ExerciseByIdForCoachSpec(id, coachId);
             var exercise = await _uow.Repository<Exercise>().GetWithSpecAsync(spec);
-            if (exercise is null || exercise.CoachID is null) return false; // null = global — read-only
+            if (exercise is null || exercise.CoachId is null) return false; // null = global — read-only
 
             _mapper.Map(dto, exercise);
             _uow.Repository<Exercise>().Update(exercise);
@@ -84,7 +84,7 @@ namespace FitZone.Service
         {
             var spec = new ExerciseByIdForCoachSpec(id, coachId);
             var exercise = await _uow.Repository<Exercise>().GetWithSpecAsync(spec);
-            if (exercise is null || exercise.CoachID is null) return false; // global — cannot delete
+            if (exercise is null || exercise.CoachId is null) return false; // global — cannot delete
 
             _uow.Repository<Exercise>().Delete(exercise);
             await _uow.CompleteAsync();

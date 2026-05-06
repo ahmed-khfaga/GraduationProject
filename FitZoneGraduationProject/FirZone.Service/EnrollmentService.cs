@@ -43,8 +43,8 @@ namespace FitZone.Service
 
             return enrollments.Select(e => new EnrollmentHistoryDto
             {
-                Id = e.ID,
-                WorkoutProgramID = e.WorkoutProgramID,
+                Id = e.Id,
+                WorkoutProgramID = e.WorkoutProgramId,
                 ProgramName = e.WorkoutProgram.Name,
                 TrackName = e.Track.Name,
                 MaxWeekUnlocked = e.MaxWeekUnlocked,
@@ -69,7 +69,7 @@ namespace FitZone.Service
                     $"Week {weekNumber} is not yet unlocked. Your current access is up to Week {enrollment.MaxWeekUnlocked}.");
 
             var week = await _uow.Repository<ProgramWeek>()
-                .GetWithSpecAsync(new ProgramWeekByNumberSpec(enrollment.WorkoutProgramID, weekNumber));
+                .GetWithSpecAsync(new ProgramWeekByNumberSpec(enrollment.WorkoutProgramId, weekNumber));
 
             if (week is null) return null;
 
@@ -86,7 +86,7 @@ namespace FitZone.Service
                     .ThenBy(s => s.DayOrder)
                     .Select(s => new SessionSummaryDto
                     {
-                        Id = s.ID,
+                        Id = s.Id,
                         SessionTitle = s.SessionTitle,
                         WeekDay = s.weekDay.ToString(),
                         DayOrder = s.DayOrder,
@@ -103,7 +103,7 @@ namespace FitZone.Service
 
             if (session is null) return null;
 
-            int programId = session.ProgramWeek.WorkoutProgramID;
+            int programId = session.ProgramWeek.WorkoutProgramId;
             int weekNumber = session.ProgramWeek.WeekNumber;
 
             var enrollment = await _uow.Repository<TraineeProgramEnrollment>()
@@ -134,10 +134,10 @@ namespace FitZone.Service
                 throw new InvalidOperationException("Program not found or not available.");
 
             //  Check for existing active enrollment on the same track
-            var activeSpec = new ActiveEnrollmentByTrackSpec(traineeId, program.TrackID);
+            var activeSpec = new ActiveEnrollmentByTrackSpec(traineeId, program.TrackId);
             var activeOther = await _uow.Repository<TraineeProgramEnrollment>().GetWithSpecAsync(activeSpec);
 
-            if (activeOther is not null && activeOther.WorkoutProgramID == dto.ProgramID)
+            if (activeOther is not null && activeOther.WorkoutProgramId == dto.ProgramID)
             {
                 // Same program already active — sync and return
                 await SyncMaxWeekUnlockedAsync(activeOther);
@@ -173,9 +173,9 @@ namespace FitZone.Service
             //  Fresh enrollment 
             var enrollment = new TraineeProgramEnrollment
             {
-                TraineeID = traineeId,
-                WorkoutProgramID = dto.ProgramID,
-                TrackID = program.TrackID,
+                TraineeId = traineeId,
+                WorkoutProgramId = dto.ProgramID,
+                TrackId = program.TrackId,
                 StartDate = DateTime.UtcNow,
                 MaxWeekUnlocked = 1,
                 Status = EnrollmentStatus.Active,
@@ -186,7 +186,7 @@ namespace FitZone.Service
             await _uow.CompleteAsync();
 
             var loaded = await _uow.Repository<TraineeProgramEnrollment>()
-                .GetWithSpecAsync(new EnrollmentByIdSpec(enrollment.ID, traineeId));
+                .GetWithSpecAsync(new EnrollmentByIdSpec(enrollment.Id, traineeId));
 
             return MapToEnrollmentDto(loaded!);
         }
@@ -270,8 +270,8 @@ namespace FitZone.Service
 
         private static EnrollmentDto MapToEnrollmentDto(TraineeProgramEnrollment e) => new()
         {
-            Id = e.ID,
-            WorkoutProgramID = e.WorkoutProgramID,
+            Id = e.Id,
+            WorkoutProgramID = e.WorkoutProgramId,
             ProgramName = e.WorkoutProgram?.Name ?? string.Empty,
             TrackName = e.Track?.Name ?? string.Empty,
             MaxWeekUnlocked = e.MaxWeekUnlocked,
