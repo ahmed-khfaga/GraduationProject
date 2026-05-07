@@ -718,3 +718,4 @@ D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\ne
 D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\ref\FitZone.APIs.dll
 D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone\bin\Debug\net9.0\Newtonsoft.Json.dll
 D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone\bin\Debug\net9.0\System.Net.WebSockets.WebSocketProtocol.dll
+D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

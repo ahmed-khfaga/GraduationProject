@@ -570,6 +570,58 @@
     ]
   },
   {
+    "ContainingType": "FitZone.APIs.Controllers.PaymentController",
+    "Method": "Confirm",
+    "RelativePath": "api/Payment/confirm",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "FitZone.Service.DTOs.PaymentDTOs.ConfirmPaymentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "FitZone.Service.DTOs.PaymentDTOs.PaymentStatusDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.PaymentController",
+    "Method": "CreateMembershipIntent",
+    "RelativePath": "api/Payment/membership-intent/{membershipPlanId}",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "membershipPlanId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "FitZone.Service.DTOs.PaymentDTOs.PaymentIntentDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "FitZone.APIs.Controllers.ProgramController",
     "Method": "GetAll",
     "RelativePath": "api/Program",

@@ -12,7 +12,7 @@ public interface IMembershipService
 {
     Task<IEnumerable<MembershipWithPricePlanDto>> GetMembershipsByDurationAsync(int duration);
     Task<IEnumerable<MembershipPlansDto>> GetAllMembershipsPlan();
-    Task<MembershipStatusDto> ActivateMembershipAsync(string applicationUserId, int membershipPlanId);
+    Task<MembershipStatusDto> ActivateMembershipAsync(string applicationUserId, int membershipPlanId, string paymentIntentId);
     Task<MembershipStatusDto> GetMyMembershipStatusAsync(string applicationUserId);
 
     Task<bool> HasPremiumMembership(string applicationUserId);

@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using FitZone.Core.Entitys;
-using FitZone.Core.Entitys.PaymentEntity;
-using FitZone.Core.Enums;
 using FitZone.Core.Repository.Contract;
 using FitZone.Core.Specifications;
 using FitZone.Core.Specifications.CommandSpec;
@@ -14,6 +12,7 @@ using FitZone.Core.Specifications.CommandSpec.MembershipSpec;
 using FitZone.Core.Specifications.CommandSpec.ProfileSpec;
 using FitZone.Service.DTOs;
 using FitZone.Service.Services.Contract;
+using FitZone.Service.Services.Contract.Payment;
 
 namespace FitZone.Service
 {
@@ -22,12 +21,14 @@ namespace FitZone.Service
         private readonly IGenericRepository<MembershipPlan> _membershipPlanRepo;
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IPaymentService _paymentService;
 
-        public MembershipService(IGenericRepository<MembershipPlan> membershipPlanRepo,IMapper mapper, IUnitOfWork unitOfWork)
+        public MembershipService(IGenericRepository<MembershipPlan> membershipPlanRepo, IMapper mapper, IUnitOfWork unitOfWork, IPaymentService paymentService)
         {
             _membershipPlanRepo = membershipPlanRepo;
             _mapper = mapper;
             _unitOfWork = unitOfWork;
+            _paymentService = paymentService;
         }
 
         public async Task<IEnumerable<MembershipPlansDto>> GetAllMembershipsPlan()
@@ -73,8 +74,11 @@ namespace FitZone.Service
             return membership.MembershipPlan.Membership.IsPremium;
         }
 
-        public async Task<MembershipStatusDto> ActivateMembershipAsync(string applicationUserId, int membershipPlanId)
+        public async Task<MembershipStatusDto> ActivateMembershipAsync(string applicationUserId, int membershipPlanId, string paymentIntentId)
         {
+            if (string.IsNullOrWhiteSpace(paymentIntentId))
+                throw new InvalidOperationException("Payment intent is required.");
+
             var trainee = await _unitOfWork.Repository<Trainee>()
                 .GetWithSpecAsync(new TraineeByUserIdSpec(applicationUserId))
                 ?? throw new InvalidOperationException("Trainee profile not found.");
@@ -82,6 +86,11 @@ namespace FitZone.Service
             var selectedPlan = await _unitOfWork.Repository<MembershipPlan>()
                 .GetWithSpecAsync(new MembershipPlanByIdSpec(membershipPlanId))
                 ?? throw new InvalidOperationException("Membership plan not found.");
+
+            var hasValidPayment = await _paymentService
+                .HasSuccessfulPaymentForPlanAsync(applicationUserId, selectedPlan.Id, paymentIntentId);
+            if (!hasValidPayment)
+                throw new InvalidOperationException("Membership activation requires a successful payment.");
 
             var currentActive = await _unitOfWork.Repository<TraineeMembership>()
                 .GetWithSpecAsync(new ActiveMembershipSpec(trainee.Id));
@@ -103,15 +112,6 @@ namespace FitZone.Service
                 EndDate = now.AddDays(selectedPlan.DurationInDays)
             };
             _unitOfWork.Repository<TraineeMembership>().Add(newMembership);
-
-            _unitOfWork.Repository<Payment>().Add(new Payment
-            {
-                UserId = applicationUserId,
-                MembershipPlanId = selectedPlan.Id,
-                Amount = selectedPlan.Price,
-                Status = PaymentStatus.Paid,
-                CreatedAt = now
-            });
 
             await _unitOfWork.CompleteAsync();
 

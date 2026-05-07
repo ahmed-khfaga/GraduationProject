@@ -11,6 +11,7 @@ using FitZone.Service;
 using FitZone.Service.Errors;
 using FitZone.Service.Services.Contract;
 using FitZone.Service.Services.Contract.Chat;
+using FitZone.Service.Services.Contract.Payment;
 using FitZone.Services.Contract;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -68,6 +69,7 @@ namespace FitZone
             builder.Services.AddScoped<IEnrollmentService, EnrollmentService>();
             builder.Services.AddScoped<ICoachService, CoachService>();
             builder.Services.AddScoped<ITraineeService, TraineeService>();
+            builder.Services.AddScoped<IPaymentService, PaymentService>();
 
             #endregion
 

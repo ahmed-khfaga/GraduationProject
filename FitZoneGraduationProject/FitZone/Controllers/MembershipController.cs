@@ -51,8 +51,10 @@ namespace FitZone.APIs.Controllers
             var appUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrWhiteSpace(appUserId))
                 return Unauthorized(new ApiException(401, "Invalid user token."));
+            if (string.IsNullOrWhiteSpace(dto.PaymentIntentId))
+                return BadRequest(new ApiException(400, "PaymentIntentId is required."));
 
-            var result = await _membershipService.ActivateMembershipAsync(appUserId, dto.MembershipPlanId);
+            var result = await _membershipService.ActivateMembershipAsync(appUserId, dto.MembershipPlanId, dto.PaymentIntentId);
             return Ok(result);
         }
 
