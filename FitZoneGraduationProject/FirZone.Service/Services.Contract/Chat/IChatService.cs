@@ -12,4 +12,5 @@ public interface IChatService
 {
     Task SaveMessageAsync(string senderId, string receiverId, string message);
     Task<IEnumerable<ChatMessageDto>> GetConversation(string user1, string user2);
+    Task<bool> CanUsersChatAsync(string user1, string user2);
 }

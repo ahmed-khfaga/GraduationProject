@@ -22,32 +22,21 @@ namespace FitZone.Service
 
         public async Task<PaginatedResult<ExerciseSummaryDto>> GetExercisesForCoachAsync(int coachId, ExerciseFilterParams filters)
         {
+            filters.PageIndex = filters.PageIndex < 1 ? 1 : filters.PageIndex;
+            filters.PageSize = filters.PageSize < 1 ? 20 : Math.Min(filters.PageSize, 100);
+
             var spec = new ExercisesForCoachSpec(coachId, filters);
             var countSpec = new ExercisesForCoachSpec(coachId, filters, countOnly: true);
 
-            var all = await _uow.Repository<Exercise>().GetAllWithSpecAsync(spec);
+            var exercises = await _uow.Repository<Exercise>().GetAllWithSpecAsync(spec);
             var total = await _uow.Repository<Exercise>().CountAsync(countSpec);
-
-            var filtered = all.AsEnumerable();
-
-            if (!string.IsNullOrWhiteSpace(filters.Muscle))
-                filtered = filtered.Where(e =>
-                    e.PrimaryMuscles != null &&
-                    e.PrimaryMuscles.Contains(filters.Muscle, StringComparison.OrdinalIgnoreCase));
-
-            if (!string.IsNullOrWhiteSpace(filters.Equipment))
-                filtered = filtered.Where(e =>
-                    e.EquipmentNeeded != null &&
-                    e.EquipmentNeeded.Contains(filters.Equipment, StringComparison.OrdinalIgnoreCase));
-
-            var list = filtered.ToList();
 
             return new PaginatedResult<ExerciseSummaryDto>
             {
                 PageIndex = filters.PageIndex,
                 PageSize = filters.PageSize,
-                TotalCount = total, // DB-level count — not list.Count which is a subset after pagination
-                Data = _mapper.Map<IEnumerable<ExerciseSummaryDto>>(list)
+                TotalCount = total,
+                Data = _mapper.Map<IEnumerable<ExerciseSummaryDto>>(exercises)
             };
         }
 

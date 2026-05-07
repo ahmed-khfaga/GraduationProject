@@ -30,19 +30,38 @@ namespace FitZone.APIs.SignalR
         public async Task SendMessage(string receiverId, string message)
         {
             var senderId = Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrWhiteSpace(senderId))
+                throw new HubException("Unauthorized user.");
 
-            var hasAccess = await _membershipService.HasPremiumMembership(senderId);
+            if (string.IsNullOrWhiteSpace(receiverId))
+                throw new HubException("Receiver is required.");
 
-            if (!hasAccess)
-                throw new HubException("Upgrade to Premium to chat");
-         
-            await _chatService.SaveMessageAsync(senderId, receiverId, message);
+            if (string.IsNullOrWhiteSpace(message))
+                throw new HubException("Message cannot be empty.");
+
+            if (senderId == receiverId)
+                throw new HubException("You cannot message yourself.");
+
+            var senderIsTrainee = Context.User.IsInRole("Trainee");
+            if (senderIsTrainee)
+            {
+                var hasPremiumAccess = await _membershipService.HasPremiumMembership(senderId);
+                if (!hasPremiumAccess)
+                    throw new HubException("Upgrade to Premium to chat");
+            }
+
+            var canChat = await _chatService.CanUsersChatAsync(senderId, receiverId);
+            if (!canChat)
+                throw new HubException("Chat is allowed only between assigned coach and trainee.");
+
+            var normalizedMessage = message.Trim();
+            await _chatService.SaveMessageAsync(senderId, receiverId, normalizedMessage);
 
             await Clients.User(receiverId)
-                .SendAsync("ReceiveMessage", senderId, message);
+                .SendAsync("ReceiveMessage", senderId, normalizedMessage);
 
             await Clients.Caller
-                .SendAsync("ReceiveMessage", senderId, message);
+                .SendAsync("ReceiveMessage", senderId, normalizedMessage);
         }
     }
 }

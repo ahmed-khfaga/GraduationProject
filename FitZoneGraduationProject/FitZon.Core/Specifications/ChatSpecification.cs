@@ -16,6 +16,7 @@ namespace FitZone.Core.Specifications
         {
             Includes.Add(m => m.Sender);
             Includes.Add(m => m.Receiver);
+            OrderBy = m => m.SentAt;
         }
     }
 }

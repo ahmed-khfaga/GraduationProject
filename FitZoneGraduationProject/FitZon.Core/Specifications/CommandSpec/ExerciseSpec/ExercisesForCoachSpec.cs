@@ -12,7 +12,9 @@ namespace FitZone.Core.Specifications.CommandSpec.ExerciseSpec
     {
         public ExercisesForCoachSpec(int coachId, ExerciseFilterParams p) : base(e =>
             (e.CoachId == null || e.CoachId == coachId) &&
-            (!p.Level.HasValue || e.FitnessLevel == p.Level))
+            (!p.Level.HasValue || e.FitnessLevel == p.Level) &&
+            (string.IsNullOrWhiteSpace(p.Muscle) || (e.PrimaryMuscles != null && e.PrimaryMuscles.Contains(p.Muscle))) &&
+            (string.IsNullOrWhiteSpace(p.Equipment) || (e.EquipmentNeeded != null && e.EquipmentNeeded.Contains(p.Equipment))))
         {
             OrderBy = e => e.Name;
             ApplyPagination(p.PageIndex, p.PageSize);
@@ -21,7 +23,9 @@ namespace FitZone.Core.Specifications.CommandSpec.ExerciseSpec
         // Count overload (no pagination)
         public ExercisesForCoachSpec(int coachId, ExerciseFilterParams p, bool countOnly) : base(e =>
             (e.CoachId == null || e.CoachId == coachId) &&
-            (!p.Level.HasValue || e.FitnessLevel == p.Level))
+            (!p.Level.HasValue || e.FitnessLevel == p.Level) &&
+            (string.IsNullOrWhiteSpace(p.Muscle) || (e.PrimaryMuscles != null && e.PrimaryMuscles.Contains(p.Muscle))) &&
+            (string.IsNullOrWhiteSpace(p.Equipment) || (e.EquipmentNeeded != null && e.EquipmentNeeded.Contains(p.Equipment))))
         {
         }
     }
