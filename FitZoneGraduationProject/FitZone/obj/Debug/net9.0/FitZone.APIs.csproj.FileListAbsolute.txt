@@ -709,7 +709,6 @@ D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\ne
 D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\staticwebassets.build.json.cache
 D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\staticwebassets.development.json
 D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\staticwebassets.build.endpoints.json
-D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\swae.build.ex.cache
 D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\FitZone..EBAC3D3B.Up2Date
 D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\FitZone.APIs.dll
 D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZone\obj\Debug\net9.0\refint\FitZone.APIs.dll

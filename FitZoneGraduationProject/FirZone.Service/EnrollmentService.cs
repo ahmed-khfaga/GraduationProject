@@ -169,6 +169,15 @@ namespace FitZone.Service
                 await _uow.CompleteAsync();
                 return MapToEnrollmentDto(previous);
             }
+            ///
+            /// return obj from traineeMembership 
+            /// check if memebership is active and not expired
+            /// after check 
+            /// 1 - add obj from enrollment
+            /// 2 - add obj from traineeMembership to enrollment (for example: membershipId, membershipType)
+            /// 3- save changes()
+            ///
+
 
             //  Fresh enrollment 
             var enrollment = new TraineeProgramEnrollment
