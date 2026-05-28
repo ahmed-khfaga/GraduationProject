@@ -176,6 +176,7 @@ namespace FitZone.Service
             /// 1 - add obj from enrollment
             /// 2 - add obj from traineeMembership to enrollment (for example: membershipId, membershipType)
             /// 3- save changes()
+            /// 
             ///
 
 

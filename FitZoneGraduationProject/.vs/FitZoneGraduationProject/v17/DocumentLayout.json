@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\MVC learn\\mix\\GraduationProject\\FitZoneGraduationProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9E6D6BF4-D92A-4233-9ADC-4295D9A13E50}|FitZone\\FitZone.APIs.csproj|d:\\mvc learn\\mix\\graduationproject\\fitzonegraduationproject\\fitzone\\signalr\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E6D6BF4-D92A-4233-9ADC-4295D9A13E50}|FitZone\\FitZone.APIs.csproj|solutionrelative:fitzone\\signalr\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|d:\\mvc learn\\mix\\graduationproject\\fitzonegraduationproject\\firzone.service\\enrollmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{36091037-D115-4768-A914-5D8B6D00994D}|FirZone.Service\\FitZone.Service.csproj|solutionrelative:firzone.service\\enrollmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E6D6BF4-D92A-4233-9ADC-4295D9A13E50}|FitZone\\FitZone.APIs.csproj|d:\\mvc learn\\mix\\graduationproject\\fitzonegraduationproject\\fitzone\\signalr\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E6D6BF4-D92A-4233-9ADC-4295D9A13E50}|FitZone\\FitZone.APIs.csproj|solutionrelative:fitzone\\signalr\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3F9EF13C-6B3E-4B94-8DED-19C5AF6ACA40}|FitZon.Core\\FitZone.Core.csproj|d:\\mvc learn\\mix\\graduationproject\\fitzonegraduationproject\\fitzon.core\\entitys\\traineemembership.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -70,7 +70,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -82,7 +82,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ChatHub.cs",
               "DocumentMoniker": "D:\\MVC learn\\mix\\GraduationProject\\FitZoneGraduationProject\\FitZone\\SignalR\\ChatHub.cs",
               "RelativeDocumentMoniker": "FitZone\\SignalR\\ChatHub.cs",
@@ -119,15 +119,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "EnrollmentService.cs",
               "DocumentMoniker": "D:\\MVC learn\\mix\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\EnrollmentService.cs",
               "RelativeDocumentMoniker": "FirZone.Service\\EnrollmentService.cs",
               "ToolTip": "D:\\MVC learn\\mix\\GraduationProject\\FitZoneGraduationProject\\FirZone.Service\\EnrollmentService.cs",
               "RelativeToolTip": "FirZone.Service\\EnrollmentService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJIAAAAAAAAAAAAswLIAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-28T21:44:29.324Z"
+              "WhenOpened": "2026-05-28T21:44:29.324Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
