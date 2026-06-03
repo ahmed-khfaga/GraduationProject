@@ -14,6 +14,9 @@ namespace FitZone.Service.Services.Contract
 
         Task<IEnumerable<EnrollmentHistoryDto>> GetMyEnrollmentHistoryAsync(int traineeId);
 
+        
+        Task<IEnumerable<WeekOverviewDto>> GetWeekOverviewAsync(int enrollmentId, int traineeId);
+
         Task<WeekDetailDto?> GetWeekAsync(int enrollmentId, int weekNumber, int traineeId);
 
         Task<WorkoutSessionDto?> GetSessionDetailAsync(int sessionId, int traineeId);

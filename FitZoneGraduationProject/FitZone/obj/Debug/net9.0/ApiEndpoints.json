@@ -241,6 +241,32 @@
   },
   {
     "ContainingType": "FitZone.APIs.Controllers.EnrollmentController",
+    "Method": "GetWeekOverview",
+    "RelativePath": "api/Enrollment/{enrollmentId}/weeks",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "enrollmentId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[FitZone.Service.DTOs.EnrollmentDTOs.WeekOverviewDto, FitZone.Service, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "FitZone.APIs.Controllers.EnrollmentController",
     "Method": "GetWeek",
     "RelativePath": "api/Enrollment/{enrollmentId}/weeks/{weekNumber}",
     "HttpMethod": "GET",

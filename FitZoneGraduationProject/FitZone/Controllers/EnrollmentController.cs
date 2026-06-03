@@ -3,7 +3,6 @@ using FitZone.Service.DTOs.SessionExerciseDTOs;
 using FitZone.Service.Errors;
 using FitZone.Service.Services.Contract;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -21,8 +20,11 @@ namespace FitZone.APIs.Controllers
             _traineeService = traineeService;
         }
 
-        // GET api/enrollment
-        // Active enrollments dashboard — week unlock is computed automatically.
+        // ── Dashboard ─────────────────────────────────────────────────────────
+
+        /// GET api/enrollment
+        /// Returns all active enrollments for the logged-in trainee.
+        /// MaxWeekUnlocked is synced automatically so the progress bar is always current.
         [HttpGet]
         public async Task<ActionResult<IEnumerable<EnrollmentDto>>> GetMyEnrollments()
         {
@@ -33,9 +35,12 @@ namespace FitZone.APIs.Controllers
             return Ok(enrollments);
         }
 
-        // GET api/enrollment/history
-        // All enrollments including completed and cancelled — lets the trainee see their full history
-        // and re-enroll in a program they previously started (will resume from saved week).
+        // ── History ───────────────────────────────────────────────────────────
+
+        /// GET api/enrollment/history
+        /// All enrollments including completed and cancelled.
+        /// Lets the trainee see everything they have ever enrolled in and re-enroll
+        /// from saved progress.
         [HttpGet("history")]
         public async Task<ActionResult<IEnumerable<EnrollmentHistoryDto>>> GetHistory()
         {
@@ -46,9 +51,21 @@ namespace FitZone.APIs.Controllers
             return Ok(history);
         }
 
-        // GET api/enrollment/{enrollmentId}/weeks/{weekNumber}
-        // Returns the sessions for a specific week.
-        // Returns 403 if the week is not yet unlocked.
+        // ── Week overview ───────────────────────────────────────────────
+
+        [HttpGet("{enrollmentId:int}/weeks")]
+        public async Task<ActionResult<IEnumerable<WeekOverviewDto>>> GetWeekOverview(int enrollmentId)
+        {
+            var traineeId = await ResolveTraineeIdAsync();
+            if (traineeId is null) return TraineeNotFound();
+
+            var weeks = await _enrollmentService.GetWeekOverviewAsync(enrollmentId, traineeId.Value);
+            return Ok(weeks);
+        }
+
+        // ── Single week detail ────────────────────────────────────────────────
+
+      
         [HttpGet("{enrollmentId:int}/weeks/{weekNumber:int}")]
         public async Task<ActionResult<WeekDetailDto>> GetWeek(int enrollmentId, int weekNumber)
         {
@@ -62,9 +79,8 @@ namespace FitZone.APIs.Controllers
             return Ok(week);
         }
 
-        // GET api/enrollment/sessions/{sessionId}
-        // Full session with exercises grouped by section (Warmup → Primer → MainWork → Cooldown).
-        // Returns 403 if the session belongs to a locked week.
+        // ── Session detail ────────────────────────────────────────────────────
+
         [HttpGet("sessions/{sessionId:int}")]
         public async Task<ActionResult<WorkoutSessionDto>> GetSession(int sessionId)
         {
@@ -78,10 +94,8 @@ namespace FitZone.APIs.Controllers
             return Ok(session);
         }
 
-        // POST api/enrollment/start
-        // Enroll in a program. If the trainee has a previous enrollment in this same program
-        // (even if cancelled), it will be RESUMED from the saved week — not restarted.
-        // If they are in a different program on the same track, that program is suspended first.
+        // ── Enroll ────────────────────────────────────────────────────────────
+
         [HttpPost("start")]
         public async Task<ActionResult<EnrollmentDto>> StartProgram([FromBody] StartProgramDto dto)
         {
@@ -92,8 +106,9 @@ namespace FitZone.APIs.Controllers
             return Ok(enrollment);
         }
 
-        // DELETE api/enrollment/{id}
-        // Cancels the enrollment. Progress is preserved — re-enrolling later will resume it.
+        // ── Cancel ────────────────────────────────────────────────────────────
+
+ 
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> Cancel(int id)
         {
@@ -104,7 +119,7 @@ namespace FitZone.APIs.Controllers
             return Ok(new { message = "Enrollment cancelled. Your progress has been saved — you can resume this program any time." });
         }
 
-        // ── Private helpers ──────
+        // ── Private helpers ───────────────────────────────────────────────────
 
         private async Task<int?> ResolveTraineeIdAsync()
         {

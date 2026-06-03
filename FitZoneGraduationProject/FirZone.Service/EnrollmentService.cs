@@ -3,15 +3,11 @@ using FitZone.Core.Entitys;
 using FitZone.Core.Enums;
 using FitZone.Core.Repository.Contract;
 using FitZone.Core.Specifications.CommandSpec.EnrollmentSpec;
+using FitZone.Core.Specifications.CommandSpec.ProgramSpec;
 using FitZone.Core.Specifications.CommandSpec.SessionSpec;
 using FitZone.Service.DTOs.EnrollmentDTOs;
 using FitZone.Service.DTOs.SessionExerciseDTOs;
 using FitZone.Service.Services.Contract;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FitZone.Service
 {
@@ -20,7 +16,13 @@ namespace FitZone.Service
         private readonly IUnitOfWork _uow;
         private readonly IMapper _mapper;
 
-        public EnrollmentService(IUnitOfWork uow, IMapper mapper) { _uow = uow; _mapper = mapper; }
+        public EnrollmentService(IUnitOfWork uow, IMapper mapper)
+        {
+            _uow = uow;
+            _mapper = mapper;
+        }
+
+        // ── Dashboard: active enrollments ────────────────────────────────────
 
         public async Task<IEnumerable<EnrollmentDto>> GetMyEnrollmentsAsync(int traineeId)
         {
@@ -35,6 +37,8 @@ namespace FitZone.Service
             }
             return result;
         }
+
+        // ── Full history ──────────────────────────────────────────────────────
 
         public async Task<IEnumerable<EnrollmentHistoryDto>> GetMyEnrollmentHistoryAsync(int traineeId)
         {
@@ -55,6 +59,33 @@ namespace FitZone.Service
                 IsActive = e.IsActive
             });
         }
+
+        // ── Week overview cards ──────────────────────────────────────────
+
+        public async Task<IEnumerable<WeekOverviewDto>> GetWeekOverviewAsync(int enrollmentId, int traineeId)
+        {
+            var enrollment = await _uow.Repository<TraineeProgramEnrollment>()
+                .GetWithSpecAsync(new EnrollmentByIdSpec(enrollmentId, traineeId))
+                ?? throw new InvalidOperationException("Enrollment not found or access denied.");
+
+            await SyncMaxWeekUnlockedAsync(enrollment);
+
+            var weeks = await _uow.Repository<ProgramWeek>()
+                .GetAllWithSpecAsync(new ProgramWeeksByProgramSpec(enrollment.WorkoutProgramId));
+
+            return weeks.Select(w => new WeekOverviewDto
+            {
+                WeekNumber = w.WeekNumber,
+                WeekDescription = w.WeekDescription,
+                FocusArea = w.FocusArea,
+                ProgressionNote = w.ProgressionNote,
+                NextWeekPreview = w.NextWeekPreview,
+                SessionCount = w.WorkoutSessions?.Count ?? 0,
+                IsUnlocked = w.WeekNumber <= enrollment.MaxWeekUnlocked
+            });
+        }
+
+        // ── Single week detail ────────────────────────────────────────────────
 
         public async Task<WeekDetailDto?> GetWeekAsync(int enrollmentId, int weekNumber, int traineeId)
         {
@@ -96,6 +127,8 @@ namespace FitZone.Service
             };
         }
 
+        // ── Session detail ────────────────────────────────────────────────────
+
         public async Task<WorkoutSessionDto?> GetSessionDetailAsync(int sessionId, int traineeId)
         {
             var session = await _uow.Repository<WorkoutSession>()
@@ -127,19 +160,21 @@ namespace FitZone.Service
             return dto;
         }
 
+        // ── Enroll / Cancel ───────────────────────────────────────────────────
+
         public async Task<EnrollmentDto> StartProgramAsync(int traineeId, StartProgramDto dto)
         {
             var program = await _uow.Repository<WorkoutProgram>().GetAsync(dto.ProgramID);
             if (program is null || !program.IsPublished)
                 throw new InvalidOperationException("Program not found or not available.");
 
-            //  Check for existing active enrollment on the same track
+            // Check for existing active enrollment on the same track
             var activeSpec = new ActiveEnrollmentByTrackSpec(traineeId, program.TrackId);
             var activeOther = await _uow.Repository<TraineeProgramEnrollment>().GetWithSpecAsync(activeSpec);
 
             if (activeOther is not null && activeOther.WorkoutProgramId == dto.ProgramID)
             {
-                // Same program already active — sync and return
+                // Same program already active — sync and return current state
                 await SyncMaxWeekUnlockedAsync(activeOther);
                 await _uow.CompleteAsync();
                 return MapToEnrollmentDto(activeOther);
@@ -154,7 +189,7 @@ namespace FitZone.Service
                 _uow.Repository<TraineeProgramEnrollment>().Update(activeOther);
             }
 
-            // Check for a previous enrollment in THIS program (resume) 
+            // Check for a previous enrollment in THIS program (resume)
             var previousSpec = new PreviousEnrollmentInProgramSpec(traineeId, dto.ProgramID);
             var previous = await _uow.Repository<TraineeProgramEnrollment>().GetWithSpecAsync(previousSpec);
 
@@ -169,18 +204,8 @@ namespace FitZone.Service
                 await _uow.CompleteAsync();
                 return MapToEnrollmentDto(previous);
             }
-            ///
-            /// return obj from traineeMembership 
-            /// check if memebership is active and not expired
-            /// after check 
-            /// 1 - add obj from enrollment
-            /// 2 - add obj from traineeMembership to enrollment (for example: membershipId, membershipType)
-            /// 3- save changes()
-            /// 
-            ///
 
-
-            //  Fresh enrollment 
+            // Fresh enrollment
             var enrollment = new TraineeProgramEnrollment
             {
                 TraineeId = traineeId,
@@ -195,6 +220,7 @@ namespace FitZone.Service
             _uow.Repository<TraineeProgramEnrollment>().Add(enrollment);
             await _uow.CompleteAsync();
 
+            // Reload with navigation properties for the DTO
             var loaded = await _uow.Repository<TraineeProgramEnrollment>()
                 .GetWithSpecAsync(new EnrollmentByIdSpec(enrollment.Id, traineeId));
 
@@ -217,16 +243,18 @@ namespace FitZone.Service
             await _uow.CompleteAsync();
         }
 
-        // ── Private helpers ──────────────────────────────────────────
+        // ── Private helpers ───────────────────────────────────────────────────
 
-        
-        // Computes how many weeks are due based on elapsed 7day periods since StartDate
-        // Week 1 is always unlocked. Week N unlocks after 7 days have passed
-        // Updates the DB row when the value has gone up
+    
+        /// Computes how many weeks are due based on elapsed calendar weeks since StartDate,
+        /// updates the DB row if the value has gone up, and marks the enrollment Completed
+        /// when the trainee has passed the final week.
        
         private async Task SyncMaxWeekUnlockedAsync(TraineeProgramEnrollment enrollment)
         {
-            int due = ComputeWeeksDue(enrollment.StartDate, enrollment.WorkoutProgram?.DurationOnWeeks ?? int.MaxValue);
+            int due = ComputeWeeksDue(
+                enrollment.StartDate,
+                enrollment.WorkoutProgram?.DurationOnWeeks ?? int.MaxValue);
 
             if (due <= enrollment.MaxWeekUnlocked) return;
 
@@ -245,10 +273,9 @@ namespace FitZone.Service
             await _uow.CompleteAsync();
         }
 
-       
-        // Week 1 unlocked immediately. Week N unlocks after (N-1) full 7-day periods.
-        // Uses calendar weeks (Monday-anchored) for a clean "new week = Monday" .
-        
+        /// Week 1 is unlocked immediately on enrollment.
+        /// Week N unlocks after (N-1) full calendar weeks (Monday-anchored) have passed.
+      
         private static int ComputeWeeksDue(DateTime startDate, int maxWeeks)
         {
             var startMonday = GetWeekMonday(startDate.Date);
@@ -263,6 +290,10 @@ namespace FitZone.Service
             return date.AddDays(-offset);
         }
 
+        
+        /// When resuming, we backdate StartDate so that the time-based unlock
+        /// immediately restores the trainee's saved MaxWeekUnlocked.
+        
         private static DateTime BackdateStartDate(int savedWeek)
         {
             var currentMonday = GetWeekMonday(DateTime.UtcNow.Date);
