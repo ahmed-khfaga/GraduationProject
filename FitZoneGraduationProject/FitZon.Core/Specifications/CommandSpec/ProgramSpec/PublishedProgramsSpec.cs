@@ -19,8 +19,11 @@ namespace FitZone.Core.Specifications.CommandSpec.ProgramSpec
             (!p.Equipment.HasValue || w.EquipmentType == p.Equipment) &&
             (!p.DurationWeeks.HasValue || w.DurationOnWeeks == p.DurationWeeks))
         {
-            Includes.Add(w => w.Coach);
             Includes.Add(w => w.Track);
+            Includes.Add(w => w.Coach);
+            // Coach.ApplicationUser is needed for CoachName — load it via a string include
+            // because the single-level spec evaluator only supports .Include(), not .ThenInclude()
+            IncludeStrings.Add("Coach.ApplicationUser");
 
             if (p.Sort == "newest")
                 OrderByDescending = w => w.PublishedAt!;
@@ -30,7 +33,7 @@ namespace FitZone.Core.Specifications.CommandSpec.ProgramSpec
             ApplyPagination(p.PageIndex, p.PageSize);
         }
 
-        // Count query — no pagination, no includes
+        // Count query — no pagination, no includes needed
         public PublishedProgramsSpec(ProgramFilterParams p, bool countOnly) : base(w =>
             w.IsPublished &&
             (!p.TrackID.HasValue || w.TrackId == p.TrackID) &&

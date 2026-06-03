@@ -10,8 +10,13 @@ namespace FitZone.Core.Specifications
 {
     public class BaseSpecatifications<T> : ISpecifications<T> where T : BaseEntity
     {
-        public Expression<Func<T, bool>> Criteria { get; set; } = null; 
-        public List<Expression<Func<T, object>>> Includes { get; set; } = new List<Expression<Func<T, object>>>();
+        public Expression<Func<T, bool>> Criteria { get; set; } = null;
+
+        // Lambda-based single-level includes: w => w.Coach
+        public List<Expression<Func<T, object>>> Includes { get; set; } = new();
+
+        // String-based includes for nested navigation: "Coach.ApplicationUser"
+        public List<string> IncludeStrings { get; set; } = new();
 
         public Expression<Func<T, object>>? OrderBy { get; set; }
         public Expression<Func<T, object>>? OrderByDescending { get; set; }
@@ -22,7 +27,7 @@ namespace FitZone.Core.Specifications
 
         public BaseSpecatifications()
         {
-            // for Critreia null (no fillters in code )
+            // no filter — returns all rows
         }
 
         public BaseSpecatifications(Expression<Func<T, bool>> criteriaExpression)
@@ -38,3 +43,4 @@ namespace FitZone.Core.Specifications
         }
     }
 }
+

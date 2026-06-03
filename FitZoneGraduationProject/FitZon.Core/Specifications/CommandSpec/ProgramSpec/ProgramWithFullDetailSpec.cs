@@ -12,8 +12,9 @@ namespace FitZone.Core.Specifications.CommandSpec.ProgramSpec
     {
         public ProgramWithFullDetailSpec(int programId) : base(w => w.Id == programId)
         {
-            Includes.Add(w => w.Coach);
             Includes.Add(w => w.Track);
+            Includes.Add(w => w.Coach);
+            IncludeStrings.Add("Coach.ApplicationUser");
             Includes.Add(w => w.ProgramWeeks);
         }
     }

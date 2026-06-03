@@ -13,6 +13,8 @@ namespace FitZone.Core.Specifications.CommandSpec.ProgramSpec
         public CoachProgramsSpec(int coachId) : base(w => w.CoachId == coachId)
         {
             Includes.Add(w => w.Track);
+            Includes.Add(w => w.Coach);
+            IncludeStrings.Add("Coach.ApplicationUser");
             OrderByDescending = w => w.Id;
         }
     }

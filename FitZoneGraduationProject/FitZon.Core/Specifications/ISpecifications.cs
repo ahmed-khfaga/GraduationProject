@@ -10,17 +10,20 @@ namespace FitZone.Core.Specifications
 {
     public interface ISpecifications<T> where T : BaseEntity
     {
-        public Expression<Func<T,bool>> Criteria {  get; set; } // for where () filter 
-        public List<Expression<Func<T,object>>> Includes { get; set; } // should get list 
+        Expression<Func<T, bool>> Criteria { get; set; }
 
+        // Lambda-based includes (single-level: w => w.Coach)
+        List<Expression<Func<T, object>>> Includes { get; set; }
 
-        // Sorting
+        // String-based includes for nested navigation (e.g. "Coach.ApplicationUser")
+        List<string> IncludeStrings { get; set; }
+
         Expression<Func<T, object>>? OrderBy { get; set; }
         Expression<Func<T, object>>? OrderByDescending { get; set; }
 
-        // Pagination
         int? Take { get; set; }
         int? Skip { get; set; }
         bool IsPaginationEnabled { get; set; }
     }
 }
+
