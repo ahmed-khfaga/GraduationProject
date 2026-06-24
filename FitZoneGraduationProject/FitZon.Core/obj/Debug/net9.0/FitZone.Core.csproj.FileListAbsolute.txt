@@ -50,3 +50,16 @@ D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debu
 D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\refint\FitZone.Core.dll
 D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.pdb
 D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\ref\FitZone.Core.dll
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FitZon.Core\bin\Debug\net9.0\FitZone.Core.deps.json
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FitZon.Core\bin\Debug\net9.0\FitZone.Core.dll
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FitZon.Core\bin\Debug\net9.0\FitZone.Core.pdb
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.csproj.AssemblyReference.cache
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.AssemblyInfoInputs.cache
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.AssemblyInfo.cs
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.csproj.CoreCompileInputs.cache
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.sourcelink.json
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.dll
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\refint\FitZone.Core.dll
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\FitZone.Core.pdb
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FitZon.Core\obj\Debug\net9.0\ref\FitZone.Core.dll

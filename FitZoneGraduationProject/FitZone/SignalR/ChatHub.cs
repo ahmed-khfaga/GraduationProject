@@ -47,7 +47,7 @@ namespace FitZone.APIs.SignalR
             {
                 var hasPremiumAccess = await _membershipService.HasPremiumMembership(senderId);
                 if (!hasPremiumAccess)
-                    throw new HubException("Upgrade to Premium to chat");
+                    throw new HubException("Upgrade to Premium to chat with your coach.");
             }
 
             var canChat = await _chatService.CanUsersChatAsync(senderId, receiverId);

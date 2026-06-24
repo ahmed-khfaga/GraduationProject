@@ -11,7 +11,7 @@ namespace FitZone.Service.Services.Contract.Payment
     public interface IPaymentService
     {
         Task<PaymentIntentDto> CreateMembershipPaymentIntentAsync(string userId, int membershipPlanId);
-        Task<PaymentStatusDto> ConfirmMembershipPaymentAsync(string userId, string paymentIntentId);
+        Task<PaymentStatusDto> ConfirmMembershipPaymentAsync(string userId, string paymentIntentId, string cardNumber);
         Task<bool> HasSuccessfulPaymentForPlanAsync(string userId, int membershipPlanId, string paymentIntentId);
     }
 }

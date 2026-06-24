@@ -62,3 +62,19 @@ D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\
 D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\refint\FitZone.Service.dll
 D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.pdb
 D:\MVC learn\mix\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\ref\FitZone.Service.dll
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FirZone.Service\bin\Debug\net9.0\FitZone.Service.deps.json
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FirZone.Service\bin\Debug\net9.0\FitZone.Service.dll
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FirZone.Service\bin\Debug\net9.0\FitZone.Service.pdb
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FirZone.Service\bin\Debug\net9.0\FitZone.Core.dll
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FirZone.Service\bin\Debug\net9.0\FitZone.Core.pdb
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.csproj.AssemblyReference.cache
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.GeneratedMSBuildEditorConfig.editorconfig
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.AssemblyInfoInputs.cache
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.AssemblyInfo.cs
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.csproj.CoreCompileInputs.cache
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.sourcelink.json
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone..2F341427.Up2Date
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.dll
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\refint\FitZone.Service.dll
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\FitZone.Service.pdb
+D:\work\Test\gp\GraduationProject\FitZoneGraduationProject\FirZone.Service\obj\Debug\net9.0\ref\FitZone.Service.dll
