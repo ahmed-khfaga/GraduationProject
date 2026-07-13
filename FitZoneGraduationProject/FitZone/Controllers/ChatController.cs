@@ -1,11 +1,11 @@
-using System.Security.Claims;
+﻿using System.Security.Claims;
 using FitZone.Service.DTOs.ChatDTOs;
 using FitZone.Service.Errors;
 using FitZone.Service.Services.Contract;
 using FitZone.Service.Services.Contract.Chat;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
+using FitZone.Service.DTOs.ChatContactsDTOs;
 namespace FitZone.APIs.Controllers
 {
     [Authorize(Roles = "Trainee,Coach")]
@@ -13,26 +13,23 @@ namespace FitZone.APIs.Controllers
     {
         private readonly IChatService _chatService;
         private readonly IMembershipService _membershipService;
-
-        public ChatController(IChatService chatService, IMembershipService membershipService)
+        private readonly IChatContactsService _chatContactsService;
+        public ChatController(IChatService chatService, IMembershipService membershipService, IChatContactsService chatContactsService)
         {
             _chatService = chatService;
             _membershipService = membershipService;
+            _chatContactsService = chatContactsService;
         }
-
         [HttpGet("access/{otherUserId}")]
         public async Task<ActionResult<ChatAccessDto>> GetChatAccess(string otherUserId)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrWhiteSpace(userId))
                 return Unauthorized(new ApiException(401, "Invalid user token."));
-
             if (string.IsNullOrWhiteSpace(otherUserId))
                 return BadRequest(new ApiException(400, "Other user is required."));
-
             if (userId == otherUserId)
                 return BadRequest(new ApiException(400, "You cannot chat with yourself."));
-
             var canChat = await _chatService.CanUsersChatAsync(userId, otherUserId);
             if (!canChat)
             {
@@ -43,7 +40,6 @@ namespace FitZone.APIs.Controllers
                     Message = "Chat is allowed only between assigned coach and trainee."
                 });
             }
-
             if (User.IsInRole("Trainee"))
             {
                 var hasPremiumAccess = await _membershipService.HasPremiumMembership(userId);
@@ -56,47 +52,59 @@ namespace FitZone.APIs.Controllers
                         Message = "Upgrade to Premium to chat with your coach."
                     });
                 }
-
                 return Ok(new ChatAccessDto
                 {
                     CanChat = true,
                     HasPremiumAccess = true
                 });
             }
-
             return Ok(new ChatAccessDto
             {
                 CanChat = true,
                 HasPremiumAccess = true
             });
         }
-
         [HttpGet("conversation/{otherUserId}")]
         public async Task<ActionResult<IEnumerable<ChatMessageDto>>> GetConversation(string otherUserId)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrWhiteSpace(userId))
                 return Unauthorized(new ApiException(401, "Invalid user token."));
-
             if (string.IsNullOrWhiteSpace(otherUserId))
                 return BadRequest(new ApiException(400, "Other user is required."));
-
             if (userId == otherUserId)
                 return BadRequest(new ApiException(400, "You cannot chat with yourself."));
-
             if (User.IsInRole("Trainee"))
             {
                 var hasPremiumAccess = await _membershipService.HasPremiumMembership(userId);
                 if (!hasPremiumAccess)
                     return StatusCode(403, new ApiException(403, "Upgrade to Premium to chat with your coach."));
             }
-
             var canChat = await _chatService.CanUsersChatAsync(userId, otherUserId);
             if (!canChat)
                 return StatusCode(403, new ApiException(403, "Chat is allowed only between assigned coach and trainee."));
-
             var messages = await _chatService.GetConversation(userId, otherUserId);
             return Ok(messages);
+        }
+        [HttpGet("contacts")]
+        public async Task<IActionResult> GetChatContacts()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrWhiteSpace(userId))
+                return Unauthorized(new ApiException(401, "Invalid user token."));
+
+            if (User.IsInRole("Trainee"))
+            {
+                var hasPremium = await _membershipService.HasPremiumMembership(userId);
+                if (!hasPremium)
+                    return StatusCode(403, new ApiException(403, "Upgrade to Premium to access chat contacts."));
+
+                var result = await _chatContactsService.GetContactsForTraineeAsync(userId);
+                return Ok(result);
+            }
+
+            var coachResult = await _chatContactsService.GetContactsForCoachAsync(userId);
+            return Ok(coachResult);
         }
     }
 }

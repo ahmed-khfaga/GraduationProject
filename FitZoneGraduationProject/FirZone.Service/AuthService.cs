@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FitZone.Core.Entitys;
 using FitZone.Core.Entitys.Identity;
-using FitZone.Core.Entitys;
 using FitZone.Core.Enums;
 using FitZone.Core.Repository.Contract;
+using FitZone.Core.Specifications.CommandSpec.ProfileSpec;
 using FitZone.Service.DTOs;
 using FitZone.Service.Errors;
 using FitZone.Service.HelperAuth;
@@ -17,6 +11,13 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace FitZone.Service
 {
@@ -176,6 +177,44 @@ namespace FitZone.Service
             {
                 IsSuccess = true,
                 Message = "Account created successfully"
+            };
+        }
+
+        public async Task<AuthUserDto?> GetCurrentUserAsync(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user is null) return null;
+
+            var roles = await _userManager.GetRolesAsync(user);
+            var role = roles.FirstOrDefault() ?? user.Role.ToString();
+
+            int? traineeId = null;
+            int? coachId = null;
+
+            if (role == "Trainee")
+            {
+                var trainee = await _unitOfWork.Repository<Trainee>()
+                    .GetWithSpecAsync(new TraineeByUserIdSpec(userId));
+
+                traineeId = trainee?.Id;
+            }
+
+            if (role == "Coach")
+            {
+                var coach = await _unitOfWork.Repository<Coach>()
+                    .GetWithSpecAsync(new CoachByUserIdSpec(userId));
+
+                coachId = coach?.Id;
+            }
+
+            return new AuthUserDto
+            {
+                UserId = user.Id,
+                Email = user.Email ?? string.Empty,
+                FullName = user.FullName,
+                Role = role,
+                TraineeId = traineeId,
+                CoachId = coachId
             };
         }
     }

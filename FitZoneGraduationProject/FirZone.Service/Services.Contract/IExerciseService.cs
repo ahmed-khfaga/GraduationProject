@@ -16,5 +16,14 @@ namespace FitZone.Service.Services.Contract
         Task<bool> UpdateExerciseAsync(int id, CreateExerciseDto dto, int coachId);
 
         Task<bool> DeleteExerciseAsync(int id, int coachId);
+
+        // ── Admin exercise management ────────────────────────────────────
+        // Admin can fully manage the GLOBAL library (create/update/delete) and
+        // browse coach-private exercises read-only, but can never modify a coach's
+        // private exercise — only the coach who owns it can.
+        Task<PaginatedResult<ExerciseSummaryDto>> AdminGetExercisesAsync(bool isGlobal, ExerciseFilterParams filters);
+        Task<int> AdminCreateGlobalExerciseAsync(CreateExerciseDto dto);
+        Task<bool> AdminUpdateGlobalExerciseAsync(int id, CreateExerciseDto dto);
+        Task<bool> AdminDeleteGlobalExerciseAsync(int id);
     }
 }

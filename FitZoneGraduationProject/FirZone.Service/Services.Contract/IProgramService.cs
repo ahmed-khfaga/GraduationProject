@@ -30,10 +30,23 @@ namespace FitZone.Service.Services.Contract
         Task<bool> UpdateProgramWeekAsync(int programWeekId, int coachId, UpdateProgramWeekDto dto);
 
         Task<bool> DeleteProgramWeekAsync(int programWeekId, int coachId);
-  
+
+        // Coach reads one session individually (with its exercises)
+        Task<WorkoutSessionDto?> GetSessionForCoachAsync(int sessionId, int coachId);
+
+        // Coach adds a brand-new session to an existing week
+        Task<int> AddSessionAsync(int programWeekId, int coachId, CreateWorkoutSessionDto dto);
+
         Task<bool> UpdateSessionAsync(int sessionId, int coachId, UpdateWorkoutSessionDto dto);
-      
+
         Task<bool> DeleteSessionAsync(int sessionId, int coachId);
+
+        // Coach adds a single exercise to an existing session
+        Task<int> AddSessionExerciseAsync(int sessionId, int coachId, CreateSessionExerciseDto dto);
+
+        Task<bool> UpdateSessionExerciseAsync(int sessionExerciseId, int coachId, CreateSessionExerciseDto dto);
+
+        Task<bool> DeleteSessionExerciseAsync(int sessionExerciseId, int coachId);
 
         // Coach publishes their own program — immediately visible in catalogue
         Task<bool> PublishProgramAsync(int programId, int coachId);

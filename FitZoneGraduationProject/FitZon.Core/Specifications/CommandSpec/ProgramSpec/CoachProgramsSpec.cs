@@ -10,7 +10,7 @@ namespace FitZone.Core.Specifications.CommandSpec.ProgramSpec
     // All programs belonging to a specific coach
     public class CoachProgramsSpec : BaseSpecatifications<WorkoutProgram>
     {
-        public CoachProgramsSpec(int coachId) : base(w => w.CoachId == coachId)
+        public CoachProgramsSpec(int coachId) : base(w => w.CoachId == coachId && !w.IsDeleted)
         {
             Includes.Add(w => w.Track);
             Includes.Add(w => w.Coach);

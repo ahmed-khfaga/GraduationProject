@@ -131,11 +131,13 @@ namespace FitZone.Service
 
         public async Task<WorkoutSessionDto?> GetSessionDetailAsync(int sessionId, int traineeId)
         {
+            // One query: session + ProgramWeek (gate check) + SessionExercises + Exercise
             var session = await _uow.Repository<WorkoutSession>()
                 .GetWithSpecAsync(new SessionWithExercisesSpec(sessionId));
 
             if (session is null) return null;
 
+            // Access gate — trainee must be enrolled in this program
             int programId = session.ProgramWeek.WorkoutProgramId;
             int weekNumber = session.ProgramWeek.WeekNumber;
 
@@ -149,15 +151,9 @@ namespace FitZone.Service
                 throw new InvalidOperationException(
                     $"Week {weekNumber} is not yet unlocked. Complete the previous week first.");
 
-            var exercises = await _uow.Repository<SessionExercise>()
-                .GetAllWithSpecAsync(new SessionExercisesForSessionSpec(sessionId));
-
-            var dto = _mapper.Map<WorkoutSessionDto>(session);
-            dto.SessionExerciseDto = _mapper.Map<List<SessionExerciseDto>>(
-                exercises.OrderBy(e => SectionOrder(e.SectionType))
-                         .ThenBy(e => e.OrderInSection));
-
-            return dto;
+            // AutoMapper maps session + ordered exercises in one call.
+            // Ordering (SectionType then OrderInSection) is defined in MappingProfile.
+            return _mapper.Map<WorkoutSessionDto>(session);
         }
 
         // ── Enroll / Cancel ───────────────────────────────────────────────────

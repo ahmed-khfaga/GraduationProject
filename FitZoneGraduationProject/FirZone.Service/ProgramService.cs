@@ -3,6 +3,8 @@ using FitZone.Core.Entitys;
 using FitZone.Core.Enums;
 using FitZone.Core.Repository.Contract;
 using FitZone.Core.Specifications.CommandSpec.ProgramSpec;
+using FitZone.Core.Specifications.CommandSpec.SessionSpec;   // ← NEW
+using FitZone.Core.Specifications.CommandSpec.EnrollmentSpec;
 using FitZone.Service.DTOs.EnrollmentDTOs;
 using FitZone.Service.DTOs.ProgramDTOs;
 using FitZone.Service.DTOs.SessionExerciseDTOs;
@@ -17,7 +19,7 @@ namespace FitZone.Service
 
         public ProgramService(IUnitOfWork uow, IMapper mapper) { _uow = uow; _mapper = mapper; }
 
-        // ── Read ──────
+        // ── Read ──────────────────────────────────────────────────────────────
 
         public async Task<PaginatedResult<ProgramCardDto>> GetPublishedProgramsAsync(ProgramFilterParams filters)
         {
@@ -37,17 +39,19 @@ namespace FitZone.Service
 
         public async Task<ProgramDetailDto?> GetProgramDetailAsync(int programId)
         {
-            var program = await _uow.Repository<WorkoutProgram>().GetWithSpecAsync(new ProgramWithFullDetailSpec(programId));
+            var program = await _uow.Repository<WorkoutProgram>()
+                                    .GetWithSpecAsync(new ProgramWithFullDetailSpec(programId));
             return program is null ? null : _mapper.Map<ProgramDetailDto>(program);
         }
 
         public async Task<IEnumerable<ProgramCardDto>> GetCoachProgramsAsync(int coachId)
         {
-            var programs = await _uow.Repository<WorkoutProgram>().GetAllWithSpecAsync(new CoachProgramsSpec(coachId));
+            var programs = await _uow.Repository<WorkoutProgram>()
+                                     .GetAllWithSpecAsync(new CoachProgramsSpec(coachId));
             return _mapper.Map<IEnumerable<ProgramCardDto>>(programs);
         }
 
-        // ── Coach mutations ───────
+        // ── Coach mutations ───────────────────────────────────────────────────
 
         public async Task<int> CreateProgramAsync(int coachId, CreateProgramDto dto)
         {
@@ -65,14 +69,12 @@ namespace FitZone.Service
             if (program is null || program.CoachId != coachId)
                 throw new InvalidOperationException("Program not found or access denied.");
 
-         
             if (dto.TrackID != program.TrackId)
                 throw new InvalidOperationException(
                     "The track of a program cannot be changed after creation. " +
                     "Delete and recreate the program if a different track is required.");
 
             _mapper.Map(dto, program);
-
             _uow.Repository<WorkoutProgram>().Update(program);
             await _uow.CompleteAsync();
             return true;
@@ -84,7 +86,6 @@ namespace FitZone.Service
             if (program is null || program.CoachId != coachId)
                 throw new InvalidOperationException("Program not found or access denied.");
 
-            // ── Persist the week first ───────────────────────────────
             var week = new ProgramWeek
             {
                 WorkoutProgramId = programId,
@@ -96,9 +97,8 @@ namespace FitZone.Service
             };
 
             _uow.Repository<ProgramWeek>().Add(week);
-            await _uow.CompleteAsync(); // get week.ID
+            await _uow.CompleteAsync(); // get week.Id
 
-            // ── Persist sessions + exercises ─────────────────────────
             foreach (var sessionDto in dto.CreateWorkoutSessionDto)
             {
                 var session = new WorkoutSession
@@ -114,7 +114,7 @@ namespace FitZone.Service
                 };
 
                 _uow.Repository<WorkoutSession>().Add(session);
-                await _uow.CompleteAsync(); // get session.ID
+                await _uow.CompleteAsync(); // get session.Id
 
                 foreach (var exDto in sessionDto.CreateSessionExerciseDto)
                 {
@@ -136,15 +136,13 @@ namespace FitZone.Service
             }
         }
 
+
+
         public async Task<bool> UpdateProgramWeekAsync(int programWeekId, int coachId, UpdateProgramWeekDto dto)
         {
-            var week = await _uow.Repository<ProgramWeek>().GetAsync(programWeekId);
-            if (week is null) return false;
-
-            // Verify ownership through the program
-            var program = await _uow.Repository<WorkoutProgram>().GetAsync(week.WorkoutProgramId);
-            if (program is null || program.CoachId != coachId)
-                throw new InvalidOperationException("Access denied.");
+            var spec = new ProgramWeekByIdAndCoachSpec(programWeekId, coachId);
+            var week = await _uow.Repository<ProgramWeek>().GetWithSpecAsync(spec);
+            if (week is null) return false; // not found OR not owned by this coach → 404
 
             if (dto.WeekDescription is not null) week.WeekDescription = dto.WeekDescription;
             if (dto.FocusArea is not null) week.FocusArea = dto.FocusArea;
@@ -156,30 +154,81 @@ namespace FitZone.Service
             return true;
         }
 
+
+
         public async Task<bool> DeleteProgramWeekAsync(int programWeekId, int coachId)
         {
-            var week = await _uow.Repository<ProgramWeek>().GetAsync(programWeekId);
-            if (week is null) return false;
-
-            var program = await _uow.Repository<WorkoutProgram>().GetAsync(week.WorkoutProgramId);
-            if (program is null || program.CoachId != coachId)
-                throw new InvalidOperationException("Access denied.");
+            var spec = new ProgramWeekByIdAndCoachSpec(programWeekId, coachId);
+            var week = await _uow.Repository<ProgramWeek>().GetWithSpecAsync(spec);
+            if (week is null) return false; // not found OR not owned by this coach → 404
 
             _uow.Repository<ProgramWeek>().Delete(week);
             await _uow.CompleteAsync();
             return true;
         }
 
+
+
+        // Coach reads one session individually (with its exercises) — was completely missing
+        public async Task<WorkoutSessionDto?> GetSessionForCoachAsync(int sessionId, int coachId)
+        {
+            var spec = new WorkoutSessionFullByIdAndCoachSpec(sessionId, coachId);
+            var session = await _uow.Repository<WorkoutSession>().GetWithSpecAsync(spec);
+            if (session is null) return null;
+
+            var dto = _mapper.Map<WorkoutSessionDto>(session);
+            // SessionExerciseDto is deliberately .Ignore()'d in MappingProfile — must populate it here.
+            dto.SessionExerciseDto = _mapper.Map<List<SessionExerciseDto>>(session.SessionExercises);
+            return dto;
+        }
+
+        // Coach adds a brand-new session to an existing week — was completely missing
+        public async Task<int> AddSessionAsync(int programWeekId, int coachId, CreateWorkoutSessionDto dto)
+        {
+            var weekSpec = new ProgramWeekByIdAndCoachSpec(programWeekId, coachId);
+            var week = await _uow.Repository<ProgramWeek>().GetWithSpecAsync(weekSpec);
+            if (week is null)
+                throw new InvalidOperationException("Program week not found or access denied.");
+
+            var session = new WorkoutSession
+            {
+                ProgramWeekId = programWeekId,
+                SessionTitle = dto.SessionTitle,
+                weekDay = dto.WeekDay,
+                DayOrder = dto.DayOrder,
+                EstimatedDuration = dto.EstimatedDuration,
+                WarmupNotes = dto.WarmupNotes,
+                PrimerNotes = dto.PrimerNotes,
+                CooldownNotes = dto.CooldownNotes
+            };
+            _uow.Repository<WorkoutSession>().Add(session);
+            await _uow.CompleteAsync(); // get session.Id
+
+            foreach (var exDto in dto.CreateSessionExerciseDto)
+            {
+                _uow.Repository<SessionExercise>().Add(new SessionExercise
+                {
+                    WorkoutSessionId = session.Id,
+                    ExerciseId = exDto.ExerciseID,
+                    SectionType = exDto.SectionType,
+                    OrderInSection = exDto.OrderInSection,
+                    Sets = exDto.Sets,
+                    Reps = exDto.Reps,
+                    RestSeconds = exDto.RestSeconds,
+                    Tempo = exDto.Tempo,
+                    RPETarget = exDto.RPETarget,
+                    Notes = exDto.Notes
+                });
+            }
+            await _uow.CompleteAsync();
+            return session.Id;
+        }
+
         public async Task<bool> UpdateSessionAsync(int sessionId, int coachId, UpdateWorkoutSessionDto dto)
         {
-            var session = await _uow.Repository<WorkoutSession>().GetAsync(sessionId);
-            if (session is null) return false;
-
-            var week = await _uow.Repository<ProgramWeek>().GetAsync(session.ProgramWeekId);
-            var program = week is null ? null : await _uow.Repository<WorkoutProgram>().GetAsync(week.WorkoutProgramId);
-
-            if (program is null || program.CoachId != coachId)
-                throw new InvalidOperationException("Access denied.");
+            var spec = new WorkoutSessionByIdAndCoachSpec(sessionId, coachId);
+            var session = await _uow.Repository<WorkoutSession>().GetWithSpecAsync(spec);
+            if (session is null) return false; // not found OR not owned by this coach → 404
 
             if (dto.SessionTitle is not null) session.SessionTitle = dto.SessionTitle;
             if (dto.WeekDay is not null) session.weekDay = dto.WeekDay.Value;
@@ -194,21 +243,80 @@ namespace FitZone.Service
             return true;
         }
 
+
+
         public async Task<bool> DeleteSessionAsync(int sessionId, int coachId)
         {
-            var session = await _uow.Repository<WorkoutSession>().GetAsync(sessionId);
-            if (session is null) return false;
-
-            var week = await _uow.Repository<ProgramWeek>().GetAsync(session.ProgramWeekId);
-            var program = week is null ? null : await _uow.Repository<WorkoutProgram>().GetAsync(week.WorkoutProgramId);
-
-            if (program is null || program.CoachId != coachId)
-                throw new InvalidOperationException("Access denied.");
+            var spec = new WorkoutSessionByIdAndCoachSpec(sessionId, coachId);
+            var session = await _uow.Repository<WorkoutSession>().GetWithSpecAsync(spec);
+            if (session is null) return false; // not found OR not owned by this coach → 404
 
             _uow.Repository<WorkoutSession>().Delete(session);
             await _uow.CompleteAsync();
             return true;
         }
+
+        // Coach adds a single exercise to an existing session — was completely missing
+        public async Task<int> AddSessionExerciseAsync(int sessionId, int coachId, CreateSessionExerciseDto dto)
+        {
+            var sessionSpec = new WorkoutSessionByIdAndCoachSpec(sessionId, coachId);
+            var session = await _uow.Repository<WorkoutSession>().GetWithSpecAsync(sessionSpec);
+            if (session is null)
+                throw new InvalidOperationException("Session not found or access denied.");
+
+            var sessionExercise = new SessionExercise
+            {
+                WorkoutSessionId = sessionId,
+                ExerciseId = dto.ExerciseID,
+                SectionType = dto.SectionType,
+                OrderInSection = dto.OrderInSection,
+                Sets = dto.Sets,
+                Reps = dto.Reps,
+                RestSeconds = dto.RestSeconds,
+                Tempo = dto.Tempo,
+                RPETarget = dto.RPETarget,
+                Notes = dto.Notes
+            };
+            _uow.Repository<SessionExercise>().Add(sessionExercise);
+            await _uow.CompleteAsync();
+            return sessionExercise.Id;
+        }
+
+        // Coach edits a single exercise entry within a session — was completely missing
+        public async Task<bool> UpdateSessionExerciseAsync(int sessionExerciseId, int coachId, CreateSessionExerciseDto dto)
+        {
+            var spec = new SessionExerciseByIdAndCoachSpec(sessionExerciseId, coachId);
+            var se = await _uow.Repository<SessionExercise>().GetWithSpecAsync(spec);
+            if (se is null) return false; // not found OR not owned by this coach → 404
+
+            se.ExerciseId = dto.ExerciseID;
+            se.SectionType = dto.SectionType;
+            se.OrderInSection = dto.OrderInSection;
+            se.Sets = dto.Sets;
+            se.Reps = dto.Reps;
+            se.RestSeconds = dto.RestSeconds;
+            se.Tempo = dto.Tempo;
+            se.RPETarget = dto.RPETarget;
+            se.Notes = dto.Notes;
+
+            _uow.Repository<SessionExercise>().Update(se);
+            await _uow.CompleteAsync();
+            return true;
+        }
+
+        // Coach removes a single exercise from a session — was completely missing
+        public async Task<bool> DeleteSessionExerciseAsync(int sessionExerciseId, int coachId)
+        {
+            var spec = new SessionExerciseByIdAndCoachSpec(sessionExerciseId, coachId);
+            var se = await _uow.Repository<SessionExercise>().GetWithSpecAsync(spec);
+            if (se is null) return false; // not found OR not owned by this coach → 404
+
+            _uow.Repository<SessionExercise>().Delete(se);
+            await _uow.CompleteAsync();
+            return true;
+        }
+
+        // ── Publish / Unpublish / Delete ──────────────────────────
 
         public async Task<bool> PublishProgramAsync(int programId, int coachId)
         {
@@ -216,7 +324,7 @@ namespace FitZone.Service
             if (program is null || program.CoachId != coachId)
                 throw new InvalidOperationException("Program not found or access denied.");
 
-            if (program.IsPublished) return true; // already live
+            if (program.IsPublished) return true;
 
             program.IsPublished = true;
             program.PublishedAt = DateTime.UtcNow;
@@ -252,6 +360,23 @@ namespace FitZone.Service
         {
             var program = await _uow.Repository<WorkoutProgram>().GetAsync(programId);
             if (program is null) return false;
+
+            // TraineeProgramEnrollment → WorkoutProgram never cascade-deletes (enrollment
+            // history must be preserved). If any enrollment exists — active or historical —
+            // a hard delete would violate that FK. Instead, soft-delete: trainees already
+            // enrolled keep full, unaffected access; the program disappears from the public
+            // catalogue and the coach's own list via the IsDeleted filter in those specs.
+            var enrollmentSpec = new EnrollmentsByProgramIdSpec(programId);
+            var hasEnrollments = await _uow.Repository<TraineeProgramEnrollment>()
+                .GetAllWithSpecAsync(enrollmentSpec);
+
+            if (hasEnrollments.Any())
+            {
+                program.IsDeleted = true;
+                _uow.Repository<WorkoutProgram>().Update(program);
+                await _uow.CompleteAsync();
+                return true;
+            }
 
             _uow.Repository<WorkoutProgram>().Delete(program);
             await _uow.CompleteAsync();

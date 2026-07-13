@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-
 namespace FitZone.Repository.Data.Seed
 {
     public static class FitZoneSeeder
@@ -24,6 +23,11 @@ namespace FitZone.Repository.Data.Seed
             await TrackSeeder.SeedAsync(context);
             await ExerciseSeeder.SeedAsync(context);
             await ProgramSeeder.SeedAsync(context);
+
+            // ── NEW: nutrition system ─────────────────────────────────────
+            // Must run AFTER UserSeeder (needs Coach Ahmed + Trainee Mohamed)
+            // and AFTER ProgramSeeder (optionally links to Push Pull Legs program).
+            await NutritionSeeder.SeedAsync(context);
         }
     }
 }

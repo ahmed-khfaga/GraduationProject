@@ -43,9 +43,11 @@ namespace FitZone.APIs.Helper
 
             // ── ProgramWeek — must be declared BEFORE WorkoutProgram maps that reference it ──
             CreateMap<ProgramWeek, ProgramWeekSummaryDto>()
+                .ForMember(d => d.Id, o => o.MapFrom(s => s.Id))
                 .ForMember(d => d.SessionCount, o => o.MapFrom(s => s.WorkoutSessions != null ? s.WorkoutSessions.Count : 0))
                 .ForMember(d => d.ProgressionNote, o => o.MapFrom(s => s.ProgressionNote))
-                .ForMember(d => d.NextWeekPreview, o => o.MapFrom(s => s.NextWeekPreview));
+                .ForMember(d => d.NextWeekPreview, o => o.MapFrom(s => s.NextWeekPreview))
+                .ForMember(d => d.Sessions, o => o.MapFrom(s => s.WorkoutSessions)); ;
 
             // ── WorkoutProgram 
             CreateMap<WorkoutProgram, ProgramCardDto>()
@@ -66,9 +68,16 @@ namespace FitZone.APIs.Helper
 
             // ── WorkoutSession 
             CreateMap<WorkoutSession, WorkoutSessionDto>()
-                .ForMember(d => d.WeekDay, o => o.MapFrom(s => s.weekDay.ToString()))
-                .ForMember(d => d.DayOrder, o => o.MapFrom(s => s.DayOrder))
-                .ForMember(d => d.SessionExerciseDto, o => o.Ignore()); // populated manually in service
+     .ForMember(d => d.WeekDay,
+               o => o.MapFrom(s => s.weekDay.ToString()))
+             .ForMember(d => d.DayOrder,
+               o => o.MapFrom(s => s.DayOrder))
+             .ForMember(d => d.SessionExerciseDto,
+               o => o.MapFrom(s =>
+             s.SessionExercises
+              .OrderBy(se => (int)se.SectionType)   // Warmup=0, Primer=1, MainWork=2, Cooldown=3
+              .ThenBy(se => se.OrderInSection)
+              .ToList()));
 
             CreateMap<WorkoutSession, SessionSummaryDto>()
                 .ForMember(d => d.WeekDay, o => o.MapFrom(s => s.weekDay.ToString()))
@@ -93,6 +102,10 @@ namespace FitZone.APIs.Helper
 
             // -- Mapping Chat
             CreateMap<ChatMessage, ChatMessageDto>();
+
+            CreateMap<ChatMessage, BotMessageDto>()
+                .ForMember(dest => dest.BotConversationId,
+               opt => opt.MapFrom(src => src.BotConversationId!.Value));
         }
     }
 }

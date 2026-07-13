@@ -20,9 +20,6 @@ namespace FitZone.Core.Entitys.PaymentEntity
         public PaymentStatus Status { get; set; } = PaymentStatus.Pending;
 
         public string? PaymentIntentId { get; set; }
-
-        public string? CardLastFour { get; set; }
-
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
 

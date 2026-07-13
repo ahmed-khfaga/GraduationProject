@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Authorization;
+
 namespace FitZone.APIs.Controllers
 {
     public class AccountController : BaseApiController
@@ -46,6 +48,23 @@ namespace FitZone.APIs.Controllers
             }
 
             return Unauthorized(new ApiException(401, result.Message));
+        }
+
+        [Authorize]
+        [HttpGet("me")]
+        public async Task<ActionResult<AuthUserDto>> Me()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrWhiteSpace(userId))
+                return Unauthorized(new ApiException(401, "Invalid user token."));
+
+            var result = await _authService.GetCurrentUserAsync(userId);
+
+            if (result is null)
+                return NotFound(new ApiException(404, "User not found."));
+
+            return Ok(result);
         }
     }
 }

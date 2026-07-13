@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using FitZone.Service.Services.Contract;
 
 namespace FitZone
 {
@@ -51,6 +52,8 @@ namespace FitZone
             //builder.Services.AddAutoMapper(M => M.AddProfile(new MappingMemberShip()));
             //builder.Services.AddAutoMapper(typeof(MappingMemberShip));
             builder.Services.AddAutoMapper(typeof(MappingProfile));
+            builder.Services.AddAutoMapper(typeof(MappingNutritionPlan));
+            builder.Services.AddScoped<IChatContactsService, ChatContactsService>();
             //builder.Services.AddAutoMapper(typeof(MappingCoach));
             //builder.Services.AddAutoMapper(typeof(MappingTrainee));
             //builder.Services.AddAutoMapper(typeof(MappingTrack));
@@ -71,6 +74,34 @@ namespace FitZone
             builder.Services.AddScoped<ITraineeService, TraineeService>();
             builder.Services.AddScoped<IPaymentService, PaymentService>();
 
+
+            // ?? Core calculation services (no DB access) ??????????????????????????????
+            builder.Services.AddScoped<ITDEEService, TDEEService>();
+            builder.Services.AddScoped<IProposalEngine, ProposalEngine>();
+
+            // ?? Plan management ???????????????????????????????????????????????????????
+            builder.Services.AddScoped<INutritionPlanService, NutritionPlanService>();
+
+            // ?? Food library ??????????????????????????????????????????????????????????
+            builder.Services.AddScoped<IFoodItemService, FoodItemService>();
+
+            // ?? Per-client constraints ????????????????????????????????????????????????
+            builder.Services.AddScoped<ConstraintService>();
+            builder.Services.AddScoped<IConstraintService>(
+                sp => sp.GetRequiredService<ConstraintService>());
+
+            // ?? Enrollment (depends on TDEEService and ConstraintService) ?????????????
+            // Registered as itself AND as the interface so CheckInService can inject
+            // the concrete type for SyncMaxWeekUnlockedAsync (internal method).
+            builder.Services.AddScoped<NutritionEnrollmentService>();
+            builder.Services.AddScoped<INutritionEnrollmentService>(
+                sp => sp.GetRequiredService<NutritionEnrollmentService>());
+
+            // ?? Check-in (depends on ProposalEngine and NutritionEnrollmentService) ???
+            builder.Services.AddScoped<ICheckInService, CheckInService>();
+
+            // ?? Coach review queue ????????????????????????????????????????????????????
+            builder.Services.AddScoped<ICoachReviewService, CoachReviewService>();
             #endregion
 
 
@@ -204,12 +235,8 @@ namespace FitZone
 
             app.UseMiddleware<ExceptionMiddleware>();
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-                app.MapOpenApi();
-            }
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
             app.UseHttpsRedirection();
          
@@ -221,6 +248,11 @@ namespace FitZone
             app.MapControllers();
 
             app.MapHub<ChatHub>("/chatHub");
+
+            app.MapGet("/", () =>
+            {
+                return Results.Ok("FitZone API Running");
+            });
 
             app.Run();
         }

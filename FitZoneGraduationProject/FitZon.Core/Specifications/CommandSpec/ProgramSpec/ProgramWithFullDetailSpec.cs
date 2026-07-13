@@ -16,6 +16,8 @@ namespace FitZone.Core.Specifications.CommandSpec.ProgramSpec
             Includes.Add(w => w.Coach);
             IncludeStrings.Add("Coach.ApplicationUser");
             Includes.Add(w => w.ProgramWeeks);
+
+            IncludeStrings.Add("ProgramWeeks.WorkoutSessions");
         }
     }
 }

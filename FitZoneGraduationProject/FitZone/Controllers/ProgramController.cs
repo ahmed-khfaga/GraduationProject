@@ -107,6 +107,30 @@ namespace FitZone.APIs.Controllers
             return deleted ? Ok(new { message = "Week deleted." }) : NotFound(new ApiException(404, "Week not found."));
         }
 
+   
+
+        // GET api/programs/sessions/{sessionId}  — coach reads one session individually (was missing)
+        [HttpGet("sessions/{sessionId:int}")]
+        [Authorize(Roles = "Coach")]
+        public async Task<ActionResult<WorkoutSessionDto>> GetSession(int sessionId)
+        {
+            var coachId = await ResolveCoachIdAsync();
+            if (coachId is null) return CoachNotFound();
+            var session = await _programService.GetSessionForCoachAsync(sessionId, coachId.Value);
+            return session is null ? NotFound(new ApiException(404, "Session not found.")) : Ok(session);
+        }
+
+        // POST api/programs/weeks/{weekId}/sessions  — add a new session to an existing week (was missing)
+        [HttpPost("weeks/{weekId:int}/sessions")]
+        [Authorize(Roles = "Coach")]
+        public async Task<ActionResult> AddSession(int weekId, [FromBody] CreateWorkoutSessionDto dto)
+        {
+            var coachId = await ResolveCoachIdAsync();
+            if (coachId is null) return CoachNotFound();
+            var id = await _programService.AddSessionAsync(weekId, coachId.Value, dto);
+            return CreatedAtAction(nameof(GetSession), new { sessionId = id }, new { id });
+        }
+
         // PUT api/programs/sessions/{sessionId}  — edit session 
         [HttpPut("sessions/{sessionId:int}")]
         [Authorize(Roles = "Coach")]
@@ -127,6 +151,39 @@ namespace FitZone.APIs.Controllers
             if (coachId is null) return CoachNotFound();
             var deleted = await _programService.DeleteSessionAsync(sessionId, coachId.Value);
             return deleted ? Ok(new { message = "Session deleted." }) : NotFound(new ApiException(404, "Session not found."));
+        }
+
+        // POST api/programs/sessions/{sessionId}/exercises  — add an exercise to a session (was missing)
+        [HttpPost("sessions/{sessionId:int}/exercises")]
+        [Authorize(Roles = "Coach")]
+        public async Task<ActionResult> AddSessionExercise(int sessionId, [FromBody] CreateSessionExerciseDto dto)
+        {
+            var coachId = await ResolveCoachIdAsync();
+            if (coachId is null) return CoachNotFound();
+            var id = await _programService.AddSessionExerciseAsync(sessionId, coachId.Value, dto);
+            return Ok(new { id, message = "Exercise added to session." });
+        }
+
+        // PUT api/programs/session-exercises/{sessionExerciseId}  — edit one exercise entry 
+        [HttpPut("session-exercises/{sessionExerciseId:int}")]
+        [Authorize(Roles = "Coach")]
+        public async Task<ActionResult> UpdateSessionExercise(int sessionExerciseId, [FromBody] CreateSessionExerciseDto dto)
+        {
+            var coachId = await ResolveCoachIdAsync();
+            if (coachId is null) return CoachNotFound();
+            var updated = await _programService.UpdateSessionExerciseAsync(sessionExerciseId, coachId.Value, dto);
+            return updated ? Ok(new { message = "Session exercise updated." }) : NotFound(new ApiException(404, "Session exercise not found."));
+        }
+
+        // DELETE api/programs/session-exercises/{sessionExerciseId}  — remove one exercise (was missing)
+        [HttpDelete("session-exercises/{sessionExerciseId:int}")]
+        [Authorize(Roles = "Coach")]
+        public async Task<ActionResult> DeleteSessionExercise(int sessionExerciseId)
+        {
+            var coachId = await ResolveCoachIdAsync();
+            if (coachId is null) return CoachNotFound();
+            var deleted = await _programService.DeleteSessionExerciseAsync(sessionExerciseId, coachId.Value);
+            return deleted ? Ok(new { message = "Exercise removed from session." }) : NotFound(new ApiException(404, "Session exercise not found."));
         }
 
         // POST api/programs/{id}/publish  — coach publishes immediately

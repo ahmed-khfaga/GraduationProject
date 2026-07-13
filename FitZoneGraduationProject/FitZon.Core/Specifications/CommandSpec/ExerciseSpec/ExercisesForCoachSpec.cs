@@ -16,7 +16,8 @@ namespace FitZone.Core.Specifications.CommandSpec.ExerciseSpec
             (string.IsNullOrWhiteSpace(p.Muscle) || (e.PrimaryMuscles != null && e.PrimaryMuscles.Contains(p.Muscle))) &&
             (string.IsNullOrWhiteSpace(p.Equipment) || (e.EquipmentNeeded != null && e.EquipmentNeeded.Contains(p.Equipment))))
         {
-            OrderBy = e => e.Name;
+            
+            OrderByDescending = e => (e.CoachId == coachId ? 1_000_000_000 : 0) + e.Id;
             ApplyPagination(p.PageIndex, p.PageSize);
         }
 

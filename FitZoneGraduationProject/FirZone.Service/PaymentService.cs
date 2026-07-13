@@ -7,7 +7,6 @@ using FitZone.Core.Specifications.CommandSpec.PaymentSpec;
 using FitZone.Core.Specifications.CommandSpec.ProfileSpec;
 using FitZone.Core.Specifications;
 using FitZone.Service.DTOs.PaymentDTOs;
-using FitZone.Service.Helpers;
 using FitZone.Service.Services.Contract.Payment;
 
 namespace FitZone.Service
@@ -50,13 +49,8 @@ namespace FitZone.Service
             };
         }
 
-        public async Task<PaymentStatusDto> ConfirmMembershipPaymentAsync(string userId, string paymentIntentId, string cardNumber)
+        public async Task<PaymentStatusDto> ConfirmMembershipPaymentAsync(string userId, string paymentIntentId)
         {
-            if (!PaymentCardValidator.TryNormalize(cardNumber, out var normalizedCard, out var cardError))
-            {
-                throw new InvalidOperationException(cardError ?? "Invalid card number.");
-            }
-
             var payment = await _unitOfWork.Repository<Payment>()
                 .GetWithSpecAsync(new PaymentByIntentAndUserSpec(userId, paymentIntentId))
                 ?? throw new InvalidOperationException("Payment intent not found.");
@@ -66,8 +60,7 @@ namespace FitZone.Service
                 return new PaymentStatusDto
                 {
                     PaymentIntentId = paymentIntentId,
-                    Status = PaymentStatus.Paid.ToString(),
-                    CardLastFour = payment.CardLastFour
+                    Status = PaymentStatus.Paid.ToString()
                 };
             }
 
@@ -86,7 +79,6 @@ namespace FitZone.Service
             }
 
             payment.Status = PaymentStatus.Paid;
-            payment.CardLastFour = normalizedCard[^4..];
             _unitOfWork.Repository<Payment>().Update(payment);
             await _unitOfWork.CompleteAsync();
 
@@ -97,8 +89,7 @@ namespace FitZone.Service
             return new PaymentStatusDto
             {
                 PaymentIntentId = paymentIntentId,
-                Status = PaymentStatus.Paid.ToString(),
-                CardLastFour = payment.CardLastFour
+                Status = PaymentStatus.Paid.ToString()
             };
         }
 

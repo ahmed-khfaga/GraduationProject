@@ -11,6 +11,8 @@ namespace FitZone.Service.DTOs.SessionExerciseDTOs
     // Exercise entry inside a session
     public class SessionExerciseDto
     {
+        // The SessionExercise row's own Id 
+        public int Id { get; set; }
         public int ExerciseID { get; set; }
         public string ExerciseName { get; set; }
         public string SectionType { get; set; }
@@ -24,5 +26,5 @@ namespace FitZone.Service.DTOs.SessionExerciseDTOs
         public string? VideoUrl { get; set; }
     }
 
-  
+
 }

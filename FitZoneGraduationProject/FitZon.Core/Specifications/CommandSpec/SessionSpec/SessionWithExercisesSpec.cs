@@ -12,7 +12,11 @@ namespace FitZone.Core.Specifications.CommandSpec.SessionSpec
     {
         public SessionWithExercisesSpec(int sessionId) : base(s => s.Id == sessionId)
         {
-            Includes.Add(s => s.ProgramWeek); // needed to verify week number for access gate
+            Includes.Add(s => s.ProgramWeek);
+
+            Includes.Add(s => s.SessionExercises);
+
+            IncludeStrings.Add("SessionExercises.Exercise");
         }
     }
 }

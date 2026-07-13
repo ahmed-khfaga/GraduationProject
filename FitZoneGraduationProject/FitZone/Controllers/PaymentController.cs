@@ -38,13 +38,7 @@ namespace FitZone.APIs.Controllers
             if (string.IsNullOrWhiteSpace(dto.PaymentIntentId))
                 return BadRequest(new ApiException(400, "PaymentIntentId is required."));
 
-            if (string.IsNullOrWhiteSpace(dto.CardNumber))
-                return BadRequest(new ApiException(400, "Card number is required."));
-
-            var result = await _paymentService.ConfirmMembershipPaymentAsync(
-                appUserId,
-                dto.PaymentIntentId,
-                dto.CardNumber);
+            var result = await _paymentService.ConfirmMembershipPaymentAsync(appUserId, dto.PaymentIntentId);
             return Ok(result);
         }
     }
